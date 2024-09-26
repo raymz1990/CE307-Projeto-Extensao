@@ -1,0 +1,15 @@
+{
+  "hash": "d2abd6c3ea12ab7c0bcb186405294369",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# O pacote `ggplot2` {#sec-intro-ggplot2}\n\n\n::: {.cell}\n\n:::\n\n\n::: {style=\"display: flex;\"}\n\n::: {style=\"width: 25%;\"}\n<a href=\"https://ggplot2.tidyverse.org/\">\n\n![](./img/img2-ggplot_logo.png){.hex-logo} </a>\n:::\n\n::: {style=\"width: 5%;\"}\n\n:::\n\n::: {style=\"width: 70%;\"}\n<br>\n<br>\no [ggplot2](https://ggplot2.tidyverse.org/) é um pacote para visulizar dados utilizando a [Gramática dos Gráficos](https://r4ds.had.co.nz/data-visualisation.html), na qual os usuários atribuem variáveis para exibição, escolhem o tipo de gráfico a ser usado e adicionam elementos estésticos (*aesthetics*) ou formatação de tema. Ele faz parte da coleção de pacotes `Tidyverse`, amplamente utilizada para análise de dados e *machine learning*.\n:::\n:::\n\nA criação do pacote `ggplot2` foi desenvolvida pelo **estatístico** neozelandês [Hadley Wickham](https://en.wikipedia.org/wiki/Hadley_Wickham), que provocou uma revolução na construção de gráfico no **R**.\n\nEm sua essência, a função do `ggplot2` é **construir um gráfico camada por camada**.\n\nDentre suas principais características, as vantagens de utilização este pacote para a construção de gráficos são:\n\n* Gráficos visualmente mais bonitos;\n* Fácil personalização (é mais simples ajustar o gráfico conforme suas necessidades);\n* A estrutura padronizada das funções facilita o aprendizado e a aplicação;\n* As diferenças no código entre diferentes tipos de gráficos são mínimas.\n\nExistem inúmeras possibilidades de construção de gráficos com o `ggplot2` para a visualização de dados utilizando o **R**. Ele permitem criar praticamente qualquer tipo de gráfico.\n\n\n::: {.cell layout-align=\"left\"}\n::: {.cell-output-display}\n![Tipos de gráficos do pacote ggplot2\n](./img/img3-ggplot-example.png){#fig-ggplot2-example fig-align='left' fig-alt='R-Graph Exemplos de Gráficos\n' width=440}\n:::\n:::\n\n\n\n## Instalação do pacote `ggplot2`\n\nPara começar a construir os primeiros gráficos utilizando o pacote `ggplot2`, é necessário, primeiramente, instalar e carregar o pacote antes de rodar os gráficos\n\n* **Instalação do pacote***\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"ggplot2\")\n#> Installing package into 'C:/Users/Raymundo/AppData/Local/R/win-library/4.2'\n#> (as 'lib' is unspecified)\n#> Error in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

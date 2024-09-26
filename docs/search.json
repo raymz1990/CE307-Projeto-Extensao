@@ -1,0 +1,104 @@
+[
+  {
+    "objectID": "00_visualizacao-dados.html",
+    "href": "00_visualizacao-dados.html",
+    "title": "Visualização de Dados",
+    "section": "",
+    "text": "Introdução\nTudo provém de dados. E, quando se trabalha com dados, a necessidade de criar visualizações é inevitável - muitas vezes, é melhor demonstrar do que apenas descrever. A criação de visualizações de dados é tanto uma arte quanto uma ciência, pois combina estética com precisão analítica. Transformar dados em histórias visuais envolventes é uma habilidade fundamental para quem trabalha com grandes volumes de informação.\nFigure 1: Uma imagem vale mais que mil palavras\nO R é uma ferramenta que oferece vários sistemas para criar gráficos, mas o ggplot é um dos mais elegantes e versáteis. O ggplot implementa a gramática dos gráficos, um sistema coerente para descrever e construir visualizações de maneira padronizada. Com o ggplot, você pode fazer mais de forma rápida, aprendendo uma única estrutura e aplicando-a em diversos contextos.\nNasta aula, você aprenderá a visualizar seus dados usando o ggplot, focada em 4 capítulos:",
+    "crumbs": [
+      "Visualização de Dados"
+    ]
+  },
+  {
+    "objectID": "00_visualizacao-dados.html#introdução",
+    "href": "00_visualizacao-dados.html#introdução",
+    "title": "Visualização de Dados",
+    "section": "",
+    "text": "Introdução ao pacote ggplot para visualização de dados;\nCrição de gráficos de barras, histogramas e gráficos de dispersão;\nPersonalização básica de gráficos: títulos, eixos, cores;\nExercício: Criar um gráfico de barras para visualizar as notas dos alunos em uma determinada disciplina.",
+    "crumbs": [
+      "Visualização de Dados"
+    ]
+  },
+  {
+    "objectID": "01_intro-ggplot.html",
+    "href": "01_intro-ggplot.html",
+    "title": "1  O pacote ggplot2",
+    "section": "",
+    "text": "1.1 Instalação do pacote ggplot2\nPara começar a construir os primeiros gráficos utilizando o pacote ggplot2, é necessário, primeiramente, instalar e carregar o pacote antes de rodar os gráficos\ninstall.packages(\"ggplot2\")\n#&gt; Installing package into 'C:/Users/Raymundo/AppData/Local/R/win-library/4.2'\n#&gt; (as 'lib' is unspecified)\n#&gt; Error in contrib.url(repos, \"source\"): trying to use CRAN without setting a mirror\nlibrary(ggplot2)",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>O pacote `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "01_intro-ggplot.html#instalação-do-pacote-ggplot2",
+    "href": "01_intro-ggplot.html#instalação-do-pacote-ggplot2",
+    "title": "1  O pacote ggplot2",
+    "section": "",
+    "text": "Instalação do pacote*",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>O pacote `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CE 307 - Projeto de Extensão",
+    "section": "",
+    "text": "Apresentação\nEstatística e Ciência de Dados - UFPR",
+    "crumbs": [
+      "Apresentação"
+    ]
+  },
+  {
+    "objectID": "index.html#estrutura-de-aula-curso-de-r-para-alunos-de-ensino-médio-14-16-anos",
+    "href": "index.html#estrutura-de-aula-curso-de-r-para-alunos-de-ensino-médio-14-16-anos",
+    "title": "CE 307 - Projeto de Extensão",
+    "section": "Estrutura de Aula: Curso de R para Alunos de Ensino Médio (14-16 anos)",
+    "text": "Estrutura de Aula: Curso de R para Alunos de Ensino Médio (14-16 anos)",
+    "crumbs": [
+      "Apresentação"
+    ]
+  },
+  {
+    "objectID": "index.html#objetivos",
+    "href": "index.html#objetivos",
+    "title": "CE 307 - Projeto de Extensão",
+    "section": "Objetivos",
+    "text": "Objetivos\nIntroduzir os alunos ao uso da linguagem de programação R para análise de dados, com foco em desenvolver habilidades básicas em programação, análise de dados e visualização, aplicando conceitos matemáticos e estatísticos de maneira prática e acessível.",
+    "crumbs": [
+      "Apresentação"
+    ]
+  },
+  {
+    "objectID": "index.html#ementa",
+    "href": "index.html#ementa",
+    "title": "CE 307 - Projeto de Extensão",
+    "section": "Ementa",
+    "text": "Ementa\nRelações entre universidade e sociedade; Fundamentos e metodologias de extensão; Concepções e tendências da extensão universitária; Avaliação e planejamento na extensão. Aplicação de técnicas de visualização de dados e análises estatísticas básicas, sob orientação de um professor da área.\nLocal: . Horário: sexta-feira, 6 de dezembro 2024, 15:30 - 17:00h.",
+    "crumbs": [
+      "Apresentação"
+    ]
+  },
+  {
+    "objectID": "index.html#referências-bibliográficas",
+    "href": "index.html#referências-bibliográficas",
+    "title": "CE 307 - Projeto de Extensão",
+    "section": "Referências bibliográficas",
+    "text": "Referências bibliográficas\n\nSOUSA, A. – A História da Extensão Universitária, Editora Alinea, 2010.\nTAVARES, C.; FREITAS, K. - Extensão Universitária: O Patinho Feio da Academia?, 1° edição. Paco Editorial, 2016.\nFÓRUM DE PRÓ-REITORES DE EXTENSÃO DAS UNIVERSIDADES PÚBLICAS BRASILEIRAS. Plano Nacional de Extensão Universitária. Ilhéus; Editus, 2001.\nGONÇALVES, H. - Manual de Projetos de Extensão Universitária, Editora A.\nMORETTIN, P. A.; SINGER, J. M. Estatística e Ciência de Dados. LTC, 2022.\nCAIRO, A. The Functional Art: An introduction to information graphics and visualization. New Riders, 2012.",
+    "crumbs": [
+      "Apresentação"
+    ]
+  },
+  {
+    "objectID": "index.html#conteúdo-programático",
+    "href": "index.html#conteúdo-programático",
+    "title": "CE 307 - Projeto de Extensão",
+    "section": "Conteúdo Programático",
+    "text": "Conteúdo Programático\n\nIntrodução à Visualização de Dados\n\nO Pacote ggplot2\nConstrução de gráficos com o ggplot2\nExercícios\nQuizz\n\n\n\n\nOutros exemplos de gráficos no R",
+    "crumbs": [
+      "Apresentação"
+    ]
+  }
+]

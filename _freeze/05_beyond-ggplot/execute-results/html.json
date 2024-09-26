@@ -1,0 +1,15 @@
+{
+  "hash": "97247c44b7d67502c3c54956102fcf0b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Exemplos de gráficos no R {#sec-examples}\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

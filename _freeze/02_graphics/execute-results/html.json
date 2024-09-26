@@ -1,0 +1,15 @@
+{
+  "hash": "49eb9a4bcb330cdd7002f7bd73f0ca2e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Criação de gráficos com o `ggplot2` {#sec-graphics}\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

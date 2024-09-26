@@ -1,0 +1,10 @@
+# Criação de gráficos com o `ggplot2` {#sec-graphics}
+
+```{r}
+#| echo: false
+
+source("_common.R")
+```
+
+
+

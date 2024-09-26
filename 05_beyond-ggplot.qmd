@@ -1,0 +1,8 @@
+# Exemplos de gráficos no R {#sec-examples}
+
+```{r}
+#| echo: false
+
+source("_common.R")
+```
+

@@ -1,0 +1,15 @@
+{
+  "hash": "b7695a8d0881e1d6f2bf4ab83a23d89e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Quizz {#sec-quizz}\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

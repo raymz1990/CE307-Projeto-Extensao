@@ -1,0 +1,8 @@
+# Exercícios {#sec-exercises}
+
+```{r}
+#| echo: false
+
+source("_common.R")
+```
+

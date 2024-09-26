@@ -1,0 +1,62 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "CE 307 - Projeto de Extensão"
+  # author: "Raymundo"
+  favicon: https://ufpr.br/wp-content/uploads/2015/11/ufpr_25.jpg
+  # description: Material da disciplina CE307 - PROJETO DE ANÁLISE DE DADOS do curso de Estatística da Universidade Federal do Paraná (UFPR).
+  keyword: statistics, R, quarto, data science, estatistica, ciencia de dados
+  # url: https://github.com/raymz1990/CE307-Projeto-Extensao
+
+  repo-subdir: book
+  repo-branch: main
+  reader-mode: true
+  # repo-actions: [edit, issue]
+
+  search: true
+  downloads: [pdf, docx]
+  # page-navigation: true
+  image: https://ufpr.br/wp-content/uploads/2015/11/ufpr_25.jpg
+  
+  sidebar: 
+    background: "#F5F5F5"
+    logo: logo.png
+    # pinned: true
+    # align: center
+
+  chapters:
+    - index.qmd
+
+    - part: 00_visualizacao-dados.qmd
+      chapters:
+        - 01_intro-ggplot.qmd
+        - 02_graphics.qmd
+        - 03_exercises.qmd
+        - 04_quizz.qmd
+        - 05_beyond-ggplot.qmd
+
+  page-footer: 
+    left: |
+      Estatística UFPR 2024
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  
+
+format:
+  html:
+    theme:
+      light: minty
+    code-fold: false
+    css: custom.css
+    backgroundcolor: "#F5F5F5"
+    code-link: true
+  pdf:
+    documentclass: scrreport
+
+execute:
+  freeze: auto
+
+# good themes: default, cosmo, flatly, lumen, minty, pulse, sandstone, solar, united
+# favourites: minty, cosmo

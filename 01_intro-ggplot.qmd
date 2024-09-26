@@ -1,0 +1,68 @@
+# O pacote `ggplot2` {#sec-intro-ggplot2}
+
+```{r}
+#| echo: false
+
+source("_common.R")
+```
+
+::: {style="display: flex;"}
+
+::: {style="width: 25%;"}
+<a href="https://ggplot2.tidyverse.org/">
+
+![](./img/img2-ggplot_logo.png){.hex-logo} </a>
+:::
+
+::: {style="width: 5%;"}
+
+:::
+
+::: {style="width: 70%;"}
+<br>
+<br>
+o [ggplot2](https://ggplot2.tidyverse.org/) é um pacote para visulizar dados utilizando a [Gramática dos Gráficos](https://r4ds.had.co.nz/data-visualisation.html), na qual os usuários atribuem variáveis para exibição, escolhem o tipo de gráfico a ser usado e adicionam elementos estésticos (*aesthetics*) ou formatação de tema. Ele faz parte da coleção de pacotes `Tidyverse`, amplamente utilizada para análise de dados e *machine learning*.
+:::
+:::
+
+A criação do pacote `ggplot2` foi desenvolvida pelo **estatístico** neozelandês [Hadley Wickham](https://en.wikipedia.org/wiki/Hadley_Wickham), que provocou uma revolução na construção de gráfico no **R**.
+
+Em sua essência, a função do `ggplot2` é **construir um gráfico camada por camada**.
+
+Dentre suas principais características, as vantagens de utilização este pacote para a construção de gráficos são:
+
+* Gráficos visualmente mais bonitos;
+* Fácil personalização (é mais simples ajustar o gráfico conforme suas necessidades);
+* A estrutura padronizada das funções facilita o aprendizado e a aplicação;
+* As diferenças no código entre diferentes tipos de gráficos são mínimas.
+
+Existem inúmeras possibilidades de construção de gráficos com o `ggplot2` para a visualização de dados utilizando o **R**. Ele permitem criar praticamente qualquer tipo de gráfico.
+
+```{r fig.align='left', echo=FALSE}
+#| label: fig-ggplot2-example
+#| echo: false
+#| fig-cap: |
+#|   Tipos de gráficos do pacote ggplot2
+#| fig-alt: |
+#|   R-Graph Exemplos de Gráficos
+#| out.width: NULL
+
+knitr::include_graphics("./img/img3-ggplot-example.png")
+```
+
+
+## Instalação do pacote `ggplot2`
+
+Para começar a construir os primeiros gráficos utilizando o pacote `ggplot2`, é necessário, primeiramente, instalar e carregar o pacote antes de rodar os gráficos
+
+* **Instalação do pacote***
+```{r error=TRUE}
+install.packages("ggplot2")
+```
+
+``` {r}
+#| label: setup
+#| 
+library(ggplot2)
+```
+

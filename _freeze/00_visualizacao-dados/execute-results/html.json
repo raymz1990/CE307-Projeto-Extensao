@@ -1,0 +1,15 @@
+{
+  "hash": "65c144b12d6ec0a056a09da6885e634f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "# Visualização de Dados {#sec-data-visualization}\n\n\n::: {.cell}\n\n:::\n\n\n## Introdução\n\nTudo provém de dados. E, quando se trabalha com dados, a necessidade de criar visualizações é inevitável - muitas vezes, é melhor demonstrar do que apenas descrever. A criação de visualizações de dados é tanto uma arte quanto uma ciência, pois combina estética com precisão analítica. Transformar dados em histórias visuais envolventes é uma habilidade fundamental para quem trabalha com grandes volumes de informação.\n\n\n::: {.cell layout-align=\"left\"}\n::: {.cell-output-display}\n![Uma imagem vale mais que mil palavras\n](./img/img1.png){#fig-data-vizualization fig-align='left' fig-alt='Dashboard Exports\n' width=579}\n:::\n:::\n\n\nO **R** é uma ferramenta que oferece vários sistemas para criar gráficos, mas o `ggplot` é um dos mais elegantes e versáteis. O `ggplot` implementa a gramática dos gráficos, um sistema coerente para descrever e construir visualizações de maneira padronizada. Com o `ggplot`, você pode fazer mais de forma rápida, aprendendo uma única estrutura e aplicando-a em diversos contextos.\n\nNasta aula, você aprenderá a visualizar seus dados usando o `ggplot`, focada em 4 capítulos:\n\n* Introdução ao pacote `ggplot` para visualização de dados;\n*\tCrição de gráficos de barras, histogramas e gráficos de dispersão;\n*\tPersonalização básica de gráficos: títulos, eixos, cores;\n*\tExercício: Criar um gráfico de barras para visualizar as notas dos alunos em uma determinada disciplina.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
