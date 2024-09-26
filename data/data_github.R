@@ -1,6 +1,6 @@
-url <- "https://raw.githubusercontent.com/andersonara/datasets/master/aval_carros_nota.txt"
-dados <- read.table(file = url,
-                    header = TRUE,
-                    sep = "\t",
-                    quote = "",
-                    stringsAsFactors = FALSE)
+url <- "https://raw.githubusercontent.com/raymz1990/CE307-Projeto-Extensao/refs/heads/main/data/serie_a_2010_2024.csv"
+dados <- read.csv(file = url,
+                  header = TRUE,     
+                  sep = ",",          
+                  # quote = "",      
+                  stringsAsFactors = FALSE) 
