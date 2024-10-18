@@ -17,6 +17,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -34,10 +68,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -63,7 +99,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="custom.css">
+}</script>
 </head>
 <body class="nav-sidebar floating">
 
@@ -86,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
       <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">CE 307 - Projeto de Extensão</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -104,6 +140,7 @@ ul.task-list li input[type="checkbox"] {
           </li>
       </ul>
 </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -168,10 +205,49 @@ ul.task-list li input[type="checkbox"] {
 </li>
     </ul>
 </div>
+    <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#carregando-o-dataset" id="toc-carregando-o-dataset" class="nav-link active" data-scroll-target="#carregando-o-dataset"><span class="header-section-number">2.1</span> Carregando o Dataset</a></li>
+  <li>
+<a href="#histogramas" id="toc-histogramas" class="nav-link" data-scroll-target="#histogramas"><span class="header-section-number">2.2</span> Histogramas</a>
+  <ul class="collapse">
+<li><a href="#utilidade" id="toc-utilidade" class="nav-link" data-scroll-target="#utilidade"><span class="header-section-number">2.2.1</span> Utilidade:</a></li>
+  <li><a href="#exemplo-de-aplica%C3%A7%C3%A3o" id="toc-exemplo-de-aplicação" class="nav-link" data-scroll-target="#exemplo-de-aplica%C3%A7%C3%A3o"><span class="header-section-number">2.2.2</span> Exemplo de Aplicação:</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots"><span class="header-section-number">2.3</span> Boxplots</a>
+  <ul class="collapse">
+<li><a href="#resumo-de-cinco-n%C3%BAmeros" id="toc-resumo-de-cinco-números" class="nav-link" data-scroll-target="#resumo-de-cinco-n%C3%BAmeros"><span class="header-section-number">2.3.1</span> Resumo de cinco números:</a></li>
+  <li><a href="#utilidade-1" id="toc-utilidade-1" class="nav-link" data-scroll-target="#utilidade-1"><span class="header-section-number">2.3.2</span> Utilidade:</a></li>
+  <li><a href="#exemplo-de-aplica%C3%A7%C3%A3o-1" id="toc-exemplo-de-aplicação-1" class="nav-link" data-scroll-target="#exemplo-de-aplica%C3%A7%C3%A3o-1"><span class="header-section-number">2.3.3</span> Exemplo de Aplicação:</a></li>
+  </ul>
+</li>
+  <li><a href="#gr%C3%A1fico-scatterplot" id="toc-gráfico-scatterplot" class="nav-link" data-scroll-target="#gr%C3%A1fico-scatterplot"><span class="header-section-number">2.4</span> Gráfico Scatterplot</a></li>
+  <li>
+<a href="#passo-1-definir-a-pontua%C3%A7%C3%A3o-de-mandantes-e-visitantes" id="toc-passo-1-definir-a-pontuação-de-mandantes-e-visitantes" class="nav-link" data-scroll-target="#passo-1-definir-a-pontua%C3%A7%C3%A3o-de-mandantes-e-visitantes"><span class="header-section-number">2.5</span> Passo 1: Definir a Pontuação de Mandantes e Visitantes</a>
+  <ul class="collapse">
+<li><a href="#adicionar-pontua%C3%A7%C3%A3o-dos-mandantes-e-visitantes" id="toc-adicionar-pontuação-dos-mandantes-e-visitantes" class="nav-link" data-scroll-target="#adicionar-pontua%C3%A7%C3%A3o-dos-mandantes-e-visitantes"><span class="header-section-number">2.5.1</span> 1.1 Adicionar Pontuação dos Mandantes e Visitantes</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#passo-2-criar-a-tabela-de-pontua%C3%A7%C3%A3o-dos-times" id="toc-passo-2-criar-a-tabela-de-pontuação-dos-times" class="nav-link" data-scroll-target="#passo-2-criar-a-tabela-de-pontua%C3%A7%C3%A3o-dos-times"><span class="header-section-number">2.6</span> Passo 2: Criar a Tabela de Pontuação dos Times</a>
+  <ul class="collapse">
+<li><a href="#unir-as-pontua%C3%A7%C3%B5es-de-mandante-e-visitante" id="toc-unir-as-pontuações-de-mandante-e-visitante" class="nav-link" data-scroll-target="#unir-as-pontua%C3%A7%C3%B5es-de-mandante-e-visitante"><span class="header-section-number">2.6.1</span> 2.1 Unir as Pontuações de Mandante e Visitante</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#passo-3-exibir-o-gr%C3%A1fico-de-pontua%C3%A7%C3%A3o-dos-times" id="toc-passo-3-exibir-o-gráfico-de-pontuação-dos-times" class="nav-link" data-scroll-target="#passo-3-exibir-o-gr%C3%A1fico-de-pontua%C3%A7%C3%A3o-dos-times"><span class="header-section-number">2.7</span> Passo 3: Exibir o Gráfico de Pontuação dos Times</a>
+  <ul class="collapse">
+<li><a href="#agora-podemos-criar-um-gr%C3%A1fico-de-barras-mostrando-a-pontua%C3%A7%C3%A3o-total-de-cada-time." id="toc-agora-podemos-criar-um-gráfico-de-barras-mostrando-a-pontuação-total-de-cada-time." class="nav-link" data-scroll-target="#agora-podemos-criar-um-gr%C3%A1fico-de-barras-mostrando-a-pontua%C3%A7%C3%A3o-total-de-cada-time."><span class="header-section-number">2.7.1</span> Agora podemos criar um gráfico de barras mostrando a pontuação total de cada time.</a></li>
+  </ul>
+</li>
+  <li><a href="#gr%C3%A1fico-animado" id="toc-gráfico-animado" class="nav-link" data-scroll-target="#gr%C3%A1fico-animado"><span class="header-section-number">3</span> gráfico animado</a></li>
+  </ul></nav>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_visualizacao-dados.html">Visualização de Dados</a></li><li class="breadcrumb-item"><a href="./02_graphics.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Criação de gráficos com o <code>ggplot2</code></span></a></li></ol></nav><div class="quarto-title">
@@ -189,10 +265,431 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><section id="carregando-o-dataset" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="carregando-o-dataset">
+<span class="header-section-number">2.1</span> Carregando o Dataset</h2>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/raymz1990/CE307-Projeto-Extensao/refs/heads/main/data/serie_a_2010_2024.csv"</span></span>
+<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">url</span>,</span>
+<span>                  header <span class="op">=</span> <span class="cn">TRUE</span>,     </span>
+<span>                  sep <span class="op">=</span> <span class="st">","</span>,          </span>
+<span>                  <span class="co"># quote = "",      </span></span>
+<span>                  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section><section id="histogramas" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="histogramas">
+<span class="header-section-number">2.2</span> Histogramas</h2>
+<p>O <strong>Histograma</strong> exibe a frequência com que diferentes intervalos de valores (conhecidos como “bins”) ocorrem em um conjunto de dados. Cada barra do histograma representa a quantidade de dados que se enquadra em um determinado intervalo, com barras mais altas indicando maior ocorrência de valores naquela faixa.</p>
+<section id="utilidade" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="utilidade">
+<span class="header-section-number">2.2.1</span> Utilidade:</h3>
+<ul>
+<li>
+<strong>Verificação da qualidade dos dados</strong>: Histograma ajuda a identificar se há concentrações inesperadas ou valores atípicos (outliers) em certas faixas de dados.</li>
+<li>
+<strong>Comparação de distribuições entre grupos</strong>: Comparar como diferentes grupos (por exemplo, times, rodadas) se distribuem em termos de variáveis como gols ou público.</li>
+</ul></section><section id="exemplo-de-aplicação" class="level3" data-number="2.2.2"><h3 data-number="2.2.2" class="anchored" data-anchor-id="exemplo-de-aplicação">
+<span class="header-section-number">2.2.2</span> Exemplo de Aplicação:</h3>
+<p>Ao gerar um histograma para o número de gols marcados por rodada, você pode visualizar quantas vezes um time marcou dentro de um intervalo de valores, como entre 0 e 5 gols, permitindo identificar a frequência dos resultados mais comuns.</p>
+<hr>
+<p>Agora, vou criar um histograma para ilustrar esse conceito.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando biblioteca</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ── Attaching core tidyverse packages ───────────────────── tidyverse <span class="dv">2</span>.<span class="fl">0.0</span> ──</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ✔ dplyr     <span class="dv">1</span>.<span class="fl">1.3</span>     ✔ readr     <span class="dv">2</span>.<span class="fl">1.4</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ✔ forcats   <span class="dv">1</span>.<span class="fl">0.0</span>     ✔ stringr   <span class="dv">1</span>.<span class="fl">5.1</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ✔ lubridate <span class="dv">1</span>.<span class="fl">9.3</span>     ✔ tibble    <span class="dv">3</span>.<span class="fl">2.1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ✔ purrr     <span class="dv">1</span>.<span class="fl">0.2</span>     ✔ tidyr     <span class="dv">1</span>.<span class="fl">3.0</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ── Conflicts ─────────────────────────────────────── <span class="fu">tidyverse_conflicts</span>() ──</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ✖ dplyr<span class="sc">::</span><span class="fu">filter</span>() masks stats<span class="sc">::</span><span class="fu">filter</span>()</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ✖ dplyr<span class="sc">::</span><span class="fu">lag</span>()    masks stats<span class="sc">::</span><span class="fu">lag</span>()</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> ℹ Use the conflicted <span class="fu">package</span> (<span class="sc">&lt;</span>http<span class="sc">:</span><span class="er">//</span>conflicted.r<span class="sc">-</span>lib.org<span class="sc">/</span><span class="er">&gt;</span>) to force all conflicts to become errors</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># dados do histograma</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>histograma <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(ano_campeonato <span class="sc">==</span> <span class="dv">2023</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rodada) <span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">gols_mandante =</span> <span class="fu">sum</span>(gols_mandante, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerando o histograma</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(histograma, <span class="fu">aes</span>(<span class="at">x =</span> gols_mandante)) <span class="sc">+</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribuição dos Gols Mandantes no Campeonato de 2023"</span>, </span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Gols Mandantes"</span>, </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frequência"</span>) <span class="sc">+</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr></section></section><section id="boxplots" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="boxplots">
+<span class="header-section-number">2.3</span> Boxplots</h2>
+<p>O <strong>Boxplot</strong> exibe a distribuição dos dados com base em um resumo de cinco números. Ele fornece uma visão visual da tendência central dos dados, sua variabilidade e possíveis outliers. Cada boxplot é construído a partir de cinco valores: <strong>mínimo</strong>, <strong>primeiro quartil (Q1)</strong>, <strong>mediana (Q2)</strong>, <strong>terceiro quartil (Q3)</strong>, e <strong>máximo</strong>. As “wiskers” (ou extremidades do gráfico) mostram a extensão da variabilidade dos dados, sem incluir os outliers.</p>
+<section id="resumo-de-cinco-números" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="resumo-de-cinco-números">
+<span class="header-section-number">2.3.1</span> Resumo de cinco números:</h3>
+<ul>
+<li>
+<strong>Mínimo</strong>: O menor valor dos dados (desconsiderando outliers).</li>
+<li>
+<strong>Primeiro Quartil (Q1)</strong>: O ponto abaixo do qual 25% dos dados estão localizados.</li>
+<li>
+<strong>Mediana (Q2)</strong>: O valor central dos dados (50% dos dados estão abaixo e 50% acima).</li>
+<li>
+<strong>Terceiro Quartil (Q3)</strong>: O ponto abaixo do qual 75% dos dados estão localizados.</li>
+<li>
+<strong>Máximo</strong>: O maior valor dos dados (desconsiderando outliers).</li>
+</ul>
+<p>As “wiskers” (linhas verticais) mostram o alcance dos dados, enquanto os pontos fora das wiskers são considerados outliers.</p>
+</section><section id="utilidade-1" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="utilidade-1">
+<span class="header-section-number">2.3.2</span> Utilidade:</h3>
+<ul>
+<li>
+<strong>Identificação de outliers</strong>: Boxplots são ótimos para identificar valores que estão muito distantes da maioria dos dados.</li>
+<li>
+<strong>Distribuição de dados</strong>: É possível ver a dispersão dos dados e a presença de qualquer assimetria (skewness) no conjunto de dados.</li>
+</ul></section><section id="exemplo-de-aplicação-1" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="exemplo-de-aplicação-1">
+<span class="header-section-number">2.3.3</span> Exemplo de Aplicação:</h3>
+<p>Ao gerar um boxplot para o número de gols marcados pelos times, você pode identificar times que têm uma variação de desempenho alta ou jogos com números de gols fora do padrão.</p>
+<hr>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Carregando biblioteca</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Criando o dataframe</span></span>
+<span><span class="va">boxplot</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">time_mandante</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coritiba FC"</span>, <span class="st">"Athletico-PR"</span>, <span class="st">"Paraná"</span><span class="op">)</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="co"># Gerar o boxplot</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">boxplot</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">time_mandante</span>, y <span class="op">=</span> <span class="va">publico</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="co"># geom_boxplot(fill = "lightblue", color = "black") +</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Boxplot do Público por Time"</span>, x <span class="op">=</span> <span class="st">"Time Mandante"</span>, y <span class="op">=</span> <span class="st">"Público"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="gráfico-scatterplot" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="gráfico-scatterplot">
+<span class="header-section-number">2.4</span> Gráfico Scatterplot</h2>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>dados_rodada <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rodada) <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">media=</span><span class="fu">mean</span>(gols_mandante, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>dados_time <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span> </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rodada, time_mandante) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">media=</span><span class="fu">mean</span>(gols_mandante, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="st">`</span><span class="at">summarise()</span><span class="st">`</span> has grouped output by <span class="st">'rodada'</span>. You can override using the</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="st">`</span><span class="at">.groups</span><span class="st">`</span> argument.</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>dados_rodada <span class="sc">%&gt;%</span> </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rodada,<span class="at">y=</span>media))<span class="sc">+</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>dados_time <span class="sc">%&gt;%</span> </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>rodada,<span class="at">y=</span>media))<span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_rodada</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">rodada</span>,y<span class="op">=</span><span class="va">media</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dados_time</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">rodada</span>,y<span class="op">=</span><span class="va">media</span>,col<span class="op">=</span><span class="va">time_mandante</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="passo-1-definir-a-pontuação-de-mandantes-e-visitantes" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="passo-1-definir-a-pontuação-de-mandantes-e-visitantes">
+<span class="header-section-number">2.5</span> Passo 1: Definir a Pontuação de Mandantes e Visitantes</h2>
+<p>Primeiro, calcularemos a pontuação para o time mandante e o time visitante de acordo com o resultado da partida.</p>
+<section id="adicionar-pontuação-dos-mandantes-e-visitantes" class="level3" data-number="2.5.1"><h3 data-number="2.5.1" class="anchored" data-anchor-id="adicionar-pontuação-dos-mandantes-e-visitantes">
+<span class="header-section-number">2.5.1</span> 1.1 Adicionar Pontuação dos Mandantes e Visitantes</h3>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Adicionar a pontuação para o time mandante e visitante</span></span>
+<span><span class="va">dados_pontos</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    pontos_mandante <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>      <span class="va">gols_mandante</span> <span class="op">&gt;</span> <span class="va">gols_visitante</span> <span class="op">~</span> <span class="fl">3</span>,  <span class="co"># Vitória do mandante</span></span>
+<span>      <span class="va">gols_mandante</span> <span class="op">==</span> <span class="va">gols_visitante</span> <span class="op">~</span> <span class="fl">1</span>, <span class="co"># Empate</span></span>
+<span>      <span class="cn">TRUE</span> <span class="op">~</span> <span class="fl">0</span>                             <span class="co"># Derrota do mandante</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    pontos_visitante <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span></span>
+<span>      <span class="va">gols_visitante</span> <span class="op">&gt;</span> <span class="va">gols_mandante</span> <span class="op">~</span> <span class="fl">3</span>,  <span class="co"># Vitória do visitante</span></span>
+<span>      <span class="va">gols_visitante</span> <span class="op">==</span> <span class="va">gols_mandante</span> <span class="op">~</span> <span class="fl">1</span>, <span class="co"># Empate</span></span>
+<span>      <span class="cn">TRUE</span> <span class="op">~</span> <span class="fl">0</span>                             <span class="co"># Derrota do visitante</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section></section><section id="passo-2-criar-a-tabela-de-pontuação-dos-times" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="passo-2-criar-a-tabela-de-pontuação-dos-times">
+<span class="header-section-number">2.6</span> Passo 2: Criar a Tabela de Pontuação dos Times</h2>
+<p>Agora que temos a pontuação de cada partida, podemos calcular a pontuação total para cada time, considerando tanto as partidas como mandante quanto como visitante.</p>
+<section id="unir-as-pontuações-de-mandante-e-visitante" class="level3" data-number="2.6.1"><h3 data-number="2.6.1" class="anchored" data-anchor-id="unir-as-pontuações-de-mandante-e-visitante">
+<span class="header-section-number">2.6.1</span> 2.1 Unir as Pontuações de Mandante e Visitante</h3>
+<p>Vamos criar uma tabela única que combine as pontuações de times mandantes e visitantes.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar uma tabela com a pontuação dos times como mandante</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pontos_mandante <span class="ot">&lt;-</span> dados_pontos <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time_mandante) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">pontos_mandante =</span> <span class="fu">sum</span>(pontos_mandante),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">jogos_mandante =</span> <span class="fu">n</span>()</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">time =</span> time_mandante)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar uma tabela com a pontuação dos times como visitante</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>pontos_visitante <span class="ot">&lt;-</span> dados_pontos <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time_visitante) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">pontos_visitante =</span> <span class="fu">sum</span>(pontos_visitante),</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">jogos_visitante =</span> <span class="fu">n</span>()</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">time =</span> time_visitante)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Unir as tabelas de pontuação de mandante e visitante</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>pontuacao_total <span class="ot">&lt;-</span> pontos_mandante <span class="sc">%&gt;%</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">full_join</span>(pontos_visitante, <span class="at">by =</span> <span class="st">"time"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">pontos_totais =</span> pontos_mandante <span class="sc">+</span> pontos_visitante,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">jogos_totais =</span> jogos_mandante <span class="sc">+</span> jogos_visitante</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(pontos_totais)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar a tabela de pontuação total</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pontuacao_total)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="co"># A tibble: 41 × 7</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span>   time         pontos_mandante jogos_mandante pontos_visitante</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span>   <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>                  <span class="er">&lt;</span>dbl<span class="sc">&gt;</span>          <span class="er">&lt;</span>int<span class="sc">&gt;</span>            <span class="er">&lt;</span>dbl<span class="sc">&gt;</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">1</span> Paraná                    <span class="dv">19</span>             <span class="dv">19</span>                <span class="dv">4</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">2</span> Barueri                   <span class="dv">20</span>             <span class="dv">19</span>               <span class="dv">11</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">3</span> Joinville<span class="sc">-</span>SC              <span class="dv">25</span>             <span class="dv">19</span>                <span class="dv">6</span></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">4</span> Santa Cruz                <span class="dv">23</span>             <span class="dv">19</span>                <span class="dv">8</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">5</span> CSA                       <span class="dv">23</span>             <span class="dv">19</span>                <span class="dv">9</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="dv">6</span> Guarani                   <span class="dv">30</span>             <span class="dv">19</span>                <span class="dv">7</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="co"># ℹ 35 more rows</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="co"># ℹ 3 more variables: jogos_visitante &lt;int&gt;, pontos_totais &lt;dbl&gt;, …</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section></section><section id="passo-3-exibir-o-gráfico-de-pontuação-dos-times" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="passo-3-exibir-o-gráfico-de-pontuação-dos-times">
+<span class="header-section-number">2.7</span> Passo 3: Exibir o Gráfico de Pontuação dos Times</h2>
+<section id="agora-podemos-criar-um-gráfico-de-barras-mostrando-a-pontuação-total-de-cada-time." class="level3" data-number="2.7.1"><h3 data-number="2.7.1" class="anchored" data-anchor-id="agora-podemos-criar-um-gráfico-de-barras-mostrando-a-pontuação-total-de-cada-time.">
+<span class="header-section-number">2.7.1</span> Agora podemos criar um gráfico de barras mostrando a pontuação total de cada time.</h3>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Criar gráfico de barras da pontuação total dos times</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pontuacao_total</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">pontos_totais</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">pontos_totais</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pontuação Total dos Times"</span>, x <span class="op">=</span> <span class="st">"Time"</span>, y <span class="op">=</span> <span class="st">"Pontuação Total"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Definir as cores para os times específicos</span></span>
+<span><span class="va">cores_times</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Paraná"</span> <span class="op">=</span> <span class="st">"#0033A0"</span>,   </span>
+<span>                 <span class="st">"Coritiba FC"</span> <span class="op">=</span> <span class="st">"#008000"</span>,  </span>
+<span>                 <span class="st">"Athletico-PR"</span> <span class="op">=</span> <span class="st">"#FF0000"</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Criar gráfico de barras com cores personalizadas para Paraná, Coritiba e Athletico-PR</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">pontuacao_total</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">pontos_totais</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">pontos_totais</span>, fill <span class="op">=</span> <span class="va">time</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">cores_times</span>, na.value <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Coloca cinza para times não especificados</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Pontuação Total dos Times"</span>, x <span class="op">=</span> <span class="st">"Time"</span>, y <span class="op">=</span> <span class="st">"Pontuação Total"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="gráfico-animado" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> gráfico animado</h1>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jumpingrivers/datasauRus">datasauRus</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Carregando pacotes exigidos: datasauRus</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://gganimate.com">gganimate</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Carregando pacotes exigidos: gganimate</span></span>
+<span></span>
+<span></span>
+<span><span class="va">nf</span><span class="op">=</span><span class="fl">8</span></span>
+<span><span class="va">datasaurus_dozen2</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">datasaurus_dozen</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>x.m  <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span>,</span>
+<span>         x.s  <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,   nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span>,</span>
+<span>         y.m  <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span>,</span>
+<span>         y.s  <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,   nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span>,</span>
+<span>         corr <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span>,nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">datasaurus_dozen2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="co">#filter(dataset=="dino") %&gt;% </span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span>,label<span class="op">=</span></span>
+<span>               <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"x.m : "</span>,<span class="va">x.m</span>, <span class="st">"\n"</span>,</span>
+<span>                      <span class="st">"x.s : "</span>,<span class="va">x.s</span>, <span class="st">"\n"</span>,</span>
+<span>                      <span class="st">"y.m : "</span>,<span class="va">y.m</span>, <span class="st">"\n"</span>,</span>
+<span>                      <span class="st">"y.s : "</span>,<span class="va">y.s</span>, <span class="st">"\n"</span>,</span>
+<span>                      <span class="st">"cor : "</span>,<span class="va">corr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span>,col<span class="op">=</span><span class="st">"#00897b"</span>,alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">110</span>,y<span class="op">=</span><span class="fl">110</span><span class="op">)</span>,family<span class="op">=</span><span class="st">"mono"</span>,size<span class="op">=</span><span class="fl">6</span>,col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">130</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">125</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://gganimate.com/reference/transition_states.html">transition_states</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Conjunto: {closest_state}"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>,x<span class="op">=</span><span class="fl">48</span>,y<span class="op">=</span><span class="fl">124</span>,label<span class="op">=</span><span class="st">"  Visualização de Dados Aplicada -UFPR"</span>,</span>
+<span>           size<span class="op">=</span><span class="fl">6</span>,col<span class="op">=</span><span class="st">"#00897b"</span>,face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">16</span>,face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in annotate("text", x = 48, y = 124, label = " Visualização de Dados</span></span>
+<span><span class="co">#&gt; Aplicada -UFPR", : Ignoring unknown parameters: `face`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-11-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li>Instalar os pacotes necessários Se você ainda não tiver o pacote gganimate, instale-o:</li>
+</ol>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"gganimate"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"transformr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="2" type="1">
+<li>Preparar os dados</li>
+</ol>
+<p>Você precisa somar os gols para cada time mandandte ao longo das rodadas e criar uma coluna cumulativa que contabilize a evolução dos gols marcados ao longo do tempo.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar e calcular a soma dos gols por ano e time mandante</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>dados_gols <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ano_campeonato, time_mandante) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">gols_mandante =</span> <span class="fu">sum</span>(gols_mandante, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(ano_campeonato)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="st">`</span><span class="at">summarise()</span><span class="st">`</span> has grouped output by <span class="st">'ano_campeonato'</span>. You can override using</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> the <span class="st">`</span><span class="at">.groups</span><span class="st">`</span> argument.</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar uma pontuação cumulativa para acompanhar a evolução dos gols por time</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>dados_gols <span class="ot">&lt;-</span> dados_gols <span class="sc">%&gt;%</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time_mandante) <span class="sc">%&gt;%</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gols_acumulados =</span> <span class="fu">cumsum</span>(gols_mandante)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar por ano e criar a classificação dos 10 primeiros</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>dados_gols <span class="ot">&lt;-</span> dados_gols <span class="sc">%&gt;%</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ano_campeonato) <span class="sc">%&gt;%</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>gols_acumulados, <span class="at">ties.method =</span> <span class="st">"first"</span>),  </span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">gols_rel =</span> gols_acumulados <span class="sc">/</span> <span class="fu">max</span>(gols_acumulados)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span>  </span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="3" type="1">
+<li>Criar o gráfico animado com gganimate</li>
+</ol>
+<p>Agora, vamos criar o gráfico de barras animado que mostra a evolução rodada por rodada dos 10 maiores goleadores.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gganimate.com">gganimate</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">grafico_animado</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>    <span class="va">dados_gols</span>,</span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="va">rank</span>,</span>
+<span>      y <span class="op">=</span> <span class="va">gols_acumulados</span>,</span>
+<span>      group <span class="op">=</span> <span class="va">time_mandante</span>,</span>
+<span>      fill <span class="op">=</span> <span class="va">time_mandante</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.8</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fl">0</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">time_mandante</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span>, vjust <span class="op">=</span> <span class="fl">0.2</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">gols_acumulados</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">gols_acumulados</span>, <span class="fl">1</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span>clip <span class="op">=</span> <span class="st">"off"</span>, expand <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="cn">FALSE</span>, fill <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">20</span>, hjust <span class="op">=</span> <span class="fl">0</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>    plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'{closest_state}'</span>, x <span class="op">=</span> <span class="st">" "</span>, y <span class="op">=</span> <span class="st">"Gols Acumulados"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://gganimate.com/reference/transition_states.html">transition_states</a></span><span class="op">(</span><span class="va">ano_campeonato</span>, transition_length <span class="op">=</span> <span class="fl">16</span>, state_length <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://gganimate.com/reference/view_follow.html">view_follow</a></span><span class="op">(</span>fixed_x <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Rodar a animação</span></span>
+<span><span class="fu"><a href="https://gganimate.com/reference/animate.html">animate</a></span><span class="op">(</span><span class="va">grafico_animado</span>, nframes <span class="op">=</span> <span class="fl">300</span>, fps <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="4" type="1">
+<li>Salvar a animação Você pode salvar a animação em formato de vídeo ou GIF:</li>
+</ol>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://gganimate.com/reference/anim_save.html">anim_save</a></span><span class="op">(</span><span class="st">"topscore_animados.gif"</span>, animation <span class="op">=</span> <span class="va">grafico_animado</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="topscore_animados.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -212,6 +709,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

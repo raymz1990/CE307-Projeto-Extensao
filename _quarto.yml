@@ -46,12 +46,21 @@ book:
 
 format:
   html:
+    html:
     theme:
-      light: minty
+      light: cosmo
+      dark: slate
+    toc: true # barra lateral esquerda com conteudo
+    toc-location: left
     code-fold: false
-    css: custom.css
-    backgroundcolor: "#F5F5F5"
+    code-summary: "R"
+    code-overflow: wrap
     code-link: true
+    code-tools: false
+    code-line-numbers: false
+    # fontcolor: '#C25E8C'
+    linkcolor: 'red'
+    fontsize: 1.1em
   pdf:
     documentclass: scrreport
 
