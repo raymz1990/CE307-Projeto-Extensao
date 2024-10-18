@@ -100,5 +100,82 @@
     "crumbs": [
       "Apresentação"
     ]
+  },
+  {
+    "objectID": "02_graphics.html",
+    "href": "02_graphics.html",
+    "title": "2  Criação de gráficos com o ggplot2",
+    "section": "",
+    "text": "2.1 Carregando o Dataset\nRurl &lt;- \"https://raw.githubusercontent.com/raymz1990/CE307-Projeto-Extensao/refs/heads/main/data/serie_a_2010_2024.csv\"\ndados &lt;- read.csv(file = url,\n                  header = TRUE,     \n                  sep = \",\",          \n                  # quote = \"\",      \n                  stringsAsFactors = FALSE)",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "02_graphics.html#passo-1-definir-a-pontuação-de-mandantes-e-visitantes",
+    "href": "02_graphics.html#passo-1-definir-a-pontuação-de-mandantes-e-visitantes",
+    "title": "2  Criação de gráficos com o ggplot2",
+    "section": "\n2.5 Passo 1: Definir a Pontuação de Mandantes e Visitantes",
+    "text": "2.5 Passo 1: Definir a Pontuação de Mandantes e Visitantes\nPrimeiro, calcularemos a pontuação para o time mandante e o time visitante de acordo com o resultado da partida.\n\n2.5.1 1.1 Adicionar Pontuação dos Mandantes e Visitantes\n\nR# Adicionar a pontuação para o time mandante e visitante\ndados_pontos &lt;- dados %&gt;%\n  mutate(\n    pontos_mandante = case_when(\n      gols_mandante &gt; gols_visitante ~ 3,  # Vitória do mandante\n      gols_mandante == gols_visitante ~ 1, # Empate\n      TRUE ~ 0                             # Derrota do mandante\n    ),\n    pontos_visitante = case_when(\n      gols_visitante &gt; gols_mandante ~ 3,  # Vitória do visitante\n      gols_visitante == gols_mandante ~ 1, # Empate\n      TRUE ~ 0                             # Derrota do visitante\n    )\n  )",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "02_graphics.html#passo-2-criar-a-tabela-de-pontuação-dos-times",
+    "href": "02_graphics.html#passo-2-criar-a-tabela-de-pontuação-dos-times",
+    "title": "2  Criação de gráficos com o ggplot2",
+    "section": "\n2.6 Passo 2: Criar a Tabela de Pontuação dos Times",
+    "text": "2.6 Passo 2: Criar a Tabela de Pontuação dos Times\nAgora que temos a pontuação de cada partida, podemos calcular a pontuação total para cada time, considerando tanto as partidas como mandante quanto como visitante.\n\n2.6.1 2.1 Unir as Pontuações de Mandante e Visitante\nVamos criar uma tabela única que combine as pontuações de times mandantes e visitantes.\n\nR# Criar uma tabela com a pontuação dos times como mandante\npontos_mandante &lt;- dados_pontos %&gt;%\n  group_by(time_mandante) %&gt;%\n  summarise(\n    pontos_mandante = sum(pontos_mandante),\n    jogos_mandante = n()\n  ) %&gt;%\n  rename(time = time_mandante)\n\n# Criar uma tabela com a pontuação dos times como visitante\npontos_visitante &lt;- dados_pontos %&gt;%\n  group_by(time_visitante) %&gt;%\n  summarise(\n    pontos_visitante = sum(pontos_visitante),\n    jogos_visitante = n()\n  ) %&gt;%\n  rename(time = time_visitante)\n\n# Unir as tabelas de pontuação de mandante e visitante\npontuacao_total &lt;- pontos_mandante %&gt;%\n  full_join(pontos_visitante, by = \"time\") %&gt;%\n  mutate(\n    pontos_totais = pontos_mandante + pontos_visitante,\n    jogos_totais = jogos_mandante + jogos_visitante\n  ) %&gt;%\n  arrange(pontos_totais)\n\n# Visualizar a tabela de pontuação total\nprint(pontuacao_total)\nFALSE # A tibble: 41 × 7\nFALSE   time         pontos_mandante jogos_mandante pontos_visitante\nFALSE   &lt;chr&gt;                  &lt;dbl&gt;          &lt;int&gt;            &lt;dbl&gt;\nFALSE 1 Paraná                    19             19                4\nFALSE 2 Barueri                   20             19               11\nFALSE 3 Joinville-SC              25             19                6\nFALSE 4 Santa Cruz                23             19                8\nFALSE 5 CSA                       23             19                9\nFALSE 6 Guarani                   30             19                7\nFALSE # ℹ 35 more rows\nFALSE # ℹ 3 more variables: jogos_visitante &lt;int&gt;, pontos_totais &lt;dbl&gt;, …",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "02_graphics.html#passo-3-exibir-o-gráfico-de-pontuação-dos-times",
+    "href": "02_graphics.html#passo-3-exibir-o-gráfico-de-pontuação-dos-times",
+    "title": "2  Criação de gráficos com o ggplot2",
+    "section": "\n2.7 Passo 3: Exibir o Gráfico de Pontuação dos Times",
+    "text": "2.7 Passo 3: Exibir o Gráfico de Pontuação dos Times\n\n2.7.1 Agora podemos criar um gráfico de barras mostrando a pontuação total de cada time.\n\nR# Criar gráfico de barras da pontuação total dos times\nggplot(pontuacao_total, aes(x = reorder(time, pontos_totais), y = pontos_totais)) +\n  geom_bar(stat = \"identity\", fill = \"blue\") +\n  coord_flip() +\n  labs(title = \"Pontuação Total dos Times\", x = \"Time\", y = \"Pontuação Total\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\nR# Definir as cores para os times específicos\ncores_times &lt;- c(\"Paraná\" = \"#0033A0\",   \n                 \"Coritiba FC\" = \"#008000\",  \n                 \"Athletico-PR\" = \"#FF0000\")  \n\n# Criar gráfico de barras com cores personalizadas para Paraná, Coritiba e Athletico-PR\nggplot(pontuacao_total, aes(x = reorder(time, pontos_totais), y = pontos_totais, fill = time)) +\n  geom_bar(stat = \"identity\") +\n  scale_fill_manual(values = cores_times, na.value = \"grey\") +  # Coloca cinza para times não especificados\n  coord_flip() +\n  labs(title = \"Pontuação Total dos Times\", x = \"Time\", y = \"Pontuação Total\") +\n  theme_minimal()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "02_graphics.html#histogramas",
+    "href": "02_graphics.html#histogramas",
+    "title": "2  Criação de gráficos com o ggplot2",
+    "section": "\n2.2 Histogramas",
+    "text": "2.2 Histogramas\nO Histograma exibe a frequência com que diferentes intervalos de valores (conhecidos como “bins”) ocorrem em um conjunto de dados. Cada barra do histograma representa a quantidade de dados que se enquadra em um determinado intervalo, com barras mais altas indicando maior ocorrência de valores naquela faixa.\n\n2.2.1 Utilidade:\n\n\nVerificação da qualidade dos dados: Histograma ajuda a identificar se há concentrações inesperadas ou valores atípicos (outliers) em certas faixas de dados.\n\nComparação de distribuições entre grupos: Comparar como diferentes grupos (por exemplo, times, rodadas) se distribuem em termos de variáveis como gols ou público.\n\n2.2.2 Exemplo de Aplicação:\nAo gerar um histograma para o número de gols marcados por rodada, você pode visualizar quantas vezes um time marcou dentro de um intervalo de valores, como entre 0 e 5 gols, permitindo identificar a frequência dos resultados mais comuns.\n\nAgora, vou criar um histograma para ilustrar esse conceito.\n\nR# Carregando biblioteca\nlibrary(ggplot2)\nlibrary(tidyverse)\nFALSE ── Attaching core tidyverse packages ───────────────────── tidyverse 2.0.0 ──\nFALSE ✔ dplyr     1.1.3     ✔ readr     2.1.4\nFALSE ✔ forcats   1.0.0     ✔ stringr   1.5.1\nFALSE ✔ lubridate 1.9.3     ✔ tibble    3.2.1\nFALSE ✔ purrr     1.0.2     ✔ tidyr     1.3.0\nFALSE ── Conflicts ─────────────────────────────────────── tidyverse_conflicts() ──\nFALSE ✖ dplyr::filter() masks stats::filter()\nFALSE ✖ dplyr::lag()    masks stats::lag()\nFALSE ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n# dados do histograma\nhistograma &lt;- dados %&gt;%\n  filter(ano_campeonato == 2023) %&gt;%\n  group_by(rodada) %&gt;%\n  summarize(\n    gols_mandante = sum(gols_mandante, na.rm = TRUE)\n  )\n\n# Gerando o histograma\nggplot(histograma, aes(x = gols_mandante)) +\n  geom_histogram(binwidth = 1, fill = \"blue\", color = \"black\") +\n  labs(title = \"Distribuição dos Gols Mandantes no Campeonato de 2023\", \n       x = \"Gols Mandantes\", \n       y = \"Frequência\") +\n  theme_minimal()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "02_graphics.html#boxplots",
+    "href": "02_graphics.html#boxplots",
+    "title": "2  Criação de gráficos com o ggplot2",
+    "section": "\n2.3 Boxplots",
+    "text": "2.3 Boxplots\nO Boxplot exibe a distribuição dos dados com base em um resumo de cinco números. Ele fornece uma visão visual da tendência central dos dados, sua variabilidade e possíveis outliers. Cada boxplot é construído a partir de cinco valores: mínimo, primeiro quartil (Q1), mediana (Q2), terceiro quartil (Q3), e máximo. As “wiskers” (ou extremidades do gráfico) mostram a extensão da variabilidade dos dados, sem incluir os outliers.\n\n2.3.1 Resumo de cinco números:\n\n\nMínimo: O menor valor dos dados (desconsiderando outliers).\n\nPrimeiro Quartil (Q1): O ponto abaixo do qual 25% dos dados estão localizados.\n\nMediana (Q2): O valor central dos dados (50% dos dados estão abaixo e 50% acima).\n\nTerceiro Quartil (Q3): O ponto abaixo do qual 75% dos dados estão localizados.\n\nMáximo: O maior valor dos dados (desconsiderando outliers).\n\nAs “wiskers” (linhas verticais) mostram o alcance dos dados, enquanto os pontos fora das wiskers são considerados outliers.\n\n2.3.2 Utilidade:\n\n\nIdentificação de outliers: Boxplots são ótimos para identificar valores que estão muito distantes da maioria dos dados.\n\nDistribuição de dados: É possível ver a dispersão dos dados e a presença de qualquer assimetria (skewness) no conjunto de dados.\n\n2.3.3 Exemplo de Aplicação:\nAo gerar um boxplot para o número de gols marcados pelos times, você pode identificar times que têm uma variação de desempenho alta ou jogos com números de gols fora do padrão.\n\n\nR# Carregando biblioteca\nlibrary(ggplot2)\nlibrary(tidyverse)\n\n# Criando o dataframe\nboxplot &lt;- dados %&gt;%\n  filter(time_mandante %in% c(\"Coritiba FC\", \"Athletico-PR\", \"Paraná\")) \n\n# Gerar o boxplot\nggplot(boxplot, aes(x = time_mandante, y = publico)) +\n  geom_boxplot() +\n  # geom_boxplot(fill = \"lightblue\", color = \"black\") +\n  labs(title = \"Boxplot do Público por Time\", x = \"Time Mandante\", y = \"Público\") +\n  theme_minimal()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "02_graphics.html#gráfico-scatterplot",
+    "href": "02_graphics.html#gráfico-scatterplot",
+    "title": "2  Criação de gráficos com o ggplot2",
+    "section": "\n2.4 Gráfico Scatterplot",
+    "text": "2.4 Gráfico Scatterplot\n\nRlibrary(ggplot2)\nlibrary(tidyverse)\n\ndados_rodada &lt;- dados %&gt;% \n  group_by(rodada) %&gt;%\n  summarize(media=mean(gols_mandante, na.rm = TRUE))\n\ndados_time &lt;- dados %&gt;% \n  group_by(rodada, time_mandante) %&gt;%\n  summarize(media=mean(gols_mandante, na.rm = TRUE))\nFALSE `summarise()` has grouped output by 'rodada'. You can override using the\nFALSE `.groups` argument.\n\ndados_rodada %&gt;% \n  ggplot(aes(x=rodada,y=media))+\n  geom_point()\n\ndados_time %&gt;% \n  ggplot(aes(x=rodada,y=media))+\n  geom_point()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRdados_rodada %&gt;% \n  ggplot(aes(x=rodada,y=media))+\n  geom_point(col=\"red\")+\n  theme_bw()\n\ndados_time %&gt;% \n  ggplot(aes(x=rodada,y=media,col=time_mandante))+\n  geom_point()+\n  theme_bw()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
   }
 ]

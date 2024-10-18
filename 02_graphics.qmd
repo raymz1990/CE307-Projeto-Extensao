@@ -1,3 +1,7 @@
+---
+code-fold: true
+---
+
 # Criação de gráficos com o `ggplot2` {#sec-graphics}
 
 ```{r}
@@ -7,4 +11,341 @@ source("_common.R")
 ```
 
 
+## Carregando o Dataset
 
+```{r}
+url <- "https://raw.githubusercontent.com/raymz1990/CE307-Projeto-Extensao/refs/heads/main/data/serie_a_2010_2024.csv"
+dados <- read.csv(file = url,
+                  header = TRUE,     
+                  sep = ",",          
+                  # quote = "",      
+                  stringsAsFactors = FALSE)
+```
+
+## Histogramas
+
+O **Histograma** exibe a frequência com que diferentes intervalos de valores (conhecidos como "bins") ocorrem em um conjunto de dados. Cada barra do histograma representa a quantidade de dados que se enquadra em um determinado intervalo, com barras mais altas indicando maior ocorrência de valores naquela faixa.
+
+### Utilidade:
+- **Verificação da qualidade dos dados**: Histograma ajuda a identificar se há concentrações inesperadas ou valores atípicos (outliers) em certas faixas de dados.
+- **Comparação de distribuições entre grupos**: Comparar como diferentes grupos (por exemplo, times, rodadas) se distribuem em termos de variáveis como gols ou público.
+
+### Exemplo de Aplicação:
+Ao gerar um histograma para o número de gols marcados por rodada, você pode visualizar quantas vezes um time marcou dentro de um intervalo de valores, como entre 0 e 5 gols, permitindo identificar a frequência dos resultados mais comuns.
+
+---
+
+Agora, vou criar um histograma para ilustrar esse conceito.
+
+```{r comment=FALSE}
+# Carregando biblioteca
+library(ggplot2)
+library(tidyverse)
+
+# dados do histograma
+histograma <- dados %>%
+  filter(ano_campeonato == 2023) %>%
+  group_by(rodada) %>%
+  summarize(
+    gols_mandante = sum(gols_mandante, na.rm = TRUE)
+  )
+
+# Gerando o histograma
+ggplot(histograma, aes(x = gols_mandante)) +
+  geom_histogram(binwidth = 1, fill = "blue", color = "black") +
+  labs(title = "Distribuição dos Gols Mandantes no Campeonato de 2023", 
+       x = "Gols Mandantes", 
+       y = "Frequência") +
+  theme_minimal()
+```
+
+---
+
+## Boxplots
+
+O **Boxplot** exibe a distribuição dos dados com base em um resumo de cinco números. Ele fornece uma visão visual da tendência central dos dados, sua variabilidade e possíveis outliers. Cada boxplot é construído a partir de cinco valores: **mínimo**, **primeiro quartil (Q1)**, **mediana (Q2)**, **terceiro quartil (Q3)**, e **máximo**. As "wiskers" (ou extremidades do gráfico) mostram a extensão da variabilidade dos dados, sem incluir os outliers.
+
+### Resumo de cinco números:
+- **Mínimo**: O menor valor dos dados (desconsiderando outliers).
+- **Primeiro Quartil (Q1)**: O ponto abaixo do qual 25% dos dados estão localizados.
+- **Mediana (Q2)**: O valor central dos dados (50% dos dados estão abaixo e 50% acima).
+- **Terceiro Quartil (Q3)**: O ponto abaixo do qual 75% dos dados estão localizados.
+- **Máximo**: O maior valor dos dados (desconsiderando outliers).
+  
+As "wiskers" (linhas verticais) mostram o alcance dos dados, enquanto os pontos fora das wiskers são considerados outliers.
+
+### Utilidade:
+- **Identificação de outliers**: Boxplots são ótimos para identificar valores que estão muito distantes da maioria dos dados.
+- **Distribuição de dados**: É possível ver a dispersão dos dados e a presença de qualquer assimetria (skewness) no conjunto de dados.
+
+### Exemplo de Aplicação:
+Ao gerar um boxplot para o número de gols marcados pelos times, você pode identificar times que têm uma variação de desempenho alta ou jogos com números de gols fora do padrão.
+
+---
+
+```{r comment=FALSE}
+# Carregando biblioteca
+library(ggplot2)
+library(tidyverse)
+
+# Criando o dataframe
+boxplot <- dados %>%
+  filter(time_mandante %in% c("Coritiba FC", "Athletico-PR", "Paraná")) 
+
+# Gerar o boxplot
+ggplot(boxplot, aes(x = time_mandante, y = publico)) +
+  geom_boxplot() +
+  # geom_boxplot(fill = "lightblue", color = "black") +
+  labs(title = "Boxplot do Público por Time", x = "Time Mandante", y = "Público") +
+  theme_minimal()
+```
+
+## Gráfico Scatterplot
+
+```{r comment=FALSE}
+library(ggplot2)
+library(tidyverse)
+
+dados_rodada <- dados %>% 
+  group_by(rodada) %>%
+  summarize(media=mean(gols_mandante, na.rm = TRUE))
+
+dados_time <- dados %>% 
+  group_by(rodada, time_mandante) %>%
+  summarize(media=mean(gols_mandante, na.rm = TRUE))
+
+dados_rodada %>% 
+  ggplot(aes(x=rodada,y=media))+
+  geom_point()
+
+dados_time %>% 
+  ggplot(aes(x=rodada,y=media))+
+  geom_point()
+```
+
+```{r}
+dados_rodada %>% 
+  ggplot(aes(x=rodada,y=media))+
+  geom_point(col="red")+
+  theme_bw()
+
+dados_time %>% 
+  ggplot(aes(x=rodada,y=media,col=time_mandante))+
+  geom_point()+
+  theme_bw()
+```
+
+## Passo 1: Definir a Pontuação de Mandantes e Visitantes
+Primeiro, calcularemos a pontuação para o time mandante e o time visitante de acordo com o resultado da partida.
+
+### 1.1 Adicionar Pontuação dos Mandantes e Visitantes
+
+```{r comment=FALSE}
+# Adicionar a pontuação para o time mandante e visitante
+dados_pontos <- dados %>%
+  mutate(
+    pontos_mandante = case_when(
+      gols_mandante > gols_visitante ~ 3,  # Vitória do mandante
+      gols_mandante == gols_visitante ~ 1, # Empate
+      TRUE ~ 0                             # Derrota do mandante
+    ),
+    pontos_visitante = case_when(
+      gols_visitante > gols_mandante ~ 3,  # Vitória do visitante
+      gols_visitante == gols_mandante ~ 1, # Empate
+      TRUE ~ 0                             # Derrota do visitante
+    )
+  )
+```
+
+## Passo 2: Criar a Tabela de Pontuação dos Times
+Agora que temos a pontuação de cada partida, podemos calcular a pontuação total para cada time, considerando tanto as partidas como mandante quanto como visitante.
+
+### 2.1 Unir as Pontuações de Mandante e Visitante
+Vamos criar uma tabela única que combine as pontuações de times mandantes e visitantes.
+
+```{r comment=FALSE}
+# Criar uma tabela com a pontuação dos times como mandante
+pontos_mandante <- dados_pontos %>%
+  group_by(time_mandante) %>%
+  summarise(
+    pontos_mandante = sum(pontos_mandante),
+    jogos_mandante = n()
+  ) %>%
+  rename(time = time_mandante)
+
+# Criar uma tabela com a pontuação dos times como visitante
+pontos_visitante <- dados_pontos %>%
+  group_by(time_visitante) %>%
+  summarise(
+    pontos_visitante = sum(pontos_visitante),
+    jogos_visitante = n()
+  ) %>%
+  rename(time = time_visitante)
+
+# Unir as tabelas de pontuação de mandante e visitante
+pontuacao_total <- pontos_mandante %>%
+  full_join(pontos_visitante, by = "time") %>%
+  mutate(
+    pontos_totais = pontos_mandante + pontos_visitante,
+    jogos_totais = jogos_mandante + jogos_visitante
+  ) %>%
+  arrange(pontos_totais)
+
+# Visualizar a tabela de pontuação total
+print(pontuacao_total)
+
+```
+
+## Passo 3: Exibir o Gráfico de Pontuação dos Times
+### Agora podemos criar um gráfico de barras mostrando a pontuação total de cada time.
+```{r comment=FALSE}
+# Criar gráfico de barras da pontuação total dos times
+ggplot(pontuacao_total, aes(x = reorder(time, pontos_totais), y = pontos_totais)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  coord_flip() +
+  labs(title = "Pontuação Total dos Times", x = "Time", y = "Pontuação Total") +
+  theme_minimal()
+
+```
+
+```{r comment=FALSE}
+# Definir as cores para os times específicos
+cores_times <- c("Paraná" = "#0033A0",   
+                 "Coritiba FC" = "#008000",  
+                 "Athletico-PR" = "#FF0000")  
+
+# Criar gráfico de barras com cores personalizadas para Paraná, Coritiba e Athletico-PR
+ggplot(pontuacao_total, aes(x = reorder(time, pontos_totais), y = pontos_totais, fill = time)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = cores_times, na.value = "grey") +  # Coloca cinza para times não especificados
+  coord_flip() +
+  labs(title = "Pontuação Total dos Times", x = "Time", y = "Pontuação Total") +
+  theme_minimal()
+```
+
+
+# gráfico animado
+
+```{r fig.align='center'}
+require(datasauRus)
+require(ggplot2)
+require(dplyr)
+require(gganimate)
+
+
+nf=8
+datasaurus_dozen2 <- 
+  datasaurus_dozen %>%  group_by(dataset) %>% 
+  mutate(x.m  =format(mean(x), nsmall = nf),
+         x.s  =format(sd(x),   nsmall = nf),
+         y.m  =format(mean(y), nsmall = nf),
+         y.s  =format(sd(y),   nsmall = nf),
+         corr =format(cor(x,y),nsmall = nf))
+
+
+datasaurus_dozen2 %>% 
+  #filter(dataset=="dino") %>% 
+  ggplot(aes(x=x, y=y,label=
+               paste0("x.m : ",x.m, "\n",
+                      "x.s : ",x.s, "\n",
+                      "y.m : ",y.m, "\n",
+                      "y.s : ",y.s, "\n",
+                      "cor : ",corr)))+
+  geom_point(size=3,col="#00897b",alpha=0.5)+
+  geom_text(aes(x=110,y=110),family="mono",size=6,col="gray")+
+  xlim(5,130)+
+  ylim(0,125)+
+  transition_states(dataset)+
+  labs(title = "Conjunto: {closest_state}")+
+  annotate("text",x=48,y=124,label="  Visualização de Dados Aplicada -UFPR",
+           size=6,col="#00897b",face="bold")+
+  theme_bw()+
+  theme(legend.position = "none")+
+  theme(plot.title = element_text(size=16,face = "bold"))
+```
+
+1. Instalar os pacotes necessários
+Se você ainda não tiver o pacote gganimate, instale-o:
+
+```{r eval = FALSE}
+install.packages("gganimate")
+install.packages("transformr")
+```
+
+2. Preparar os dados
+
+Você precisa somar os gols para cada time mandandte ao longo das rodadas e criar uma coluna cumulativa que contabilize a evolução dos gols marcados ao longo do tempo.
+
+```{r comment=FALSE}
+library(dplyr)
+
+# Agrupar e calcular a soma dos gols por ano e time mandante
+dados_gols <- dados %>%
+  group_by(ano_campeonato, time_mandante) %>%
+  summarise(gols_mandante = sum(gols_mandante, na.rm = TRUE)) %>%
+  arrange(ano_campeonato)
+
+# Criar uma pontuação cumulativa para acompanhar a evolução dos gols por time
+dados_gols <- dados_gols %>%
+  group_by(time_mandante) %>%
+  mutate(gols_acumulados = cumsum(gols_mandante)) %>%
+  ungroup()
+
+# Agrupar por ano e criar a classificação dos 10 primeiros
+dados_gols <- dados_gols %>%
+  group_by(ano_campeonato) %>%
+  mutate(rank = rank(-gols_acumulados, ties.method = "first"),  
+         gols_rel = gols_acumulados / max(gols_acumulados)) %>% 
+  filter(rank <= 10) %>%  
+  ungroup()
+```
+
+3. Criar o gráfico animado com gganimate
+
+Agora, vamos criar o gráfico de barras animado que mostra a evolução rodada por rodada dos 10 maiores goleadores.
+
+```{r eval=FALSE}
+library(gganimate)
+
+grafico_animado <-
+  ggplot(
+    dados_gols,
+    aes(
+      x = rank,
+      y = gols_acumulados,
+      group = time_mandante,
+      fill = time_mandante
+    )
+  ) +
+  geom_col(width = 0.8, color = "black") +
+  theme_minimal() +
+  geom_text(aes(y = 0, label = paste(time_mandante, " ")), vjust = 0.2, hjust = 1) +
+  geom_text(aes(y = gols_acumulados, label = round(gols_acumulados, 1), hjust = -0.1)) +
+  coord_flip(clip = "off", expand = FALSE) +
+  scale_x_reverse() +
+  guides(color = FALSE, fill = FALSE) +
+  theme(
+    axis.title.y = element_blank(),
+    legend.position = "none",
+    plot.title = element_text(size = 20, hjust = 0, face = "bold"),
+    plot.background = element_blank(),
+    plot.margin = margin(0, 2, 0, 3, "cm")
+  ) +
+  labs(title = '{closest_state}', x = " ", y = "Gols Acumulados") + 
+  transition_states(ano_campeonato, transition_length = 16, state_length = 4) +
+  view_follow(fixed_x = TRUE)
+
+# Rodar a animação
+animate(grafico_animado, nframes = 300, fps = 20)
+```
+
+4. Salvar a animação 
+Você pode salvar a animação em formato de vídeo ou GIF:
+
+```{r eval = FALSE}
+anim_save("topscore_animados.gif", animation = grafico_animado)
+```
+
+```{r, echo = FALSE}
+knitr::include_graphics("topscore_animados.gif")
+```
