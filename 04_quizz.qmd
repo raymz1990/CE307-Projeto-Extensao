@@ -6,3 +6,96 @@
 source("_common.R")
 ```
 
+```{r}
+library(tidyverse)
+
+top_destinations <- tibble(
+  Cidade = rep("São Paulo - SP", 10),
+  Nome_Pais = c("China", "Canadá", "Estados Unidos", "Itália", "Bélgica", 
+                "Emirados Árabes Unidos", "Suíça", "Argentina", "Índia", "Argélia"),
+  Lat_Municipio = rep(-23.6, 10),
+  Long_Municipio = rep(-46.6, 10),
+  Lat_PAIS = c(33.4, 59.1, 39.6, 42.7, 50.6, 23.5, 46.9, -35.4, 21.0, 28.2),
+  Long_PAIS = c(107.0, -109.0, -98.6, 12.8, 4.66, 54.2, 7.91, -65.2, 78.5, 2.63),
+  US_FOB = c(1e9, 3.46e8, 3.08e8, 2.26e8, 2.04e8, 1.63e8, 1.14e8, 1.08e8, 9.3e7, 8.12e7)
+)
+
+library(highcharter)
+library(geojsonio)
+library(dplyr)
+library(sf)
+#> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE
+
+worldgeojson <-
+  giscoR::gisco_countries %>%
+  geojsonio::geojson_json()
+
+# sf object with a source point
+src_point_sf <- 
+  top_destinations %>%
+  summarise(
+    name = "São Paulo", 
+    US_FOB = sum(US_FOB),
+    lat = first(Lat_Municipio),
+    lon = first(Long_Municipio)
+  ) |> 
+  st_as_sf(coords = c("lon", "lat"), crs = "WGS84")
+
+# Prepare data for destination points
+dest_points_sf <- 
+  top_destinations %>%
+  st_as_sf(coords = c("Long_PAIS", "Lat_PAIS"), crs = "WGS84") %>%
+  select(name = Nome_Pais, US_FOB)
+
+# sf object with connection lines (generate point pair, union, cast to line)
+  connections_sf <-
+    lapply(st_geometry(dest_points_sf),
+           function(to)
+             st_union(c(st_geometry(src_point_sf)[[1]], to)) %>% st_cast("LINESTRING")) %>%
+    st_as_sfc(crs = st_crs(dest_points_sf)) %>%
+    st_sf(geometry = .) %>%
+    st_segmentize(dfMaxLength = 1000 * 1000)
+
+# Create the map with Highcharts
+highchart(type = "map") %>%
+  # Add base map
+  hc_add_series(
+    mapData = worldgeojson, 
+    showInLegend = FALSE,
+    nullColor = "#E0E0E0",
+    borderWidth = 0
+  ) %>%
+  hc_mapNavigation(enabled = TRUE) %>%
+  # Add São Paulo as the origin point
+  hc_add_series(
+    data = geojson_list(src_point_sf),
+    name = "Origin",
+    type = "mappoint",
+    marker = list(symbol = "circle", radius = 4),
+    color = "#3d9970" ,
+    tooltip = list(pointFormat = "City: {point.properties.name}<br>Export Value: {point.properties.US_FOB}")
+  ) %>%
+  # Add destination points
+  hc_add_series(
+    data = geojson_list(dest_points_sf),
+    type = "mappoint",
+    name = "Destinations",
+    color = "#d35400",
+    marker = list(symbol = "circle", radius = 3),
+    tooltip = list(pointFormat = "Country: {point.properties.name}<br>Export Value: {point.properties.US_FOB}")
+  ) %>%  
+  # Add connections between São Paulo and destinations
+  hc_add_series(
+    data = geojson_list(connections_sf),
+    type = "mapline",
+    lineWidth = 1.5,
+    opacity = 0.8,
+    showInLegend = FALSE,
+    enableMouseTracking = FALSE
+  ) %>%
+  # Title and tooltip settings
+  hc_title(text = "Main Export Destinations from São Paulo") %>%
+  hc_tooltip(useHTML = TRUE)
+
+```
+

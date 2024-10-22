@@ -243,7 +243,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#agora-podemos-criar-um-gr%C3%A1fico-de-barras-mostrando-a-pontua%C3%A7%C3%A3o-total-de-cada-time." id="toc-agora-podemos-criar-um-gráfico-de-barras-mostrando-a-pontuação-total-de-cada-time." class="nav-link" data-scroll-target="#agora-podemos-criar-um-gr%C3%A1fico-de-barras-mostrando-a-pontua%C3%A7%C3%A3o-total-de-cada-time."><span class="header-section-number">2.7.1</span> Agora podemos criar um gráfico de barras mostrando a pontuação total de cada time.</a></li>
   </ul>
 </li>
-  <li><a href="#gr%C3%A1fico-animado" id="toc-gráfico-animado" class="nav-link" data-scroll-target="#gr%C3%A1fico-animado"><span class="header-section-number">3</span> gráfico animado</a></li>
+  <li>
+<a href="#gr%C3%A1fico-de-dispers%C3%A3o" id="toc-gráfico-de-dispersão" class="nav-link" data-scroll-target="#gr%C3%A1fico-de-dispers%C3%A3o"><span class="header-section-number">2.8</span> Gráfico de Dispersão</a>
+  <ul class="collapse">
+<li><a href="#utilidade-2" id="toc-utilidade-2" class="nav-link" data-scroll-target="#utilidade-2"><span class="header-section-number">2.8.1</span> Utilidade</a></li>
+  <li><a href="#exemplo-de-aplica%C3%A7%C3%A3o-2" id="toc-exemplo-de-aplicação-2" class="nav-link" data-scroll-target="#exemplo-de-aplica%C3%A7%C3%A3o-2"><span class="header-section-number">2.8.2</span> Exemplo de Aplicação</a></li>
+  <li><a href="#criando-o-gr%C3%A1fico" id="toc-criando-o-gráfico" class="nav-link" data-scroll-target="#criando-o-gr%C3%A1fico"><span class="header-section-number">2.8.3</span> Criando o gráfico</a></li>
+  <li><a href="#o-que-esse-gr%C3%A1fico-mostra" id="toc-o-que-esse-gráfico-mostra" class="nav-link" data-scroll-target="#o-que-esse-gr%C3%A1fico-mostra"><span class="header-section-number">2.8.4</span> O que esse gráfico mostra:</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#gr%C3%A1fico-de-setores-pizza" id="toc-gráfico-de-setores-pizza" class="nav-link" data-scroll-target="#gr%C3%A1fico-de-setores-pizza"><span class="header-section-number">2.9</span> Gráfico de Setores (Pizza)</a>
+  <ul class="collapse">
+<li><a href="#utilidade-3" id="toc-utilidade-3" class="nav-link" data-scroll-target="#utilidade-3"><span class="header-section-number">2.9.1</span> Utilidade</a></li>
+  <li><a href="#exemplo-de-aplica%C3%A7%C3%A3o-3" id="toc-exemplo-de-aplicação-3" class="nav-link" data-scroll-target="#exemplo-de-aplica%C3%A7%C3%A3o-3"><span class="header-section-number">2.9.2</span> Exemplo de Aplicação</a></li>
+  <li><a href="#criando-o-gr%C3%A1fico-1" id="toc-criando-o-gráfico-1" class="nav-link" data-scroll-target="#criando-o-gr%C3%A1fico-1"><span class="header-section-number">2.9.3</span> Criando o Gráfico</a></li>
+  <li><a href="#redu%C3%A7%C3%A3o-de-dados-para-melhoria-da-visualiza%C3%A7%C3%A3o-1" id="toc-redução-de-dados-para-melhoria-da-visualização-1" class="nav-link" data-scroll-target="#redu%C3%A7%C3%A3o-de-dados-para-melhoria-da-visualiza%C3%A7%C3%A3o-1"><span class="header-section-number">2.9.4</span> Redução de Dados para Melhoria da Visualização</a></li>
+  </ul>
+</li>
   </ul></nav>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -546,150 +563,355 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section></section><section id="gráfico-animado" class="level1" data-number="3"><h1 data-number="3">
-<span class="header-section-number">3</span> gráfico animado</h1>
-<div class="cell" data-layout-align="center">
-<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jumpingrivers/datasauRus">datasauRus</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Carregando pacotes exigidos: datasauRus</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://gganimate.com">gganimate</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Carregando pacotes exigidos: gganimate</span></span>
-<span></span>
-<span></span>
-<span><span class="va">nf</span><span class="op">=</span><span class="fl">8</span></span>
-<span><span class="va">datasaurus_dozen2</span> <span class="op">&lt;-</span> </span>
-<span>  <span class="va">datasaurus_dozen</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>x.m  <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span>,</span>
-<span>         x.s  <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>,   nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span>,</span>
-<span>         y.m  <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>, nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span>,</span>
-<span>         y.s  <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span>,   nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span>,</span>
-<span>         corr <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span><span class="op">)</span>,nsmall <span class="op">=</span> <span class="va">nf</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="va">datasaurus_dozen2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="co">#filter(dataset=="dino") %&gt;% </span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">x</span>, y<span class="op">=</span><span class="va">y</span>,label<span class="op">=</span></span>
-<span>               <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"x.m : "</span>,<span class="va">x.m</span>, <span class="st">"\n"</span>,</span>
-<span>                      <span class="st">"x.s : "</span>,<span class="va">x.s</span>, <span class="st">"\n"</span>,</span>
-<span>                      <span class="st">"y.m : "</span>,<span class="va">y.m</span>, <span class="st">"\n"</span>,</span>
-<span>                      <span class="st">"y.s : "</span>,<span class="va">y.s</span>, <span class="st">"\n"</span>,</span>
-<span>                      <span class="st">"cor : "</span>,<span class="va">corr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">3</span>,col<span class="op">=</span><span class="st">"#00897b"</span>,alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">110</span>,y<span class="op">=</span><span class="fl">110</span><span class="op">)</span>,family<span class="op">=</span><span class="st">"mono"</span>,size<span class="op">=</span><span class="fl">6</span>,col<span class="op">=</span><span class="st">"gray"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">5</span>,<span class="fl">130</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">125</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://gganimate.com/reference/transition_states.html">transition_states</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Conjunto: {closest_state}"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="st">"text"</span>,x<span class="op">=</span><span class="fl">48</span>,y<span class="op">=</span><span class="fl">124</span>,label<span class="op">=</span><span class="st">"  Visualização de Dados Aplicada -UFPR"</span>,</span>
-<span>           size<span class="op">=</span><span class="fl">6</span>,col<span class="op">=</span><span class="st">"#00897b"</span>,face<span class="op">=</span><span class="st">"bold"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span><span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size<span class="op">=</span><span class="fl">16</span>,face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in annotate("text", x = 48, y = 124, label = " Visualização de Dados</span></span>
-<span><span class="co">#&gt; Aplicada -UFPR", : Ignoring unknown parameters: `face`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section><section id="gráfico-de-dispersão" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="gráfico-de-dispersão">
+<span class="header-section-number">2.8</span> Gráfico de Dispersão</h2>
+<p>O <strong>Gráfico de Dispersão</strong> exibe a relação entre duas variáveis numéricas em um conjunto de dados. Cada ponto no gráfico representa uma observação, onde a posição no eixo X indica o valor de uma variável, e a posição no eixo Y indica o valor da outra variável. A disposição dos pontos pode revelar padrões, correlações ou até a ausência de uma relação clara entre as variáveis.</p>
+<section id="utilidade-2" class="level3" data-number="2.8.1"><h3 data-number="2.8.1" class="anchored" data-anchor-id="utilidade-2">
+<span class="header-section-number">2.8.1</span> Utilidade</h3>
+<ul>
+<li>
+<strong>Identificação de relações entre variáveis</strong>: O gráfico de dispersão é útil para observar se duas variáveis estão correlacionadas (positivamente ou negativamente) ou se não há relação aparente entre elas.</li>
+<li>
+<strong>Detecção de padrões e outliers</strong>: Ele também permite identificar padrões em conjuntos de dados, como tendências de aumento ou diminuição, além de destacar valores atípicos (outliers).</li>
+</ul></section><section id="exemplo-de-aplicação-2" class="level3" data-number="2.8.2"><h3 data-number="2.8.2" class="anchored" data-anchor-id="exemplo-de-aplicação-2">
+<span class="header-section-number">2.8.2</span> Exemplo de Aplicação</h3>
+<p>Ao gerar um gráfico de dispersão para comparar o valor do time mandante de um jogo com a idade média time mandante, você pode verificar se há uma tendência de que jogos com maior valor do time mandante são afetados pela idade média do time, ou se essa relação é inexistente. Além disso, valores muito distantes dos outros pontos podem ser identificados como possíveis outliers, como jogos com valor do time mandante excepcionalmente alto ou baixo.</p>
+</section><section id="criando-o-gráfico" class="level3" data-number="2.8.3"><h3 data-number="2.8.3" class="anchored" data-anchor-id="criando-o-gráfico">
+<span class="header-section-number">2.8.3</span> Criando o gráfico</h3>
+<p>O primeiro passo é carregar o conjunto de dados que vai ser usado no gráfico, seguido da informação ao <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> dos dados devem ser visualmente representadas. O argumento <code>mapping</code> da função <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> define como as variáveis do seu conjunto de dados são mapeadas para as propriedades visuais (estéticas) do gráfico. O mapeamento é sempre definido dentro da função <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, e os argumentos <code>x</code> e <code>y</code> de <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> especificam quais variáveis serão mapeadas para os eixos X e Y. No seu caso, vamos mapear <strong>valor do time mandante</strong> para o eixo X e <strong>idade média time mandante</strong> para o eixo Y.</p>
+<p>Aqui está o resultado de adicionar esses mapeamentos:</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dados</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">publico</span>, y <span class="op">=</span> <span class="va">colocacao_mandante</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-11-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol type="1">
-<li>Instalar os pacotes necessários Se você ainda não tiver o pacote gganimate, instale-o:</li>
-</ol>
-<div class="cell">
-<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"gganimate"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"transformr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<ol start="2" type="1">
-<li>Preparar os dados</li>
-</ol>
-<p>Você precisa somar os gols para cada time mandandte ao longo das rodadas e criar uma coluna cumulativa que contabilize a evolução dos gols marcados ao longo do tempo.</p>
-<div class="cell">
-<details class="code-fold"><summary>R</summary><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar e calcular a soma dos gols por ano e time mandante</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>dados_gols <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ano_campeonato, time_mandante) <span class="sc">%&gt;%</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">gols_mandante =</span> <span class="fu">sum</span>(gols_mandante, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(ano_campeonato)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> <span class="st">`</span><span class="at">summarise()</span><span class="st">`</span> has grouped output by <span class="st">'ano_campeonato'</span>. You can override using</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="cn">FALSE</span> the <span class="st">`</span><span class="at">.groups</span><span class="st">`</span> argument.</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Criar uma pontuação cumulativa para acompanhar a evolução dos gols por time</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>dados_gols <span class="ot">&lt;-</span> dados_gols <span class="sc">%&gt;%</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(time_mandante) <span class="sc">%&gt;%</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gols_acumulados =</span> <span class="fu">cumsum</span>(gols_mandante)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar por ano e criar a classificação dos 10 primeiros</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>dados_gols <span class="ot">&lt;-</span> dados_gols <span class="sc">%&gt;%</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ano_campeonato) <span class="sc">%&gt;%</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(<span class="sc">-</span>gols_acumulados, <span class="at">ties.method =</span> <span class="st">"first"</span>),  </span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">gols_rel =</span> gols_acumulados <span class="sc">/</span> <span class="fu">max</span>(gols_acumulados)) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(rank <span class="sc">&lt;=</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span>  </span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<ol start="3" type="1">
-<li>Criar o gráfico animado com gganimate</li>
-</ol>
-<p>Agora, vamos criar o gráfico de barras animado que mostra a evolução rodada por rodada dos 10 maiores goleadores.</p>
-<div class="cell">
-<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gganimate.com">gganimate</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">grafico_animado</span> <span class="op">&lt;-</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
-<span>    <span class="va">dados_gols</span>,</span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
-<span>      x <span class="op">=</span> <span class="va">rank</span>,</span>
-<span>      y <span class="op">=</span> <span class="va">gols_acumulados</span>,</span>
-<span>      group <span class="op">=</span> <span class="va">time_mandante</span>,</span>
-<span>      fill <span class="op">=</span> <span class="va">time_mandante</span></span>
-<span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.8</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fl">0</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="va">time_mandante</span>, <span class="st">" "</span><span class="op">)</span><span class="op">)</span>, vjust <span class="op">=</span> <span class="fl">0.2</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">gols_acumulados</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">gols_acumulados</span>, <span class="fl">1</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span>clip <span class="op">=</span> <span class="st">"off"</span>, expand <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>color <span class="op">=</span> <span class="cn">FALSE</span>, fill <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
-<span>    axis.title.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    legend.position <span class="op">=</span> <span class="st">"none"</span>,</span>
-<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">20</span>, hjust <span class="op">=</span> <span class="fl">0</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
-<span>    plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>    plot.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span>, <span class="fl">0</span>, <span class="fl">3</span>, <span class="st">"cm"</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'{closest_state}'</span>, x <span class="op">=</span> <span class="st">" "</span>, y <span class="op">=</span> <span class="st">"Gols Acumulados"</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://gganimate.com/reference/transition_states.html">transition_states</a></span><span class="op">(</span><span class="va">ano_campeonato</span>, transition_length <span class="op">=</span> <span class="fl">16</span>, state_length <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://gganimate.com/reference/view_follow.html">view_follow</a></span><span class="op">(</span>fixed_x <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Rodar a animação</span></span>
-<span><span class="fu"><a href="https://gganimate.com/reference/animate.html">animate</a></span><span class="op">(</span><span class="va">grafico_animado</span>, nframes <span class="op">=</span> <span class="fl">300</span>, fps <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<ol start="4" type="1">
-<li>Salvar a animação Você pode salvar a animação em formato de vídeo ou GIF:</li>
-</ol>
-<div class="cell">
-<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://gganimate.com/reference/anim_save.html">anim_save</a></span><span class="op">(</span><span class="st">"topscore_animados.gif"</span>, animation <span class="op">=</span> <span class="va">grafico_animado</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="cell">
-<div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="topscore_animados.gif" class="img-fluid figure-img"></p>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="576"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>O gráfico, embora vazio, apresenta uma estrutura — fica claro onde o <strong>valor do time mandante</strong> será exibido (no eixo X) e onde a <strong>idade média time mandante</strong> será exibida (no eixo Y). No entanto, os dados ainda não aparecem no gráfico, pois ainda não definimos como as observações serão representadas visualmente.</p>
+<p>Para isso, precisamos definir um <strong>geom</strong>: o objeto geométrico que um gráfico usa para representar os dados. Esses objetos geométricos são disponibilizados no <strong>ggplot2</strong> por meio de funções que começam com <code>geom_</code>. Por exemplo, gráficos de barras usam barras geométricas (<code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code>), gráficos de linhas usam linhas geométricas (<code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code>), boxplots usam geoms de boxplot (<code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code>), e gráficos de dispersão usam pontos geométricos (<code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>).</p>
+<p>A função <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> adiciona uma camada de pontos ao gráfico, criando um gráfico de dispersão. O <strong>ggplot2</strong> possui várias funções <code>geom_</code>, cada uma adicionando um tipo diferente de camada ao gráfico.</p>
+<p>Aqui está o código completo para criar o gráfico de dispersão de <strong>valor do time mandante</strong> versus <strong>idade média do mandante</strong>:</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dados</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valor_equipe_titular_mandante</span>, y <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 254 rows containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; (`geom_point()`).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="adicionando-mais-camadas-e-estética" class="level4" data-number="2.8.3.1"><h4 data-number="2.8.3.1" class="anchored" data-anchor-id="adicionando-mais-camadas-e-estética">
+<span class="header-section-number">2.8.3.1</span> Adicionando mais camadas e estética</h4>
+<p>Gráficos de dispersão são úteis para mostrar a relação entre duas variáveis numéricas, mas também é interessante adicionar mais informações visuais para enriquecer o gráfico. Por exemplo, podemos incluir a cor dos pontos para indicar qual time mandante jogou. Podemos fazer isso modificando o mapeamento estético dentro da função <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dados</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valor_equipe_titular_mandante</span>, y <span class="op">=</span> <span class="va">idade_media_titular_mandante</span>, color <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: Removed 254 rows containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; (`geom_point()`).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Agora, cada ponto está colorido de acordo com o time mandante. Isso nos ajuda a visualizar se diferentes times apresentam diferentes padrões na relação entre o valor do time mandante e sua idade média.</p>
+</section><section id="adicionando-uma-linha-de-tendência" class="level4" data-number="2.8.3.2"><h4 data-number="2.8.3.2" class="anchored" data-anchor-id="adicionando-uma-linha-de-tendência">
+<span class="header-section-number">2.8.3.2</span> Adicionando uma linha de tendência</h4>
+<p>Podemos adicionar uma linha de tendência para observar a relação entre o <strong>valor do time mandante</strong> e a <strong>idade média</strong> ao longo dos jogos. Para isso, usamos a função <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>, que adiciona uma curva de ajuste aos dados. Especificando <code>method = "lm"</code>, pedimos uma linha de regressão linear.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dados</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valor_equipe_titular_mandante</span>, y <span class="op">=</span> <span class="va">idade_media_titular_mandante</span>, color <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span>
+<span><span class="co">#&gt; Warning: Removed 254 rows containing non-finite outside the scale range</span></span>
+<span><span class="co">#&gt; (`stat_smooth()`).</span></span>
+<span><span class="co">#&gt; Warning: Removed 254 rows containing missing values or values outside the scale range</span></span>
+<span><span class="co">#&gt; (`geom_point()`).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Uma linha de tendência linear indica uma possível relação direta entre o valor da equipe e a idade média. Ou seja, pode-se interpretar se equipes mais caras tendem a ter jogadores mais experientes ou não.</p>
+</section><section id="redução-de-dados-para-melhoria-da-visualização" class="level4" data-number="2.8.3.3"><h4 data-number="2.8.3.3" class="anchored" data-anchor-id="redução-de-dados-para-melhoria-da-visualização">
+<span class="header-section-number">2.8.3.3</span> Redução de Dados para Melhoria da Visualização</h4>
+<p>Quando trabalhamos com grandes conjuntos de dados, como informações detalhadas de várias equipes de futebol, pode ser difícil interpretar as relações entre variáveis devido à quantidade de informação. Para facilitar a análise e melhorar a visualização, é comum filtrar e reduzir os dados, focando em subsetores ou grupos de interesse.</p>
+<p>Essa redução de dados ajuda a destacar padrões específicos e a melhorar a interpretação das informações visuais, tornando mais fácil identificar tendências e correlações significativas entre as variáveis escolhidas.</p>
+<p>Desta forma, os dados serão reduzidos para uma amostra menor, <code>filtrando</code> 3 times específicos e removendo os valores <code>NA</code>, para que este valores não afetem na análise.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dados_dispersao</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">time_mandante</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Coritiba FC"</span>, <span class="st">"Athletico-PR"</span>, <span class="st">"Paraná"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">valor_equipe_titular_mandante</span>, <span class="va">idade_media_titular_mandante</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">dados_dispersao</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  ano_campeonato     data               rodada        estadio         </span></span>
+<span><span class="co">#&gt;  Min.   :2011   Length:298         Min.   : 1.00   Length:298        </span></span>
+<span><span class="co">#&gt;  1st Qu.:2015   Class :character   1st Qu.:10.00   Class :character  </span></span>
+<span><span class="co">#&gt;  Median :2019   Mode  :character   Median :19.00   Mode  :character  </span></span>
+<span><span class="co">#&gt;  Mean   :2018                      Mean   :19.33                     </span></span>
+<span><span class="co">#&gt;  3rd Qu.:2022                      3rd Qu.:29.00                     </span></span>
+<span><span class="co">#&gt;  Max.   :2024                      Max.   :38.00                     </span></span>
+<span><span class="co">#&gt;                                                                      </span></span>
+<span><span class="co">#&gt;     publico      time_mandante      time_visitante     tecnico_mandante  </span></span>
+<span><span class="co">#&gt;  Min.   :    0   Length:298         Length:298         Length:298        </span></span>
+<span><span class="co">#&gt;  1st Qu.: 7629   Class :character   Class :character   Class :character  </span></span>
+<span><span class="co">#&gt;  Median :13666   Mode  :character   Mode  :character   Mode  :character  </span></span>
+<span><span class="co">#&gt;  Mean   :13578                                                           </span></span>
+<span><span class="co">#&gt;  3rd Qu.:19726                                                           </span></span>
+<span><span class="co">#&gt;  Max.   :38059                                                           </span></span>
+<span><span class="co">#&gt;                                                                          </span></span>
+<span><span class="co">#&gt;  tecnico_visitante  colocacao_mandante colocacao_visitante</span></span>
+<span><span class="co">#&gt;  Length:298         Min.   : 1.00      Min.   : 1.00      </span></span>
+<span><span class="co">#&gt;  Class :character   1st Qu.: 8.00      1st Qu.: 5.00      </span></span>
+<span><span class="co">#&gt;  Mode  :character   Median :13.00      Median :10.00      </span></span>
+<span><span class="co">#&gt;                     Mean   :12.57      Mean   :10.38      </span></span>
+<span><span class="co">#&gt;                     3rd Qu.:18.00      3rd Qu.:16.00      </span></span>
+<span><span class="co">#&gt;                     Max.   :20.00      Max.   :20.00      </span></span>
+<span><span class="co">#&gt;                                                           </span></span>
+<span><span class="co">#&gt;  valor_equipe_titular_mandante valor_equipe_titular_visitante</span></span>
+<span><span class="co">#&gt;  Min.   :    1085              Min.   :     853              </span></span>
+<span><span class="co">#&gt;  1st Qu.: 4850000              1st Qu.: 5920000              </span></span>
+<span><span class="co">#&gt;  Median : 8125000              Median :12575000              </span></span>
+<span><span class="co">#&gt;  Mean   :10204097              Mean   :17323914              </span></span>
+<span><span class="co">#&gt;  3rd Qu.:13850000              3rd Qu.:25000000              </span></span>
+<span><span class="co">#&gt;  Max.   :41400000              Max.   :84500000              </span></span>
+<span><span class="co">#&gt;                                                              </span></span>
+<span><span class="co">#&gt;  idade_media_titular_mandante idade_media_titular_visitante gols_mandante  </span></span>
+<span><span class="co">#&gt;  Min.   :23.10                Min.   :20.50                 Min.   :0.000  </span></span>
+<span><span class="co">#&gt;  1st Qu.:26.32                1st Qu.:26.40                 1st Qu.:1.000  </span></span>
+<span><span class="co">#&gt;  Median :27.10                Median :27.40                 Median :1.000  </span></span>
+<span><span class="co">#&gt;  Mean   :27.02                Mean   :27.37                 Mean   :1.303  </span></span>
+<span><span class="co">#&gt;  3rd Qu.:27.77                3rd Qu.:28.50                 3rd Qu.:2.000  </span></span>
+<span><span class="co">#&gt;  Max.   :30.60                Max.   :31.90                 Max.   :5.000  </span></span>
+<span><span class="co">#&gt;                                                             NA's   :1      </span></span>
+<span><span class="co">#&gt;  gols_visitante   gols_1_tempo_mandante gols_1_tempo_visitante</span></span>
+<span><span class="co">#&gt;  Min.   :0.0000   Min.   :0.0000        Min.   :0.0000        </span></span>
+<span><span class="co">#&gt;  1st Qu.:0.0000   1st Qu.:0.0000        1st Qu.:0.0000        </span></span>
+<span><span class="co">#&gt;  Median :1.0000   Median :0.0000        Median :0.0000        </span></span>
+<span><span class="co">#&gt;  Mean   :0.9428   Mean   :0.6342        Mean   :0.4228        </span></span>
+<span><span class="co">#&gt;  3rd Qu.:1.0000   3rd Qu.:1.0000        3rd Qu.:1.0000        </span></span>
+<span><span class="co">#&gt;  Max.   :4.0000   Max.   :4.0000        Max.   :3.0000        </span></span>
+<span><span class="co">#&gt;  NA's   :1</span></span>
+<span>  </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dados_dispersao</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valor_equipe_titular_mandante</span>, y <span class="op">=</span> <span class="va">idade_media_titular_mandante</span>, color <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Quando os mapeamentos estéticos são definidos dentro de <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>, no nível global, eles são passados para todas as camadas geométricas subsequentes do gráfico. No entanto, cada função geométrica no <strong>ggplot2</strong> também pode aceitar um argumento <code>mapping</code>, o que permite mapeamentos estéticos locais que são adicionados aos mapeamentos herdados do nível global. Isso oferece uma flexibilidade adicional para controlar a aparência de diferentes partes do gráfico.</p>
+<p>Por exemplo, se quisermos que os pontos sejam coloridos com base em uma variável categórica, mas não desejamos que a linha de tendência também seja separada por essa mesma variável, podemos especificar <code>color = species</code> apenas para <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>, mantendo o mapeamento da linha de tendência sem essa separação.</p>
+<p>Isso permitirá que os pontos sejam coloridos de acordo com o time mandante, mas a linha de tendência será calculada com base nos dados completos, sem distinção de time.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dados_dispersao</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valor_equipe_titular_mandante</span>, y <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Geralmente não é uma boa ideia representar informações usando apenas cores em um gráfico, pois as pessoas percebem as cores de maneira diferente devido ao daltonismo ou outras diferenças na visão das cores. Portanto, além da cor, também podemos mapear os <code>times</code> à estética da <code>forma</code>.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dados_dispersao</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valor_equipe_titular_mandante</span>, y <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">time_mandante</span>, shape <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="melhorando-as-labels-e-cores" class="level4" data-number="2.8.3.4"><h4 data-number="2.8.3.4" class="anchored" data-anchor-id="melhorando-as-labels-e-cores">
+<span class="header-section-number">2.8.3.4</span> Melhorando as labels e cores</h4>
+<p>Podemos refinar o gráfico melhorando as labels e utilizando uma paleta de cores mais adequada. Isso pode ser feito com a função <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> para ajustar os rótulos dos eixos e o título, e usando uma paleta de cores compatível com daltonismo para tornar o gráfico acessível.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'scales'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:purrr':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     discard</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:readr':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     col_factor</span></span>
+<span></span>
+<span><span class="co"># Definindo as cores dos times</span></span>
+<span><span class="va">cores_times</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Athletico-PR"</span> <span class="op">=</span> <span class="st">"#CC0000"</span>,  </span>
+<span>                 <span class="st">"Coritiba FC"</span> <span class="op">=</span> <span class="st">"#006633"</span>,   </span>
+<span>                 <span class="st">"Paraná"</span> <span class="op">=</span> <span class="st">"#0033A0"</span><span class="op">)</span>       </span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">dados_dispersao</span>,</span>
+<span>  mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">valor_equipe_titular_mandante</span>, y <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">time_mandante</span>, shape <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Valor do time mandante vs. Idade Média Mandante"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Relação entre os times Athletico, Coritiba e Paraná"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Valor do time mandante"</span>, y <span class="op">=</span> <span class="st">"Idade Média"</span>,</span>
+<span>    color <span class="op">=</span> <span class="st">"Time Mandante"</span>, shape <span class="op">=</span> <span class="st">"Time Mandante"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">cores_times</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/label_number.html">label_number</a></span><span class="op">(</span>scale_cut <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/number.html">cut_short_scale</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Com isso, temos um gráfico completo que mostra a relação entre o <strong>valor do time mandante</strong> e a <strong>idade média time mandante</strong>, com uma linha de tendência, cores distintas para cada time, e rótulos claros para os eixos e a legenda.</p>
+<hr>
+<p>Esse exemplo mostra passo a passo como criar e refinar um gráfico de dispersão usando o <strong>ggplot2</strong>, aplicando ao seu caso específico de <strong>valor do time mandante</strong> e <strong>idade média time mandante</strong>.</p>
+</section></section><section id="o-que-esse-gráfico-mostra" class="level3" data-number="2.8.4"><h3 data-number="2.8.4" class="anchored" data-anchor-id="o-que-esse-gráfico-mostra">
+<span class="header-section-number">2.8.4</span> O que esse gráfico mostra:</h3>
+<ul>
+<li><p>Cada ponto no gráfico representa um jogo, com o <strong>valor do time mandante presente</strong> plotado no eixo X e a <strong>idade média time mandante</strong> no eixo Y.</p></li>
+<li><p>Esse tipo de gráfico permite verificar se há alguma relação entre a posição do time na tabela e o valor do time mandante presente nos jogos.</p></li>
+</ul>
+<p>Aqui está um exemplo de como apresentar um <strong>gráfico de setores (pizza)</strong> seguindo o modelo que você utilizou para o gráfico de dispersão:</p>
+<hr></section></section><section id="gráfico-de-setores-pizza" class="level2" data-number="2.9"><h2 data-number="2.9" class="anchored" data-anchor-id="gráfico-de-setores-pizza">
+<span class="header-section-number">2.9</span> Gráfico de Setores (Pizza)</h2>
+<p>O <strong>Gráfico de Setores</strong> é utilizado para representar a proporção ou percentual de diferentes categorias dentro de um conjunto de dados. Cada fatia do gráfico representa uma categoria, e o tamanho da fatia corresponde à proporção daquela categoria em relação ao total.</p>
+<section id="utilidade-3" class="level3" data-number="2.9.1"><h3 data-number="2.9.1" class="anchored" data-anchor-id="utilidade-3">
+<span class="header-section-number">2.9.1</span> Utilidade</h3>
+<ul>
+<li>
+<strong>Comparação de proporções</strong>: O gráfico de setores é útil para visualizar como diferentes categorias contribuem para um todo, facilitando a identificação das maiores e menores categorias.</li>
+<li>
+<strong>Distribuição visual</strong>: Ele também permite ver rapidamente qual categoria tem maior ou menor participação relativa dentro de um conjunto de dados.</li>
+</ul></section><section id="exemplo-de-aplicação-3" class="level3" data-number="2.9.2"><h3 data-number="2.9.2" class="anchored" data-anchor-id="exemplo-de-aplicação-3">
+<span class="header-section-number">2.9.2</span> Exemplo de Aplicação</h3>
+<p>Ao gerar um gráfico de setores para representar a participação de público entre diferentes times mandantes, você pode visualizar qual time atraiu o maior número de espectadores ao longo de uma temporada ou campeonato. Isso permite identificar times com grande apelo de público em comparação com outros.</p>
+</section><section id="criando-o-gráfico-1" class="level3" data-number="2.9.3"><h3 data-number="2.9.3" class="anchored" data-anchor-id="criando-o-gráfico-1">
+<span class="header-section-number">2.9.3</span> Criando o Gráfico</h3>
+<p>O primeiro passo é carregar o conjunto de dados que vai ser utilizado no gráfico e calcular as proporções de cada categoria (neste caso, os times mandantes). Para isso, utilizamos funções que somam os valores do público por time mandante e calculam a proporção em relação ao total. A função <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> será utilizada para gerar o gráfico, e a visualização será baseada na função <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> com a transformação <code><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar()</a></code> para criar o gráfico de pizza.</p>
+<p>Aqui está o código para criar o gráfico de setores:</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dados_setores</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">time_mandante</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>publico_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">publico</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>proporcao <span class="op">=</span> <span class="va">publico_total</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">publico_total</span><span class="op">)</span><span class="op">)</span>  </span>
+<span></span>
+<span><span class="co"># Criando o gráfico de setores</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados_setores</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">proporcao</span>, fill <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span>theta <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Distribuição do Público por Time Mandante"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Participação relativa dos públicos dos times ao longo da temporada"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Time Mandante"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>O gráfico de setores gerado acima exibe a participação de cada time mandante no total de público ao longo do campeonato. A área de cada fatia representa a proporção de público atraída por aquele time. Quanto maior a fatia, maior a participação daquele time no total de público.</p>
+<section id="melhorando-a-visualização-com-labels" class="level4" data-number="2.9.3.1"><h4 data-number="2.9.3.1" class="anchored" data-anchor-id="melhorando-a-visualização-com-labels">
+<span class="header-section-number">2.9.3.1</span> Melhorando a Visualização com Labels</h4>
+<p>Para melhorar a legibilidade do gráfico, podemos adicionar labels (rótulos) que mostrem a proporção exata de cada time diretamente nas fatias do gráfico.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados_setores</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">proporcao</span>, fill <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span>theta <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="va">proporcao</span><span class="op">)</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_stack.html">position_stack</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Distribuição do Público por Time Mandante"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Participação relativa dos públicos dos times ao longo da temporada"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Time Mandante"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="redução-de-dados-para-melhoria-da-visualização-1" class="level3" data-number="2.9.4"><h3 data-number="2.9.4" class="anchored" data-anchor-id="redução-de-dados-para-melhoria-da-visualização-1">
+<span class="header-section-number">2.9.4</span> Redução de Dados para Melhoria da Visualização</h3>
+<p>Quando trabalhamos com muitos times ou categorias, um gráfico de setores pode se tornar confuso se houver muitas fatias pequenas. Para melhorar a legibilidade, é comum filtrar os dados para focar apenas nas principais categorias (como os 3 times com maior público) ou agrupar categorias menores em uma única fatia representando “Outros”.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_setores_reduzidos</span> <span class="op">&lt;-</span> <span class="va">dados_setores</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">proporcao</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>time_mandante <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">row_number</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">3</span>, <span class="st">"Outros"</span>, <span class="va">time_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">time_mandante</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>publico_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">publico_total</span><span class="op">)</span>, proporcao <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">proporcao</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Criando o gráfico de setores reduzido</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados_setores_reduzidos</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="va">proporcao</span>, fill <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, width <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar</a></span><span class="op">(</span>theta <span class="op">=</span> <span class="st">"y"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html">percent</a></span><span class="op">(</span><span class="va">proporcao</span>, accuracy <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_stack.html">position_stack</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Distribuição do Público por Time Mandante"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Os 3 principais times em termos de público"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Time Mandante"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Dark2"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="02_graphics_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>O gráfico de setores é uma excelente ferramenta para visualizar a proporção de categorias dentro de um total. No contexto de público por time mandante, ele nos ajuda a identificar quais times atraíram a maior quantidade de público e qual é a participação relativa de cada um no total. Ao reduzir os dados e focar nas principais categorias, garantimos uma visualização mais limpa e eficiente.</p>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

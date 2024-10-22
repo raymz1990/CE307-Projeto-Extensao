@@ -224,128 +224,257 @@ ggplot(pontuacao_total, aes(x = reorder(time, pontos_totais), y = pontos_totais,
 ```
 
 
-# gráfico animado
+## Gráfico de Dispersão
 
-```{r fig.align='center'}
-require(datasauRus)
-require(ggplot2)
-require(dplyr)
-require(gganimate)
+O **Gráfico de Dispersão** exibe a relação entre duas variáveis numéricas em um conjunto de dados. Cada ponto no gráfico representa uma observação, onde a posição no eixo X indica o valor de uma variável, e a posição no eixo Y indica o valor da outra variável. A disposição dos pontos pode revelar padrões, correlações ou até a ausência de uma relação clara entre as variáveis.
 
+### Utilidade
 
-nf=8
-datasaurus_dozen2 <- 
-  datasaurus_dozen %>%  group_by(dataset) %>% 
-  mutate(x.m  =format(mean(x), nsmall = nf),
-         x.s  =format(sd(x),   nsmall = nf),
-         y.m  =format(mean(y), nsmall = nf),
-         y.s  =format(sd(y),   nsmall = nf),
-         corr =format(cor(x,y),nsmall = nf))
+- **Identificação de relações entre variáveis**: O gráfico de dispersão é útil para observar se duas variáveis estão correlacionadas (positivamente ou negativamente) ou se não há relação aparente entre elas.
+- **Detecção de padrões e outliers**: Ele também permite identificar padrões em conjuntos de dados, como tendências de aumento ou diminuição, além de destacar valores atípicos (outliers).
 
+### Exemplo de Aplicação
+Ao gerar um gráfico de dispersão para comparar o valor do time mandante de um jogo com a idade média time mandante, você pode verificar se há uma tendência de que jogos com maior valor do time mandante são afetados pela idade média do time, ou se essa relação é inexistente. Além disso, valores muito distantes dos outros pontos podem ser identificados como possíveis outliers, como jogos com valor do time mandante excepcionalmente alto ou baixo.
 
-datasaurus_dozen2 %>% 
-  #filter(dataset=="dino") %>% 
-  ggplot(aes(x=x, y=y,label=
-               paste0("x.m : ",x.m, "\n",
-                      "x.s : ",x.s, "\n",
-                      "y.m : ",y.m, "\n",
-                      "y.s : ",y.s, "\n",
-                      "cor : ",corr)))+
-  geom_point(size=3,col="#00897b",alpha=0.5)+
-  geom_text(aes(x=110,y=110),family="mono",size=6,col="gray")+
-  xlim(5,130)+
-  ylim(0,125)+
-  transition_states(dataset)+
-  labs(title = "Conjunto: {closest_state}")+
-  annotate("text",x=48,y=124,label="  Visualização de Dados Aplicada -UFPR",
-           size=6,col="#00897b",face="bold")+
-  theme_bw()+
-  theme(legend.position = "none")+
-  theme(plot.title = element_text(size=16,face = "bold"))
+### Criando o gráfico
+
+O primeiro passo é carregar o conjunto de dados que vai ser usado no gráfico, seguido da informação ao `ggplot()` dos dados devem ser visualmente representadas. O argumento `mapping` da função `ggplot()` define como as variáveis do seu conjunto de dados são mapeadas para as propriedades visuais (estéticas) do gráfico. O mapeamento é sempre definido dentro da função `aes()`, e os argumentos `x` e `y` de `aes()` especificam quais variáveis serão mapeadas para os eixos X e Y. No seu caso, vamos mapear **valor do time mandante** para o eixo X e **idade média time mandante** para o eixo Y.
+
+Aqui está o resultado de adicionar esses mapeamentos:
+
+``` {r}
+ggplot(
+  data = dados,
+  mapping = aes(x = publico, y = colocacao_mandante)
+)
 ```
 
-1. Instalar os pacotes necessários
-Se você ainda não tiver o pacote gganimate, instale-o:
+O gráfico, embora vazio, apresenta uma estrutura — fica claro onde o **valor do time mandante** será exibido (no eixo X) e onde a **idade média time mandante** será exibida (no eixo Y). No entanto, os dados ainda não aparecem no gráfico, pois ainda não definimos como as observações serão representadas visualmente.
 
-```{r eval = FALSE}
-install.packages("gganimate")
-install.packages("transformr")
+Para isso, precisamos definir um **geom**: o objeto geométrico que um gráfico usa para representar os dados. Esses objetos geométricos são disponibilizados no **ggplot2** por meio de funções que começam com `geom_`. Por exemplo, gráficos de barras usam barras geométricas (`geom_bar()`), gráficos de linhas usam linhas geométricas (`geom_line()`), boxplots usam geoms de boxplot (`geom_boxplot()`), e gráficos de dispersão usam pontos geométricos (`geom_point()`).
+
+A função `geom_point()` adiciona uma camada de pontos ao gráfico, criando um gráfico de dispersão. O **ggplot2** possui várias funções `geom_`, cada uma adicionando um tipo diferente de camada ao gráfico.
+
+Aqui está o código completo para criar o gráfico de dispersão de **valor do time mandante** versus **idade média do mandante**:
+
+``` {r}
+ggplot(
+  data = dados,
+  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)
+) +
+  geom_point()
 ```
 
-2. Preparar os dados
+#### Adicionando mais camadas e estética
 
-Você precisa somar os gols para cada time mandandte ao longo das rodadas e criar uma coluna cumulativa que contabilize a evolução dos gols marcados ao longo do tempo.
+Gráficos de dispersão são úteis para mostrar a relação entre duas variáveis numéricas, mas também é interessante adicionar mais informações visuais para enriquecer o gráfico. Por exemplo, podemos incluir a cor dos pontos para indicar qual time mandante jogou. Podemos fazer isso modificando o mapeamento estético dentro da função `aes()`.
 
-```{r comment=FALSE}
+``` {r}
+ggplot(
+  data = dados,
+  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante, color = time_mandante)
+) +
+  geom_point()
+```
+
+Agora, cada ponto está colorido de acordo com o time mandante. Isso nos ajuda a visualizar se diferentes times apresentam diferentes padrões na relação entre o valor do time mandante e sua idade média.
+
+#### Adicionando uma linha de tendência
+
+Podemos adicionar uma linha de tendência para observar a relação entre o **valor do time mandante** e a **idade média** ao longo dos jogos. Para isso, usamos a função `geom_smooth()`, que adiciona uma curva de ajuste aos dados. Especificando `method = "lm"`, pedimos uma linha de regressão linear.
+
+``` {r}
+ggplot(
+  data = dados,
+  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante, color = time_mandante)
+) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Uma linha de tendência linear indica uma possível relação direta entre o valor da equipe e a idade média. Ou seja, pode-se interpretar se equipes mais caras tendem a ter jogadores mais experientes ou não.
+
+#### Redução de Dados para Melhoria da Visualização
+
+Quando trabalhamos com grandes conjuntos de dados, como informações detalhadas de várias equipes de futebol, pode ser difícil interpretar as relações entre variáveis devido à quantidade de informação. Para facilitar a análise e melhorar a visualização, é comum filtrar e reduzir os dados, focando em subsetores ou grupos de interesse.
+
+Essa redução de dados ajuda a destacar padrões específicos e a melhorar a interpretação das informações visuais, tornando mais fácil identificar tendências e correlações significativas entre as variáveis escolhidas.
+
+Desta forma, os dados serão reduzidos para uma amostra menor, `filtrando` 3 times específicos e removendo os valores `NA`, para que este valores não afetem na análise.
+
+``` {r}
+library(tidyverse)
+
+dados_dispersao <- dados %>%
+  filter(time_mandante %in% c("Coritiba FC", "Athletico-PR", "Paraná")) %>%
+  drop_na(valor_equipe_titular_mandante, idade_media_titular_mandante)
+
+summary(dados_dispersao)
+  
+ggplot(
+  data = dados_dispersao,
+  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante, color = time_mandante)
+) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Quando os mapeamentos estéticos são definidos dentro de `ggplot()`, no nível global, eles são passados para todas as camadas geométricas subsequentes do gráfico. No entanto, cada função geométrica no **ggplot2** também pode aceitar um argumento `mapping`, o que permite mapeamentos estéticos locais que são adicionados aos mapeamentos herdados do nível global. Isso oferece uma flexibilidade adicional para controlar a aparência de diferentes partes do gráfico.
+
+Por exemplo, se quisermos que os pontos sejam coloridos com base em uma variável categórica, mas não desejamos que a linha de tendência também seja separada por essa mesma variável, podemos especificar `color = species` apenas para `geom_point()`, mantendo o mapeamento da linha de tendência sem essa separação.
+
+Isso permitirá que os pontos sejam coloridos de acordo com o time mandante, mas a linha de tendência será calculada com base nos dados completos, sem distinção de time.
+
+```{r}
+ggplot(
+  data = dados_dispersao,
+  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)
+) +
+  geom_point(mapping = aes(color = time_mandante)) +
+  geom_smooth(method = "lm")
+```
+
+Geralmente não é uma boa ideia representar informações usando apenas cores em um gráfico, pois as pessoas percebem as cores de maneira diferente devido ao daltonismo ou outras diferenças na visão das cores. Portanto, além da cor, também podemos mapear os `times` à estética da `forma`.
+
+```{r}
+ggplot(
+  data = dados_dispersao,
+  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)
+) +
+  geom_point(mapping = aes(color = time_mandante, shape = time_mandante)) +
+  geom_smooth(method = "lm")
+```
+
+#### Melhorando as labels e cores
+
+Podemos refinar o gráfico melhorando as labels e utilizando uma paleta de cores mais adequada. Isso pode ser feito com a função `labs()` para ajustar os rótulos dos eixos e o título, e usando uma paleta de cores compatível com daltonismo para tornar o gráfico acessível.
+
+
+```{r}
+library(scales)
+
+# Definindo as cores dos times
+cores_times <- c("Athletico-PR" = "#CC0000",  
+                 "Coritiba FC" = "#006633",   
+                 "Paraná" = "#0033A0")       
+ggplot(
+  data = dados_dispersao,
+  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)
+) +
+  geom_point(mapping = aes(color = time_mandante, shape = time_mandante)) +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Valor do time mandante vs. Idade Média Mandante",
+    subtitle = "Relação entre os times Athletico, Coritiba e Paraná",
+    x = "Valor do time mandante", y = "Idade Média",
+    color = "Time Mandante", shape = "Time Mandante"
+  ) +
+  scale_color_manual(values = cores_times) +  
+  scale_x_continuous(labels = label_number(scale_cut = cut_short_scale())) +  
+  theme_minimal()
+
+```
+
+Com isso, temos um gráfico completo que mostra a relação entre o **valor do time mandante** e a **idade média time mandante**, com uma linha de tendência, cores distintas para cada time, e rótulos claros para os eixos e a legenda.
+
+--- 
+
+Esse exemplo mostra passo a passo como criar e refinar um gráfico de dispersão usando o **ggplot2**, aplicando ao seu caso específico de **valor do time mandante** e **idade média time mandante**.
+
+
+### O que esse gráfico mostra:
+
+- Cada ponto no gráfico representa um jogo, com o **valor do time mandante presente** plotado no eixo X e a **idade média time mandante** no eixo Y.
+
+- Esse tipo de gráfico permite verificar se há alguma relação entre a posição do time na tabela e o valor do time mandante presente nos jogos.
+
+
+Aqui está um exemplo de como apresentar um **gráfico de setores (pizza)** seguindo o modelo que você utilizou para o gráfico de dispersão:
+
+---
+
+## Gráfico de Setores (Pizza)
+
+O **Gráfico de Setores** é utilizado para representar a proporção ou percentual de diferentes categorias dentro de um conjunto de dados. Cada fatia do gráfico representa uma categoria, e o tamanho da fatia corresponde à proporção daquela categoria em relação ao total.
+
+### Utilidade
+
+- **Comparação de proporções**: O gráfico de setores é útil para visualizar como diferentes categorias contribuem para um todo, facilitando a identificação das maiores e menores categorias.
+- **Distribuição visual**: Ele também permite ver rapidamente qual categoria tem maior ou menor participação relativa dentro de um conjunto de dados.
+
+### Exemplo de Aplicação
+Ao gerar um gráfico de setores para representar a participação de público entre diferentes times mandantes, você pode visualizar qual time atraiu o maior número de espectadores ao longo de uma temporada ou campeonato. Isso permite identificar times com grande apelo de público em comparação com outros.
+
+### Criando o Gráfico
+
+O primeiro passo é carregar o conjunto de dados que vai ser utilizado no gráfico e calcular as proporções de cada categoria (neste caso, os times mandantes). Para isso, utilizamos funções que somam os valores do público por time mandante e calculam a proporção em relação ao total. A função `ggplot()` será utilizada para gerar o gráfico, e a visualização será baseada na função `geom_bar()` com a transformação `coord_polar()` para criar o gráfico de pizza.
+
+Aqui está o código para criar o gráfico de setores:
+
+``` {r}
+library(ggplot2)
 library(dplyr)
 
-# Agrupar e calcular a soma dos gols por ano e time mandante
-dados_gols <- dados %>%
-  group_by(ano_campeonato, time_mandante) %>%
-  summarise(gols_mandante = sum(gols_mandante, na.rm = TRUE)) %>%
-  arrange(ano_campeonato)
-
-# Criar uma pontuação cumulativa para acompanhar a evolução dos gols por time
-dados_gols <- dados_gols %>%
+dados_setores <- dados %>%
   group_by(time_mandante) %>%
-  mutate(gols_acumulados = cumsum(gols_mandante)) %>%
-  ungroup()
+  summarize(publico_total = sum(publico, na.rm = TRUE)) %>%
+  mutate(proporcao = publico_total / sum(publico_total))  
 
-# Agrupar por ano e criar a classificação dos 10 primeiros
-dados_gols <- dados_gols %>%
-  group_by(ano_campeonato) %>%
-  mutate(rank = rank(-gols_acumulados, ties.method = "first"),  
-         gols_rel = gols_acumulados / max(gols_acumulados)) %>% 
-  filter(rank <= 10) %>%  
-  ungroup()
-```
-
-3. Criar o gráfico animado com gganimate
-
-Agora, vamos criar o gráfico de barras animado que mostra a evolução rodada por rodada dos 10 maiores goleadores.
-
-```{r eval=FALSE}
-library(gganimate)
-
-grafico_animado <-
-  ggplot(
-    dados_gols,
-    aes(
-      x = rank,
-      y = gols_acumulados,
-      group = time_mandante,
-      fill = time_mandante
-    )
+# Criando o gráfico de setores
+ggplot(dados_setores, aes(x = "", y = proporcao, fill = time_mandante)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar(theta = "y") +
+  labs(
+    title = "Distribuição do Público por Time Mandante",
+    subtitle = "Participação relativa dos públicos dos times ao longo da temporada",
+    fill = "Time Mandante"
   ) +
-  geom_col(width = 0.8, color = "black") +
-  theme_minimal() +
-  geom_text(aes(y = 0, label = paste(time_mandante, " ")), vjust = 0.2, hjust = 1) +
-  geom_text(aes(y = gols_acumulados, label = round(gols_acumulados, 1), hjust = -0.1)) +
-  coord_flip(clip = "off", expand = FALSE) +
-  scale_x_reverse() +
-  guides(color = FALSE, fill = FALSE) +
-  theme(
-    axis.title.y = element_blank(),
-    legend.position = "none",
-    plot.title = element_text(size = 20, hjust = 0, face = "bold"),
-    plot.background = element_blank(),
-    plot.margin = margin(0, 2, 0, 3, "cm")
+  theme_void()  
+```
+
+O gráfico de setores gerado acima exibe a participação de cada time mandante no total de público ao longo do campeonato. A área de cada fatia representa a proporção de público atraída por aquele time. Quanto maior a fatia, maior a participação daquele time no total de público.
+
+#### Melhorando a Visualização com Labels
+
+Para melhorar a legibilidade do gráfico, podemos adicionar labels (rótulos) que mostrem a proporção exata de cada time diretamente nas fatias do gráfico.
+
+``` {r}
+ggplot(dados_setores, aes(x = "", y = proporcao, fill = time_mandante)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar(theta = "y") +
+  geom_text(aes(label = scales::percent(proporcao)), position = position_stack(vjust = 0.5)) +
+  labs(
+    title = "Distribuição do Público por Time Mandante",
+    subtitle = "Participação relativa dos públicos dos times ao longo da temporada",
+    fill = "Time Mandante"
   ) +
-  labs(title = '{closest_state}', x = " ", y = "Gols Acumulados") + 
-  transition_states(ano_campeonato, transition_length = 16, state_length = 4) +
-  view_follow(fixed_x = TRUE)
-
-# Rodar a animação
-animate(grafico_animado, nframes = 300, fps = 20)
+  theme_void()
 ```
 
-4. Salvar a animação 
-Você pode salvar a animação em formato de vídeo ou GIF:
+### Redução de Dados para Melhoria da Visualização
 
-```{r eval = FALSE}
-anim_save("topscore_animados.gif", animation = grafico_animado)
+Quando trabalhamos com muitos times ou categorias, um gráfico de setores pode se tornar confuso se houver muitas fatias pequenas. Para melhorar a legibilidade, é comum filtrar os dados para focar apenas nas principais categorias (como os 3 times com maior público) ou agrupar categorias menores em uma única fatia representando "Outros".
+
+``` {r}
+dados_setores_reduzidos <- dados_setores %>%
+  arrange(desc(proporcao)) %>%
+  mutate(time_mandante = ifelse(row_number() > 3, "Outros", time_mandante)) %>%
+  group_by(time_mandante) %>%
+  summarize(publico_total = sum(publico_total), proporcao = sum(proporcao))
+
+# Criando o gráfico de setores reduzido
+ggplot(dados_setores_reduzidos, aes(x = "", y = proporcao, fill = time_mandante)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar(theta = "y") +
+  geom_text(aes(label = scales::percent(proporcao, accuracy = 0.1)), position = position_stack(vjust = 0.5)) +
+  labs(
+    title = "Distribuição do Público por Time Mandante",
+    subtitle = "Os 3 principais times em termos de público",
+    fill = "Time Mandante"
+  ) +
+  scale_fill_brewer(palette = "Dark2") +
+  theme_void()
 ```
 
-```{r, echo = FALSE}
-knitr::include_graphics("topscore_animados.gif")
-```
+O gráfico de setores é uma excelente ferramenta para visualizar a proporção de categorias dentro de um total. No contexto de público por time mandante, ele nos ajuda a identificar quais times atraíram a maior quantidade de público e qual é a participação relativa de cada um no total. Ao reduzir os dados e focar nas principais categorias, garantimos uma visualização mais limpa e eficiente.
+
