@@ -1,0 +1,8 @@
+# Visualização de Dados {#sec-data-visualization}
+
+Neste módulo, iremos introduzi-los à criação de gráficos simples no R, por meio de 4 etapas: 
+
+-   Introdução ao pacote `ggplot` para visualização de dados; 
+-   Criação de gráficos de barras, histogramas, gráficos de setores e de dispersão; 
+-   Personalização básica de gráficos: títulos, eixos, cores;
+-   Resolução de exercício e Quizz.

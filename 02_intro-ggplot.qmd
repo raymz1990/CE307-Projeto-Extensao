@@ -1,0 +1,105 @@
+# O pacote `ggplot2` {#sec-intro-ggplot2}
+
+```{r}
+#| echo: false
+
+source("_common.R")
+```
+
+::: {style="display: flex;"}
+
+::: {style="width: 25%;"}
+<a href="https://ggplot2.tidyverse.org/">
+
+![](./img/img2-ggplot_logo.png){.hex-logo} </a>
+:::
+
+::: {style="width: 5%;"}
+
+:::
+
+::: {style="width: 70%;"}
+<br>
+<br>
+o pacote [ggplot2](https://ggplot2.tidyverse.org/), pelo **estatístico** neozelandês [Hadley Wickham](https://en.wikipedia.org/wiki/Hadley_Wickham), oferece uma poderosa linguagem gráfica para criar gráficos elegantes e complexos. Sua popularidade na comunidade R explodiu nos últimos anos e é – hoje - a principal implementação da gramática de gráficos para o R. Geralmente baseado na Gramática de Gráficos de Leland Wilkinson.
+:::
+:::
+
+Em sua essência, a função do `ggplot2` é **construir um gráfico camada por camada**.
+
+O ggplot2 permite criar gráficos que representam dados numéricos e categóricos univariados e multivariados de forma direta. O agrupamento pode ser representado por cor, símbolo, tamanho e transparência. A criação de parcelas de trellis (isto é, condicionamento) é também relativamente simples.
+
+Dentre suas principais características, as vantagens de utilização este pacote para a construção de gráficos são:
+
+* Gráficos visualmente mais bonitos;
+* Fácil personalização (é mais simples ajustar o gráfico conforme suas necessidades);
+* A estrutura padronizada das funções facilita o aprendizado e a aplicação;
+* As diferenças no código entre diferentes tipos de gráficos são mínimas.
+
+## Galerias
+
+Existem inúmeras possibilidades de construção de gráficos com o `ggplot2` para a visualização de dados utilizando o **R**. Ele permitem criar praticamente qualquer tipo de gráfico.
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-ggplot2-example
+#| echo: false
+#| fig-cap: |
+#|   Tipos de gráficos do pacote ggplot2
+#| fig-alt: |
+#|   R-Graph Exemplos de Gráficos
+#| out.width: NULL
+
+knitr::include_graphics("./img/img3-ggplot-example.png")
+```
+
+Algumas demonstrações exemplos podem ser verificados em [https://www.r-graph-gallery.com/portfolio/ggplot2-package/](https://r-graph-gallery.com/ggplot2-package.html)
+
+## Gramática dos gráficos
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='left', out.width='100%'}
+#| label: fig-ggplot4
+#| echo: false
+#| fig-cap: |
+#|   Camadas dos gráficos no ggplot
+#| fig-alt: |
+#|   R-Graph Exemplos de Gráficos
+#| out.width: NULL
+
+knitr::include_graphics("./img/img4-ggplot.png")
+```
+
+O `ggplot` fornece uma estrutura unificadora (uma gramática) para descrever e especificar gráficos. Cria gráficos de dados de forma incremental a partir de pequenos pedaços de código.
+
+*	Data = Dados
+*	Aesthetics = Estética ⇒ Cores, titulo, legendas, etc
+*	Geometries = Geometria ⇒ Tipo de Gráfico
+    -	geom_bar()
+    -	geom_col()
+    -	geom_map()
+    -	geom_point()
+*	Facets = Facetas ⇒ Gráficos em grade para comparação
+    -	facet_grid()
+    -	facet_wrap()
+*	Statistics = Estatísticas ⇒ Estáticas como média, contagem, entre outros.
+    -	stat_count()
+    -	stat_sum()
+    -	stat_density()
+*	Coordinates = Coordenadas ⇒ Como serão mostradas as coordenadas x e y
+    -	coord_flip()
+    -	coord_fixed()
+    -	coord_cartesian()
+*	Themes = Temas ⇒ Mais outra forma de personalização
+    -	theme_grey() 
+    -	theme_gray() 
+    -	theme_bw() 
+    -	theme_linedraw() 
+    -	theme_light()
+
+## Instalação do pacote `ggplot2`
+
+Para começar a construir os primeiros gráficos utilizando o pacote `ggplot2`, é necessário, primeiramente, instalar e carregar o pacote antes de rodar os gráficos
+
+```{r eval=FALSE}
+install.packages("ggplot2")
+library(ggplot2)
+```
+

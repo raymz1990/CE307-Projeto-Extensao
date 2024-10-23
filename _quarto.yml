@@ -29,13 +29,13 @@ book:
   chapters:
     - index.qmd
 
-    - part: 00_visualizacao-dados.qmd
+    - part: 00_presentation.qmd
       chapters:
-        - 01_intro-ggplot.qmd
-        - 02_graphics.qmd
-        - 03_exercises.qmd
-        - 04_quizz.qmd
-        - 05_beyond-ggplot.qmd
+        - 01_visualizacao-dados.qmd
+        - 02_intro-ggplot.qmd
+        - 03_graphics.qmd
+        - 04_exercises.qmd
+        - 05_quizz.qmd
 
   page-footer: 
     left: |
@@ -48,7 +48,7 @@ format:
   html:
     html:
     theme:
-      light: cosmo
+      light: lumen
       dark: slate
     toc: true # barra lateral esquerda com conteudo
     toc-location: left
@@ -59,10 +59,10 @@ format:
     code-tools: false
     code-line-numbers: false
     # fontcolor: '#C25E8C'
-    linkcolor: 'red'
+    # linkcolor: 'red'
     fontsize: 1.1em
-  pdf:
-    documentclass: scrreport
+    css: styles.css
+    highlight-style: atom-one
 
 execute:
   freeze: auto

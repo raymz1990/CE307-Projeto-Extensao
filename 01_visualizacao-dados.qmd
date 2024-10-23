@@ -1,0 +1,517 @@
+# Motivação {#sec-motivation}
+
+Tudo provém de dados. E, quando se trabalha com dados, a necessidade de criar visualizações é inevitável - muitas vezes, é melhor demonstrar do que apenas descrever. A criação de visualizações de dados é tanto uma arte quanto uma ciência, pois combina estética com precisão analítica. Transformar dados em histórias visuais envolventes é uma habilidade fundamental para quem trabalha com grandes volumes de informação.
+
+Abaixo temos alguns exemplos de visualizações e gráficos interessantes feitos no R:
+
+## Gráficos Animados utilizando o `gganimate`
+```{r fig.align='left', echo=FALSE, comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-1
+#| echo: false
+#| fig-cap: |
+#|   Gráfico animado do pacote datasauRus
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+require(datasauRus)
+require(ggplot2)
+require(dplyr)
+require(gganimate)
+
+
+nf=8
+datasaurus_dozen2 <- 
+  datasaurus_dozen %>%  group_by(dataset) %>% 
+  mutate(x.m  =format(mean(x), nsmall = nf),
+         x.s  =format(sd(x),   nsmall = nf),
+         y.m  =format(mean(y), nsmall = nf),
+         y.s  =format(sd(y),   nsmall = nf),
+         corr =format(cor(x,y),nsmall = nf))
+
+
+datasaurus_dozen2 %>% 
+  #filter(dataset=="dino") %>% 
+  ggplot(aes(x=x, y=y))+
+  geom_point(size=3,col="#0D0084",alpha=0.5)+
+  xlim(5,130)+
+  ylim(0,125)+
+  transition_states(dataset)+
+  theme_bw()+
+  theme(legend.position = "none")+
+  theme(plot.title = element_text(size=16,face = "bold"))
+```
+
+## Gráfico 3D utilizando o `plotly`
+```{r fig.align='left', echo=FALSE, comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-2
+#| echo: false
+#| fig-cap: |
+#|   Gráfico básico 3D da superfície de um vulcão
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+library(plotly)
+# volcano is a numeric matrix that ships with R
+fig <- plot_ly(z = ~volcano)
+fig <- fig %>% add_surface()
+
+fig
+```
+
+
+## Mapa utilizando o `leaflet`
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-3
+#| echo: false
+#| fig-cap: |
+#|   Densidade populacional de Curitiba
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+# Pacotes necessários para este tutorial
+library(leaflet)
+library(sf)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(sidrar)
+# Pactotes que utilizamos apenas uma função
+library(janitor)
+# library(mapview)
+# library(sidrar)
+# library(MetBrewer)
+
+# Neighborhoods
+nb <- geobr::read_neighborhood(showProgress = FALSE)
+nb <- nb |> 
+  filter(code_muni == 4106902)
+
+# Import population table from SIDRA
+pop_nb <- sidrar::get_sidra(
+  x = 1378,
+  variable = 93,
+  classific = "c2",
+  geo = "Neighborhood",
+  geo.filter = list("City" = 4106902)
+)
+
+# Clean table and make it wide
+pop_nb <- pop_nb |> 
+  as_tibble() |> 
+  janitor::clean_names() |> 
+  select(code_neighborhood = bairro_codigo, sex = sexo, count = valor) |> 
+  mutate(
+    sex = str_replace(sex, "Homens", "Male"),
+    sex = str_replace(sex, "Mulheres", "Female")
+    ) |> 
+  pivot_wider(
+    id_cols = "code_neighborhood",
+    names_from = "sex",
+    values_from = "count"
+    )
+
+# Make neighborhood codes compatible
+pop_nb <- pop_nb |> 
+  mutate(code_neighborhood = str_c(
+    str_sub(code_neighborhood, 1, 7), "05", str_sub(code_neighborhood, 8, 10))
+    )
+
+# Join census table with shapefile
+cur_nb <- left_join(nb, pop_nb, by = "code_neighborhood")
+
+# Calculate population density
+cur_nb <- cur_nb %>%
+  st_transform(crs = 32722) %>%
+  mutate(
+    area = st_area(.),
+    area = as.numeric(area) / 1e5,
+    pop_dens = Total / area,
+    pop_ntile = ntile(pop_dens, 5)
+    )
+# Convert back to 4326 for leaflet
+cur_nb <- st_transform(cur_nb, crs = 4326)
+
+# Color palette and bins
+bins <- quantile(cur_nb$pop_dens, probs = seq(0.2, 0.8, 0.2))
+bins <- c(0, bins, max(cur_nb$pop_dens))
+pal <- colorBin(
+  palette = as.character(MetBrewer::met.brewer("Hokusai2", 5)),
+  domain = cur_nb$pop_dens,
+  bins = bins)
+
+# Labels
+labels <- sprintf(
+  "<strong>%s</strong><br/> %s people <br/> %g people / ha<sup>2</sup>",
+  cur_nb$name_neighborhood,
+  format(cur_nb$Total, big.mark = "."),
+  round(cur_nb$pop_dens, 1)
+  )
+
+labels <- lapply(labels, htmltools::HTML)
+
+# Center of the map for zoom
+border <- geobr::read_municipality(4106902, showProgress = FALSE)
+center <- st_coordinates(st_centroid(border))
+
+leaflet(cur_nb) %>%
+  addTiles() %>%
+  addPolygons(
+    weight = 2,
+    color = "white",
+    fillColor = ~pal(pop_dens),
+    fillOpacity = 0.8,
+    highlightOptions = highlightOptions(
+      color = "gray20",
+      weight = 10,
+      fillOpacity = 0.8,
+      bringToFront = TRUE),
+    label = labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", "font-family" = "Fira Code")
+    )
+  ) %>%
+  addLegend(
+    pal = pal,
+    values = ~pop_dens,
+    title = "Densidade Pop.",
+    position = "bottomright"
+  ) %>%
+  addProviderTiles(providers$CartoDB) %>%
+  setView(lng = center[1], lat = center[2], zoom = 11)
+```
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-11
+#| echo: false
+#| fig-cap: |
+#|   Localização do prédio de Estatística e Ciências de Dados na UFPR
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+library(leaflet)
+
+# NOTE: As coordenadas do Google não batem exato com as coordenadas do
+# leaflet.
+
+coords <- data.frame(lat = c(-25.4503),
+                     lng = c(-49.2306),
+                     text = c("<strong>Departamento de Estatística</strong><br/>
+                              Centro Politécnico UFPR"))
+
+# names(providers)
+
+leaflet() %>%
+    setView(lat = mean(coords$lat),
+            lng = mean(coords$lng),
+            zoom = 18) %>%
+    addProviderTiles("OpenStreetMap") %>%
+    addPopups(lng = coords$lng,
+              lat = coords$lat,
+              coords$text,
+              options = popupOptions(closeButton = FALSE))
+```
+
+## Gráfico de linha utilizando o `ggplot`
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-4
+#| echo: false
+#| fig-cap: |
+#|   Comparação entre altura dos personagens femininos e masculinos de Star Wars
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+require(ggplot2)
+require(dplyr)
+
+altura <- starwars %>%
+  rename(., Altura = height) %>%
+  rename(., Gênero = gender) 
+
+altura$Gênero[altura$Gênero == "feminine"] <- "Feminino"
+altura$Gênero[altura$Gênero == "masculine"] <- "Masculino"
+
+altura1 <- altura %>%
+  filter(Gênero == "Feminino" | Gênero == "Masculino")
+
+ggplot(altura1) +
+  aes(x = Altura, fill = Gênero, color = Gênero) +
+  geom_density(alpha = 0.1, na.rm = TRUE) +
+  labs(x = "Altura (cm)", y = "Densidade") +
+  scale_color_manual(values = c(Feminino = "#DB0039", Masculino =  "#0D0084")) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+## Gráfico de dispersão utilizando o `ggplot`
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-5
+#| echo: false
+#| fig-cap: |
+#|   Relação entre Valor e Idade Média dos times mandantes do Campeonato Brasileiro (2010-2024)
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+library(scales)
+library(tidyverse)
+
+url <- "https://raw.githubusercontent.com/raymz1990/CE307-Projeto-Extensao/refs/heads/main/data/serie_a_2010_2024.csv"
+dados <- read.csv(file = url,
+                  header = TRUE,     
+                  sep = ",",          
+                  # quote = "",      
+                  stringsAsFactors = FALSE)
+
+dados_dispersao <- dados %>%
+  filter(time_mandante %in% c("Coritiba FC", "Athletico-PR", "Paraná")) %>%
+  drop_na(valor_equipe_titular_mandante, idade_media_titular_mandante)
+
+# Definindo as cores dos times
+cores_times <- c("Athletico-PR" = "#CC0000",  
+                 "Coritiba FC" = "#006633",   
+                 "Paraná" = "#0033A0")       
+ggplot(
+  data = dados_dispersao,
+  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)
+) +
+  geom_point(mapping = aes(color = time_mandante, shape = time_mandante)) +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Valor do time mandante vs. Idade Média Mandante",
+    subtitle = "Relação entre os times Athletico, Coritiba e Paraná",
+    x = "Valor do time mandante", y = "Idade Média",
+    color = "Time Mandante", shape = "Time Mandante"
+  ) +
+  scale_color_manual(values = cores_times) +  
+  scale_x_continuous(labels = label_number(scale_cut = cut_short_scale())) +  
+  theme_minimal()
+```
+
+## Elementos Visuais
+
+Os gráficos e as visualizações são usados para organizar e resumir informações contidas em dados, permitindo uma percepção visual de forma mais rápida e dinâmica e induzindo o espectador a pensar sobre o assunto tratado. Nesse contexto, Edward Tufte, professor emérito de Estatística da Universidade de Yale, definiu alguns princípios sobre como obter gráficos de excelência:
+
+1.    Acima de tudo, mostre os dados.
+2.    Maximize a taxa de dados e tinta.
+3.    Apague a tinta que não é de dados.
+4.    Apague a tinta de dados redundantes.
+5.    Revise e edite.
+
+Por outro lado, tão importante quanto saber fazer gráficos, é saber analisá-los com um senso crítico, questionando a origem dos dados usados, verificando se há parcialidade, averiguando se os resultados apresentados são consistentes e analisando se as informações foram apresentadas da maneira mais eficiente possível. Nesse sentido, fica de sugestão ao leitor o livro "Como mentir com estatística", de Darrell Huff, que mostra as diversas maneiras que a estatística pode ser usada para enganar as pessoas, sendo uma delas a distorção de gráficos. Para ilustrar isso, logo abaixo temos exemplos de gráficos não efetivos:
+
+### Gráfico de setores com muitas informações
+
+![Fonte:https://www.hashtagtreinamentos.com/erros-no-grafico-de-pizza-no-power-bi](https://www.hashtagtreinamentos.com/wp-content/uploads/2022/04/Erros-no-Grafico-de-Pizza-1.png)
+
+### Gráfico de barras com eixo Y distorcido
+
+![Fonte: https://gizmodo.uol.com.br/mentir-visualizacao-dados/](https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2014/04/000blog.png)
+
+### Gráfico de linha com eixo Y invertido e cor desnecessária
+
+![Fonte: https://gizmodo.uol.com.br/mentir-visualizacao-dados/](https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2014/04/misleading3_deaths-595x745.jpg)
+
+### Gráfico de setores totalizando mais de 100%
+
+![Fonte:https://gizmodo.uol.com.br/mentir-visualizacao-dados/](https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2014/04/misleading3_pie.png)
+
+## Tipos de variáveis
+
+Para sabermos qual tipo de gráfico é ideal para um determinado conjunto de dados, primeiramente é necessário conhecermos os tipos das variáveis estudadas. 
+
+Uma variável é uma característica de interesse que geralmente varia entre elementos de uma população, podendo ser classificada da seguinte forma:
+
+1.    Variáveis Qualitativas (ou Categóricas): são características definidas por várias categorias. Podem ser nominais ou ordinais.
+    -   Nominais: características que não possuem ordenação entre suas categorias. Exemplos: sexo, raça.
+    -   Ordinais: características que possuem ordenação entre suas categorias. Exemplos: escolaridade, estágio de uma doença.
+  
+2.    Variáveis Quantitativas: são características que apresentam valores numéricos e podem ser medidas em uma escala quantitativa. Podem ser discretas ou contínuas.
+    -   Discretas: características que assumem apenas um número finito ou enumerável de valores, isto é, assumem valores inteiros. Geralmente são o resultado de contagens. Exemplo: número de filhos.
+    -   Contínuas: características que assumem valores no conjuntos dos reais, em uma escala contínua. Exemplo: peso.
+
+Alguns pontos importantes a serem observados são:
+
+-   Uma variável originalmente quantitativa pode ser coletada de forma qualitativa. Exemplo: idade é uma variável quantitativa contínua, mas se for informada apenas a faixa etária (0 a 10 anos, 11 a 20 anos, etc.) é qualitativa ordinal.
+-   Uma variável representada por números nem sempre é numérica. Exemplo: número da identidade.
+
+## Tipos de gráficos
+
+Conhecendo agora os tipos de variáveis, é possível compreender quais gráficos representam melhor um determinado conjunto de dados! Para mostrar isso, vamos usar a base de dados `starwars` do pacote `dplyr` do R.
+
+### Gráfico de setores
+
+Compara categorias de variáveis **qualitativas**.
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-6
+#| echo: false
+#| fig-cap: |
+#|   Proporção de personagens femininos e masculinos de Star Wars
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+require(ggplot2)
+require(dplyr)
+
+genero <- starwars %>%
+  rename(., Gênero = gender) 
+
+genero$Gênero[genero$Gênero == "feminine"] <- "Feminino"
+genero$Gênero[genero$Gênero == "masculine"] <- "Masculino"
+
+genero1 <- genero %>%
+  filter(Gênero == "Feminino" | Gênero == "Masculino") %>%
+  group_by(Gênero) %>%
+  summarise(Quantidade = n()) %>%
+  mutate(perc = Quantidade/sum(Quantidade)) %>% 
+  arrange(perc) %>%
+  mutate(labels = scales::percent(perc))
+genero2 <- genero1 %>%
+  arrange(desc(Quantidade)) %>%
+  mutate(prop = Quantidade/sum(Quantidade)*100) %>%
+  mutate(ypos = cumsum(prop)- 0.5*prop)
+
+ggplot(genero2, aes(x = "", y = prop, fill = Gênero)) +
+  geom_bar(stat = "identity", width = 1, color="white") +
+  coord_polar("y", start = 0) +
+  scale_fill_manual(values = c(Feminino = "#DB0039", Masculino =  "#0D0084")) +
+  theme_void() +
+  geom_text(aes(y = ypos, label = labels), color = "white", size = 6)
+```
+
+### Gráfico de barras
+
+Compara categorias de variáveis **qualitativas**, podendo ser usado também para variáveis **quantitativas discretas** que assumem poucos valores.
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-7
+#| echo: false
+#| fig-cap: |
+#|   Número de personagens femininos e masculinos em Star Wars
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+require(ggplot2)
+require(dplyr)
+
+genero <- starwars %>%
+  rename(., Gênero = gender) 
+
+genero$Gênero[genero$Gênero == "feminine"] <- "Feminino"
+genero$Gênero[genero$Gênero == "masculine"] <- "Masculino"
+
+genero1<- genero %>%
+  filter(Gênero == "Feminino" | Gênero == "Masculino") %>%
+  group_by(Gênero) %>%
+  summarise(Quantidade = n())
+
+ggplot(genero1) +
+  aes(x = Gênero, y = Quantidade) +
+  geom_col(fill = "#DB0039") +
+  theme_minimal() 
+```
+
+### Histograma
+
+Mostra a distribuição de uma variável **quantitativa**.
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-8
+#| echo: false
+#| fig-cap: |
+#|   Altura dos personagens de Star Wars
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+require(ggplot2)
+require(dplyr)
+
+altura <- starwars %>%
+  rename(., Altura = height) %>%
+  rename(., Gênero = gender) 
+
+altura$Gênero[altura$Gênero == "feminine"] <- "Feminino"
+altura$Gênero[altura$Gênero == "masculine"] <- "Masculino"
+
+altura1 <- altura %>%
+  filter(Gênero == "Feminino" | Gênero == "Masculino")
+
+ggplot(altura1) +
+  aes(x = Altura) +
+  geom_histogram(bins = 25, fill = "#0D0084") +
+  labs(x = "Altura (cm)", y = "Quantidade") +
+  theme_minimal()
+```
+
+### Gráfico de densidade
+
+Mostra a distribuição de uma variável **quantitativa**.
+
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-9
+#| echo: false
+#| fig-cap: |
+#|   Comparação entre altura dos personagens femininos e masculinos de Star Wars
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+require(dplyr)
+
+altura <- starwars %>%
+  rename(., Altura = height) %>%
+  rename(., Gênero = gender) 
+
+altura$Gênero[altura$Gênero == "feminine"] <- "Feminino"
+altura$Gênero[altura$Gênero == "masculine"] <- "Masculino"
+
+altura1 <- altura %>%
+  filter(Gênero == "Feminino" | Gênero == "Masculino")
+
+ggplot(altura1) +
+  aes(x = Altura, fill = Gênero, color = Gênero) +
+  geom_density(alpha = 0.1, na.rm = TRUE) +
+  labs(x = "Altura (cm)", y = "Densidade") +
+  scale_color_manual(values = c(Feminino = "#DB0039", Masculino =  "#0D0084")) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+### Gráfico de dispersão
+
+Mostra a relação entre **duas** variáveis **quantitativas**.
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+#| label: fig-10
+#| echo: false
+#| fig-cap: |
+#|   Relação entre peso e altura dos personagens de Star Wars
+#| fig-alt: |
+#|   Dashboard Exports
+#| out.width: NULL
+
+require(ggplot2)
+require(dplyr)
+
+qtt <- starwars %>%
+  rename(., Altura = height) %>%
+  rename(., Peso = mass) 
+
+ggplot(qtt) +
+  aes(x = Altura, y = Peso) + 
+  geom_point(size = 4, color = "#DB0039") + 
+  ylim(0,180) +
+  labs(x = "Altura (cm)", y = "Peso (kg)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+

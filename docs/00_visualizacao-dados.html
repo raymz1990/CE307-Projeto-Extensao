@@ -34,10 +34,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -63,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="custom.css">
+}</script>
 </head>
 <body class="nav-sidebar floating">
 
@@ -86,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">CE 307 - Projeto de Extensão</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
@@ -104,6 +106,7 @@ ul.task-list li input[type="checkbox"] {
           </li>
       </ul>
 </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -168,14 +171,31 @@ ul.task-list li input[type="checkbox"] {
 </li>
     </ul>
 </div>
+    <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#motiva%C3%A7%C3%A3o" id="toc-motivação" class="nav-link active" data-scroll-target="#motiva%C3%A7%C3%A3o">Motivação</a>
+  <ul class="collapse">
+<li><a href="#gr%C3%A1ficos-animados" id="toc-gráficos-animados" class="nav-link" data-scroll-target="#gr%C3%A1ficos-animados">Gráficos Animados</a></li>
+  </ul>
+</li>
+  <li><a href="#elementos-visuais" id="toc-elementos-visuais" class="nav-link" data-scroll-target="#elementos-visuais">Elementos Visuais</a></li>
+  <li><a href="#tipos-de-vari%C3%A1veis" id="toc-tipos-de-variáveis" class="nav-link" data-scroll-target="#tipos-de-vari%C3%A1veis">Tipos de variáveis</a></li>
+  <li>
+<a href="#tipos-de-gr%C3%A1ficos" id="toc-tipos-de-gráficos" class="nav-link" data-scroll-target="#tipos-de-gr%C3%A1ficos">Tipos de gráficos</a>
+  <ul class="collapse">
+<li><a href="#gr%C3%A1fico-de-setores" id="toc-gráfico-de-setores" class="nav-link" data-scroll-target="#gr%C3%A1fico-de-setores">Gráfico de setores</a></li>
+  <li><a href="#gr%C3%A1fico-de-barras" id="toc-gráfico-de-barras" class="nav-link" data-scroll-target="#gr%C3%A1fico-de-barras">Gráfico de barras</a></li>
+  <li><a href="#histograma" id="toc-histograma" class="nav-link" data-scroll-target="#histograma">Histograma</a></li>
+  <li><a href="#gr%C3%A1fico-de-densidade" id="toc-gráfico-de-densidade" class="nav-link" data-scroll-target="#gr%C3%A1fico-de-densidade">Gráfico de densidade</a></li>
+  <li><a href="#gr%C3%A1fico-de-dispers%C3%A3o" id="toc-gráfico-de-dispersão" class="nav-link" data-scroll-target="#gr%C3%A1fico-de-dispers%C3%A3o">Gráfico de dispersão</a></li>
+  </ul>
+</li>
+  </ul></nav>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-<li><a href="#introdu%C3%A7%C3%A3o" id="toc-introdução" class="nav-link active" data-scroll-target="#introdu%C3%A7%C3%A3o">Introdução</a></li>
-  </ul></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -193,13 +213,22 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header><section id="introdução" class="level2"><h2 class="anchored" data-anchor-id="introdução">Introdução</h2>
+</header><p>Neste módulo, iremos introduzi-los à criação de gráficos simples no R, por meio de 4 etapas:</p>
+<ul>
+<li>Introdução ao pacote <code>ggplot</code> para visualização de dados;</li>
+<li>Criação de gráficos de barras, histogramas, gráficos de setores e de dispersão;</li>
+<li>Personalização básica de gráficos: títulos, eixos, cores;</li>
+<li>Resolução de exercício e Quizz.</li>
+</ul>
+<section id="motivação" class="level2"><h2 class="anchored" data-anchor-id="motivação">Motivação</h2>
 <p>Tudo provém de dados. E, quando se trabalha com dados, a necessidade de criar visualizações é inevitável - muitas vezes, é melhor demonstrar do que apenas descrever. A criação de visualizações de dados é tanto uma arte quanto uma ciência, pois combina estética com precisão analítica. Transformar dados em histórias visuais envolventes é uma habilidade fundamental para quem trabalha com grandes volumes de informação.</p>
-<div class="cell" data-layout-align="left">
+<p>Abaixo temos alguns exemplos de visualizações e gráficos interessantes feitos no R:</p>
+<section id="gráficos-animados" class="level3"><h3 class="anchored" data-anchor-id="gráficos-animados">Gráficos Animados</h3>
+<div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-data-vizualization" class="quarto-figure quarto-figure-left quarto-float anchored" data-fig-align="left" alt="Dashboard Exports ">
+<div id="fig-data-vizualization" class="quarto-figure quarto-figure-center quarto-float anchored" data-fig-align="center" alt="Dashboard Exports ">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-data-vizualization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="./img/img1.png" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="Dashboard Exports " width="579">
+<img src="00_visualizacao-dados_files/figure-html/fig-data-vizualization-1.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Dashboard Exports ">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-data-vizualization-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Uma imagem vale mais que mil palavras
@@ -207,17 +236,140 @@ Figure&nbsp;1: Uma imagem vale mais que mil palavras
 </div>
 </div>
 </div>
-<p>O <strong>R</strong> é uma ferramenta que oferece vários sistemas para criar gráficos, mas o <code>ggplot</code> é um dos mais elegantes e versáteis. O <code>ggplot</code> implementa a gramática dos gráficos, um sistema coerente para descrever e construir visualizações de maneira padronizada. Com o <code>ggplot</code>, você pode fazer mais de forma rápida, aprendendo uma única estrutura e aplicando-a em diversos contextos.</p>
-<p>Nasta aula, você aprenderá a visualizar seus dados usando o <code>ggplot</code>, focada em 4 capítulos:</p>
+<section id="fig-2" class="level4"><h4 class="anchored" data-anchor-id="fig-2"><strong>Figura 2</strong></h4>
+<section id="mapa" class="level5"><h5 class="anchored" data-anchor-id="mapa"><em>Mapa</em></h5>
+</section></section><section id="fig-3" class="level4"><h4 class="anchored" data-anchor-id="fig-3"><strong>Figura 3</strong></h4>
+<section id="comparação-entre-altura-dos-personagens-femininos-e-masculinos-de-star-wars" class="level5"><h5 class="anchored" data-anchor-id="comparação-entre-altura-dos-personagens-femininos-e-masculinos-de-star-wars"><em>Comparação entre altura dos personagens femininos e masculinos de Star Wars</em></h5>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="00_visualizacao-dados_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="fig-4" class="level4"><h4 class="anchored" data-anchor-id="fig-4"><strong>Figura 4</strong></h4>
+<section id="exemplo-de-gráfico-do-brasileirão" class="level5"><h5 class="anchored" data-anchor-id="exemplo-de-gráfico-do-brasileirão"><em>Exemplo de gráfico do Brasileirão</em></h5>
+</section></section></section></section><section id="elementos-visuais" class="level2"><h2 class="anchored" data-anchor-id="elementos-visuais">Elementos Visuais</h2>
+<p>Os gráficos e as visualizações são usados para organizar e resumir informações contidas em dados, permitindo uma percepção visual de forma mais rápida e dinâmica e induzindo o espectador a pensar sobre o assunto tratado. Nesse contexto, Edward Tufte, professor emérito de Estatística da Universidade de Yale, definiu alguns princípios sobre como obter gráficos de excelência:</p>
+<ol type="1">
+<li>Acima de tudo, mostre os dados.</li>
+<li>Maximize a taxa de dados e tinta.</li>
+<li>Apague a tinta que não é de dados.</li>
+<li>Apague a tinta de dados redundantes.</li>
+<li>Revise e edite.</li>
+</ol>
+<p>Por outro lado, tão importante quanto saber fazer gráficos, é saber analisá-los com um senso crítico, questionando a origem dos dados usados, verificando se há parcialidade, averiguando se os resultados apresentados são consistentes e analisando se as informações foram apresentadas da maneira mais eficiente possível. Nesse sentido, fica de sugestão ao leitor o livro “Como mentir com estatística”, de Darrell Huff, que mostra as diversas maneiras que a estatística pode ser usada para enganar as pessoas, sendo uma delas a distorção de gráficos. Para ilustrar isso, logo abaixo temos exemplos de gráficos não efetivos:</p>
+<section id="fig-5" class="level4"><h4 class="anchored" data-anchor-id="fig-5"><strong>Figura 5</strong></h4>
+<section id="gráfico-de-setores-com-muitas-informações" class="level5"><h5 class="anchored" data-anchor-id="gráfico-de-setores-com-muitas-informações"><em>Gráfico de setores com muitas informações</em></h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://www.hashtagtreinamentos.com/wp-content/uploads/2022/04/Erros-no-Grafico-de-Pizza-1.png" class="img-fluid figure-img"></p>
+<figcaption>Fonte:https://www.hashtagtreinamentos.com/erros-no-grafico-de-pizza-no-power-bi</figcaption></figure>
+</div>
+</section></section><section id="fig-6" class="level4"><h4 class="anchored" data-anchor-id="fig-6"><strong>Figura 6</strong></h4>
+<section id="gráfico-de-barras-com-eixo-y-distorcido" class="level5"><h5 class="anchored" data-anchor-id="gráfico-de-barras-com-eixo-y-distorcido"><em>Gráfico de barras com eixo Y distorcido</em></h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2014/04/000blog.png" class="img-fluid figure-img"></p>
+<figcaption>Fonte: https://gizmodo.uol.com.br/mentir-visualizacao-dados/</figcaption></figure>
+</div>
+</section></section><section id="fig-7" class="level4"><h4 class="anchored" data-anchor-id="fig-7"><strong>Figura 7</strong></h4>
+<section id="gráfico-de-linha-com-eixo-y-invertido-e-cor-desnecessária" class="level5"><h5 class="anchored" data-anchor-id="gráfico-de-linha-com-eixo-y-invertido-e-cor-desnecessária"><em>Gráfico de linha com eixo Y invertido e cor desnecessária</em></h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2014/04/misleading3_deaths-595x745.jpg" class="img-fluid figure-img"></p>
+<figcaption>Fonte: https://gizmodo.uol.com.br/mentir-visualizacao-dados/</figcaption></figure>
+</div>
+</section></section><section id="fig-8" class="level4"><h4 class="anchored" data-anchor-id="fig-8"><strong>Figura 8</strong></h4>
+<section id="gráfico-de-setores-totalizando-mais-de-100" class="level5"><h5 class="anchored" data-anchor-id="gráfico-de-setores-totalizando-mais-de-100"><em>Gráfico de setores totalizando mais de 100%</em></h5>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://gizmodo.uol.com.br/wp-content/blogs.dir/8/files/2014/04/misleading3_pie.png" class="img-fluid figure-img"></p>
+<figcaption>Fonte:https://gizmodo.uol.com.br/mentir-visualizacao-dados/</figcaption></figure>
+</div>
+</section></section></section><section id="tipos-de-variáveis" class="level2"><h2 class="anchored" data-anchor-id="tipos-de-variáveis">Tipos de variáveis</h2>
+<p>Para sabermos qual tipo de gráfico é ideal para um determinado conjunto de dados, primeiramente é necessário conhecermos os tipos das variáveis estudadas.</p>
+<p>Uma variável é uma característica de interesse que geralmente varia entre elementos de uma população, podendo ser classificada da seguinte forma:</p>
+<ol type="1">
+<li>Variáveis Qualitativas (ou Categóricas): são características definidas por várias categorias. Podem ser nominais ou ordinais.</li>
+</ol>
 <ul>
-<li>Introdução ao pacote <code>ggplot</code> para visualização de dados;</li>
-<li>Crição de gráficos de barras, histogramas e gráficos de dispersão;</li>
-<li>Personalização básica de gráficos: títulos, eixos, cores;</li>
-<li>Exercício: Criar um gráfico de barras para visualizar as notas dos alunos em uma determinada disciplina.</li>
+<li>Nominais: características que não possuem ordenação entre suas categorias. Exemplos: sexo, raça.</li>
+<li>Ordinais: características que possuem ordenação entre suas categorias. Exemplos: escolaridade, estágio de uma doença.</li>
 </ul>
+<ol start="2" type="1">
+<li>Variáveis Quantitativas: são características que apresentam valores numéricos e podem ser medidas em uma escala quantitativa. Podem ser discretas ou contínuas.</li>
+</ol>
+<ul>
+<li>Discretas: características que assumem apenas um número finito ou enumerável de valores, isto é, assumem valores inteiros. Geralmente são o resultado de contagens. Exemplo: número de filhos.</li>
+<li>Contínuas: características que assumem valores no conjuntos dos reais, em uma escala contínua. Exemplo: peso.</li>
+</ul>
+<p>Alguns pontos importantes a serem observados são:</p>
+<ul>
+<li>Uma variável originalmente quantitativa pode ser coletada de forma qualitativa. Exemplo: idade é uma variável quantitativa contínua, mas se for informada apenas a faixa etária (0 a 10 anos, 11 a 20 anos, etc.) é qualitativa ordinal.</li>
+<li>Uma variável representada por números nem sempre é numérica. Exemplo: número da identidade.</li>
+</ul></section><section id="tipos-de-gráficos" class="level2"><h2 class="anchored" data-anchor-id="tipos-de-gráficos">Tipos de gráficos</h2>
+<p>Conhecendo agora os tipos de variáveis, é possível compreender quais gráficos representam melhor um determinado conjunto de dados! Para mostrar isso, vamos usar a base de dados <code>starwars</code> do pacote <code>dplyr</code> do R.</p>
+<section id="gráfico-de-setores" class="level3"><h3 class="anchored" data-anchor-id="gráfico-de-setores">Gráfico de setores</h3>
+<p>Compara categorias de variáveis <strong>qualitativas</strong>.</p>
+<section id="fig-9" class="level4"><h4 class="anchored" data-anchor-id="fig-9"><strong>Figura 9</strong></h4>
+<section id="proporção-de-personagens-femininos-e-masculinos-de-star-wars" class="level5"><h5 class="anchored" data-anchor-id="proporção-de-personagens-femininos-e-masculinos-de-star-wars"><em>Proporção de personagens femininos e masculinos de Star Wars</em></h5>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="00_visualizacao-dados_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section></section><section id="gráfico-de-barras" class="level3"><h3 class="anchored" data-anchor-id="gráfico-de-barras">Gráfico de barras</h3>
+<p>Compara categorias de variáveis <strong>qualitativas</strong>, podendo ser usado também para variáveis <strong>quantitativas discretas</strong> que assumem poucos valores.</p>
+<section id="fig-10" class="level4"><h4 class="anchored" data-anchor-id="fig-10"><strong>Figura 10</strong></h4>
+<section id="número-de-personagens-femininos-e-masculinos-em-star-wars" class="level5"><h5 class="anchored" data-anchor-id="número-de-personagens-femininos-e-masculinos-em-star-wars"><em>Número de personagens femininos e masculinos em Star Wars</em></h5>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="00_visualizacao-dados_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section></section><section id="histograma" class="level3"><h3 class="anchored" data-anchor-id="histograma">Histograma</h3>
+<p>Mostra a distribuição de uma variável <strong>quantitativa</strong>.</p>
+<section id="fig-11" class="level4"><h4 class="anchored" data-anchor-id="fig-11"><strong>Figura 11</strong></h4>
+<section id="altura-dos-personagens-de-star-wars" class="level5"><h5 class="anchored" data-anchor-id="altura-dos-personagens-de-star-wars"><em>Altura dos personagens de Star Wars</em></h5>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="00_visualizacao-dados_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section></section><section id="gráfico-de-densidade" class="level3"><h3 class="anchored" data-anchor-id="gráfico-de-densidade">Gráfico de densidade</h3>
+<p>Mostra a distribuição de uma variável <strong>quantitativa</strong>.</p>
+<section id="fig-12" class="level4"><h4 class="anchored" data-anchor-id="fig-12"><strong>Figura 12</strong></h4>
+<section id="comparação-entre-altura-dos-personagens-femininos-e-masculinos-de-star-wars-1" class="level5"><h5 class="anchored" data-anchor-id="comparação-entre-altura-dos-personagens-femininos-e-masculinos-de-star-wars-1"><em>Comparação entre altura dos personagens femininos e masculinos de Star Wars</em></h5>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="00_visualizacao-dados_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section></section><section id="gráfico-de-dispersão" class="level3"><h3 class="anchored" data-anchor-id="gráfico-de-dispersão">Gráfico de dispersão</h3>
+<p>Mostra a relação entre <strong>duas</strong> variáveis <strong>quantitativas</strong>.</p>
+<section id="fig-13" class="level4"><h4 class="anchored" data-anchor-id="fig-13"><strong>Figura 13</strong></h4>
+<section id="relação-entre-peso-e-altura-dos-personagens-de-star-wars" class="level5"><h5 class="anchored" data-anchor-id="relação-entre-peso-e-altura-dos-personagens-de-star-wars"><em>Relação entre peso e altura dos personagens de Star Wars</em></h5>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="00_visualizacao-dados_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -237,6 +389,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {

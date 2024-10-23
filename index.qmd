@@ -20,24 +20,8 @@ Relações entre universidade e sociedade; Fundamentos e metodologias de extens�
 
 ## Referências bibliográficas 
 
-1. SOUSA, A. – **A História da Extensão Universitária**, Editora Alinea, 2010. 
-2. TAVARES, C.; FREITAS, K. - **Extensão Universitária: O Patinho Feio da Academia?**, 1° edição. Paco Editorial, 2016.
-3. FÓRUM DE PRÓ-REITORES DE EXTENSÃO DAS UNIVERSIDADES PÚBLICAS BRASILEIRAS. **Plano Nacional de Extensão Universitária**. Ilhéus; Editus, 2001.
-4. GONÇALVES, H. - **Manual de Projetos de Extensão Universitária**, Editora A.
-5. MORETTIN, P. A.; SINGER, J. M. **Estatística e Ciência de Dados**. LTC, 2022.
-6. CAIRO, A. **The Functional Art: An introduction to information graphics and visualization**. New Riders, 2012.
-
-
-## Conteúdo Programático
-
-* [**Introdução à Visualização de Dados**](@sec-data-visualization)
-  * [O Pacote ggplot2](@sec-intro-ggplot2)
-  * [Construção de gráficos com o ggplot2]()
-  * [Exercícios]()
-  * Quizz
-
----
-
-* [Outros exemplos de gráficos no R]()
-
+1. ARA, A. **Elementos Visuais**. 2023. 50 slides
+2. GYSI, D. M. **CE302 - Elementos de Programação para Estatística**. Disponível em: https://gysi.quarto.pub/ce302/. Acesso em: 19 out. 2024.
+3. NOVAES NETTO, A. R.; BESSEGATO, L. F. **Educação Estatística no Ensino Médio: A Leitura de Gráficos**. Revista de Investigação e Divulgação em Educação Matemática, v. 6, n. 1, 10 dez. 2022. Disponível em: https://periodicos.ufjf.br/index.php/ridema/article/view/39355/25281. Acesso em: 19 out. 2024.
+4. SHIMAKURA, S. Disponível em: http://leg.ufpr.br/~silvia/CE055/node6.html. Acesso em: 19 out. 2024.
 

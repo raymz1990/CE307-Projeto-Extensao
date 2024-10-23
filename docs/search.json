@@ -4,7 +4,7 @@
     "href": "00_visualizacao-dados.html",
     "title": "Visualização de Dados",
     "section": "",
-    "text": "Introdução\nTudo provém de dados. E, quando se trabalha com dados, a necessidade de criar visualizações é inevitável - muitas vezes, é melhor demonstrar do que apenas descrever. A criação de visualizações de dados é tanto uma arte quanto uma ciência, pois combina estética com precisão analítica. Transformar dados em histórias visuais envolventes é uma habilidade fundamental para quem trabalha com grandes volumes de informação.\nFigure 1: Uma imagem vale mais que mil palavras\nO R é uma ferramenta que oferece vários sistemas para criar gráficos, mas o ggplot é um dos mais elegantes e versáteis. O ggplot implementa a gramática dos gráficos, um sistema coerente para descrever e construir visualizações de maneira padronizada. Com o ggplot, você pode fazer mais de forma rápida, aprendendo uma única estrutura e aplicando-a em diversos contextos.\nNasta aula, você aprenderá a visualizar seus dados usando o ggplot, focada em 4 capítulos:",
+    "text": "Motivação\nTudo provém de dados. E, quando se trabalha com dados, a necessidade de criar visualizações é inevitável - muitas vezes, é melhor demonstrar do que apenas descrever. A criação de visualizações de dados é tanto uma arte quanto uma ciência, pois combina estética com precisão analítica. Transformar dados em histórias visuais envolventes é uma habilidade fundamental para quem trabalha com grandes volumes de informação.\nAbaixo temos alguns exemplos de visualizações e gráficos interessantes feitos no R:",
     "crumbs": [
       "Visualização de Dados"
     ]
@@ -86,7 +86,7 @@
     "href": "index.html#referências-bibliográficas",
     "title": "CE 307 - Projeto de Extensão",
     "section": "Referências bibliográficas",
-    "text": "Referências bibliográficas\n\nSOUSA, A. – A História da Extensão Universitária, Editora Alinea, 2010.\nTAVARES, C.; FREITAS, K. - Extensão Universitária: O Patinho Feio da Academia?, 1° edição. Paco Editorial, 2016.\nFÓRUM DE PRÓ-REITORES DE EXTENSÃO DAS UNIVERSIDADES PÚBLICAS BRASILEIRAS. Plano Nacional de Extensão Universitária. Ilhéus; Editus, 2001.\nGONÇALVES, H. - Manual de Projetos de Extensão Universitária, Editora A.\nMORETTIN, P. A.; SINGER, J. M. Estatística e Ciência de Dados. LTC, 2022.\nCAIRO, A. The Functional Art: An introduction to information graphics and visualization. New Riders, 2012.",
+    "text": "Referências bibliográficas\n\nARA, A. Elementos Visuais. 2023. 50 slides\nGYSI, D. M. CE302 - Elementos de Programação para Estatística. Disponível em: https://gysi.quarto.pub/ce302/. Acesso em: 19 out. 2024.\nNOVAES NETTO, A. R.; BESSEGATO, L. F. Educação Estatística no Ensino Médio: A Leitura de Gráficos. Revista de Investigação e Divulgação em Educação Matemática, v. 6, n. 1, 10 dez. 2022. Disponível em: https://periodicos.ufjf.br/index.php/ridema/article/view/39355/25281. Acesso em: 19 out. 2024.\nSHIMAKURA, S. Disponível em: http://leg.ufpr.br/~silvia/CE055/node6.html. Acesso em: 19 out. 2024.",
     "crumbs": [
       "Apresentação"
     ]
@@ -220,6 +220,298 @@
     "crumbs": [
       "Visualização de Dados",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Exemplos de gráficos no R</span>"
+    ]
+  },
+  {
+    "objectID": "00_visualizacao-dados.html#motivação",
+    "href": "00_visualizacao-dados.html#motivação",
+    "title": "Visualização de Dados",
+    "section": "",
+    "text": "Gráficos Animados\n\n\n\n\n\n\n\nFigure 1: Uma imagem vale mais que mil palavras\n\n\n\n\nFigura 2\nMapa\nFigura 3\nComparação entre altura dos personagens femininos e masculinos de Star Wars\n\n\n\n\n\n\n\n\nFigura 4\nExemplo de gráfico do Brasileirão",
+    "crumbs": [
+      "Visualização de Dados"
+    ]
+  },
+  {
+    "objectID": "00_visualizacao-dados.html#elementos-visuais",
+    "href": "00_visualizacao-dados.html#elementos-visuais",
+    "title": "Visualização de Dados",
+    "section": "Elementos Visuais",
+    "text": "Elementos Visuais\nOs gráficos e as visualizações são usados para organizar e resumir informações contidas em dados, permitindo uma percepção visual de forma mais rápida e dinâmica e induzindo o espectador a pensar sobre o assunto tratado. Nesse contexto, Edward Tufte, professor emérito de Estatística da Universidade de Yale, definiu alguns princípios sobre como obter gráficos de excelência:\n\nAcima de tudo, mostre os dados.\nMaximize a taxa de dados e tinta.\nApague a tinta que não é de dados.\nApague a tinta de dados redundantes.\nRevise e edite.\n\nPor outro lado, tão importante quanto saber fazer gráficos, é saber analisá-los com um senso crítico, questionando a origem dos dados usados, verificando se há parcialidade, averiguando se os resultados apresentados são consistentes e analisando se as informações foram apresentadas da maneira mais eficiente possível. Nesse sentido, fica de sugestão ao leitor o livro “Como mentir com estatística”, de Darrell Huff, que mostra as diversas maneiras que a estatística pode ser usada para enganar as pessoas, sendo uma delas a distorção de gráficos. Para ilustrar isso, logo abaixo temos exemplos de gráficos não efetivos:\nFigura 5\nGráfico de setores com muitas informações\n\n\nFonte:https://www.hashtagtreinamentos.com/erros-no-grafico-de-pizza-no-power-bi\n\nFigura 6\nGráfico de barras com eixo Y distorcido\n\n\nFonte: https://gizmodo.uol.com.br/mentir-visualizacao-dados/\n\nFigura 7\nGráfico de linha com eixo Y invertido e cor desnecessária\n\n\nFonte: https://gizmodo.uol.com.br/mentir-visualizacao-dados/\n\nFigura 8\nGráfico de setores totalizando mais de 100%\n\n\nFonte:https://gizmodo.uol.com.br/mentir-visualizacao-dados/",
+    "crumbs": [
+      "Visualização de Dados"
+    ]
+  },
+  {
+    "objectID": "00_visualizacao-dados.html#tipos-de-variáveis",
+    "href": "00_visualizacao-dados.html#tipos-de-variáveis",
+    "title": "Visualização de Dados",
+    "section": "Tipos de variáveis",
+    "text": "Tipos de variáveis\nPara sabermos qual tipo de gráfico é ideal para um determinado conjunto de dados, primeiramente é necessário conhecermos os tipos das variáveis estudadas.\nUma variável é uma característica de interesse que geralmente varia entre elementos de uma população, podendo ser classificada da seguinte forma:\n\nVariáveis Qualitativas (ou Categóricas): são características definidas por várias categorias. Podem ser nominais ou ordinais.\n\n\nNominais: características que não possuem ordenação entre suas categorias. Exemplos: sexo, raça.\nOrdinais: características que possuem ordenação entre suas categorias. Exemplos: escolaridade, estágio de uma doença.\n\n\nVariáveis Quantitativas: são características que apresentam valores numéricos e podem ser medidas em uma escala quantitativa. Podem ser discretas ou contínuas.\n\n\nDiscretas: características que assumem apenas um número finito ou enumerável de valores, isto é, assumem valores inteiros. Geralmente são o resultado de contagens. Exemplo: número de filhos.\nContínuas: características que assumem valores no conjuntos dos reais, em uma escala contínua. Exemplo: peso.\n\nAlguns pontos importantes a serem observados são:\n\nUma variável originalmente quantitativa pode ser coletada de forma qualitativa. Exemplo: idade é uma variável quantitativa contínua, mas se for informada apenas a faixa etária (0 a 10 anos, 11 a 20 anos, etc.) é qualitativa ordinal.\nUma variável representada por números nem sempre é numérica. Exemplo: número da identidade.",
+    "crumbs": [
+      "Visualização de Dados"
+    ]
+  },
+  {
+    "objectID": "00_visualizacao-dados.html#tipos-de-gráficos",
+    "href": "00_visualizacao-dados.html#tipos-de-gráficos",
+    "title": "Visualização de Dados",
+    "section": "Tipos de gráficos",
+    "text": "Tipos de gráficos\nConhecendo agora os tipos de variáveis, é possível compreender quais gráficos representam melhor um determinado conjunto de dados! Para mostrar isso, vamos usar a base de dados starwars do pacote dplyr do R.\nGráfico de setores\nCompara categorias de variáveis qualitativas.\nFigura 9\nProporção de personagens femininos e masculinos de Star Wars\n\n\n\n\n\n\n\n\nGráfico de barras\nCompara categorias de variáveis qualitativas, podendo ser usado também para variáveis quantitativas discretas que assumem poucos valores.\nFigura 10\nNúmero de personagens femininos e masculinos em Star Wars\n\n\n\n\n\n\n\n\nHistograma\nMostra a distribuição de uma variável quantitativa.\nFigura 11\nAltura dos personagens de Star Wars\n\n\n\n\n\n\n\n\nGráfico de densidade\nMostra a distribuição de uma variável quantitativa.\nFigura 12\nComparação entre altura dos personagens femininos e masculinos de Star Wars\n\n\n\n\n\n\n\n\nGráfico de dispersão\nMostra a relação entre duas variáveis quantitativas.\nFigura 13\nRelação entre peso e altura dos personagens de Star Wars",
+    "crumbs": [
+      "Visualização de Dados"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html",
+    "href": "01_visualizacao-dados.html",
+    "title": "1  Motivação",
+    "section": "",
+    "text": "1.1 Gráficos Animados utilizando o gganimate\nFigure 1.1: Gráfico animado do pacote datasauRus",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html#motivação",
+    "href": "01_visualizacao-dados.html#motivação",
+    "title": "1  Visualização de Dados",
+    "section": "",
+    "text": "1.1.1 Gráficos Animados utilizando o gganimate\n\n\n\n\n\n\n\n\nFigure 1.1: Gráfico animado do pacote datasauRus\n\n\n\n\n\n1.1.2 Gráfico 3D utilizando o plotly\n\n\n\n\n\n\n\n\nFigure 1.2: Gráfico básico 3D da superfície de um vulcão\n\n\n\n\n1.1.2.0.1 Mapa\n\n\n\n\n\n\n\n\nFigure 1.3: Gráfico básico 3D da superfície de um vulcão\n\n\n\n\n1.1.2.1 Figura 3\n\n\n1.1.2.1.1 Comparação entre altura dos personagens femininos e masculinos de Star Wars\n\n\n\n\n\n\n\n\n\n\n1.1.2.2 Figura 4\n\n\n1.1.2.2.1 Exemplo de gráfico do Brasileirão",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Visualização de Dados</span>"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html#elementos-visuais",
+    "href": "01_visualizacao-dados.html#elementos-visuais",
+    "title": "1  Motivação",
+    "section": "\n1.6 Elementos Visuais",
+    "text": "1.6 Elementos Visuais\nOs gráficos e as visualizações são usados para organizar e resumir informações contidas em dados, permitindo uma percepção visual de forma mais rápida e dinâmica e induzindo o espectador a pensar sobre o assunto tratado. Nesse contexto, Edward Tufte, professor emérito de Estatística da Universidade de Yale, definiu alguns princípios sobre como obter gráficos de excelência:\n\nAcima de tudo, mostre os dados.\nMaximize a taxa de dados e tinta.\nApague a tinta que não é de dados.\nApague a tinta de dados redundantes.\nRevise e edite.\n\nPor outro lado, tão importante quanto saber fazer gráficos, é saber analisá-los com um senso crítico, questionando a origem dos dados usados, verificando se há parcialidade, averiguando se os resultados apresentados são consistentes e analisando se as informações foram apresentadas da maneira mais eficiente possível. Nesse sentido, fica de sugestão ao leitor o livro “Como mentir com estatística”, de Darrell Huff, que mostra as diversas maneiras que a estatística pode ser usada para enganar as pessoas, sendo uma delas a distorção de gráficos. Para ilustrar isso, logo abaixo temos exemplos de gráficos não efetivos:\n\n1.6.1 Gráfico de setores com muitas informações\n\n\nFonte:https://www.hashtagtreinamentos.com/erros-no-grafico-de-pizza-no-power-bi\n\n\n1.6.2 Gráfico de barras com eixo Y distorcido\n\n\nFonte: https://gizmodo.uol.com.br/mentir-visualizacao-dados/\n\n\n1.6.3 Gráfico de linha com eixo Y invertido e cor desnecessária\n\n\nFonte: https://gizmodo.uol.com.br/mentir-visualizacao-dados/\n\n\n1.6.4 Gráfico de setores totalizando mais de 100%\n\n\nFonte:https://gizmodo.uol.com.br/mentir-visualizacao-dados/",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html#tipos-de-variáveis",
+    "href": "01_visualizacao-dados.html#tipos-de-variáveis",
+    "title": "1  Motivação",
+    "section": "\n1.7 Tipos de variáveis",
+    "text": "1.7 Tipos de variáveis\nPara sabermos qual tipo de gráfico é ideal para um determinado conjunto de dados, primeiramente é necessário conhecermos os tipos das variáveis estudadas.\nUma variável é uma característica de interesse que geralmente varia entre elementos de uma população, podendo ser classificada da seguinte forma:\n\nVariáveis Qualitativas (ou Categóricas): são características definidas por várias categorias. Podem ser nominais ou ordinais. - Nominais: características que não possuem ordenação entre suas categorias. Exemplos: sexo, raça. - Ordinais: características que possuem ordenação entre suas categorias. Exemplos: escolaridade, estágio de uma doença.\nVariáveis Quantitativas: são características que apresentam valores numéricos e podem ser medidas em uma escala quantitativa. Podem ser discretas ou contínuas. - Discretas: características que assumem apenas um número finito ou enumerável de valores, isto é, assumem valores inteiros. Geralmente são o resultado de contagens. Exemplo: número de filhos. - Contínuas: características que assumem valores no conjuntos dos reais, em uma escala contínua. Exemplo: peso.\n\nAlguns pontos importantes a serem observados são:\n\nUma variável originalmente quantitativa pode ser coletada de forma qualitativa. Exemplo: idade é uma variável quantitativa contínua, mas se for informada apenas a faixa etária (0 a 10 anos, 11 a 20 anos, etc.) é qualitativa ordinal.\nUma variável representada por números nem sempre é numérica. Exemplo: número da identidade.",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html#tipos-de-gráficos",
+    "href": "01_visualizacao-dados.html#tipos-de-gráficos",
+    "title": "1  Motivação",
+    "section": "\n1.8 Tipos de gráficos",
+    "text": "1.8 Tipos de gráficos\nConhecendo agora os tipos de variáveis, é possível compreender quais gráficos representam melhor um determinado conjunto de dados! Para mostrar isso, vamos usar a base de dados starwars do pacote dplyr do R.\n\n1.8.1 Gráfico de setores\nCompara categorias de variáveis qualitativas.\n\n\n\n\n\n\n\nFigure 1.7: Proporção de personagens femininos e masculinos de Star Wars\n\n\n\n\n\n1.8.2 Gráfico de barras\nCompara categorias de variáveis qualitativas, podendo ser usado também para variáveis quantitativas discretas que assumem poucos valores.\n\n\n\n\n\n\n\nFigure 1.8: Número de personagens femininos e masculinos em Star Wars\n\n\n\n\n\n1.8.3 Histograma\nMostra a distribuição de uma variável quantitativa.\n\n\n\n\n\n\n\nFigure 1.9: Altura dos personagens de Star Wars\n\n\n\n\n\n1.8.4 Gráfico de densidade\nMostra a distribuição de uma variável quantitativa.\n\n\n\n\n\n\n\nFigure 1.10: Comparação entre altura dos personagens femininos e masculinos de Star Wars\n\n\n\n\n\n1.8.5 Gráfico de dispersão\nMostra a relação entre duas variáveis quantitativas.\n\n\n\n\n\n\n\nFigure 1.11: Relação entre peso e altura dos personagens de Star Wars",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "02_intro-ggplot.html",
+    "href": "02_intro-ggplot.html",
+    "title": "2  O pacote ggplot2",
+    "section": "",
+    "text": "2.1 Galerias\nExistem inúmeras possibilidades de construção de gráficos com o ggplot2 para a visualização de dados utilizando o R. Ele permitem criar praticamente qualquer tipo de gráfico.\nFigure 2.1: Tipos de gráficos do pacote ggplot2\nAlgumas demonstrações exemplos podem ser verificados em https://www.r-graph-gallery.com/portfolio/ggplot2-package/",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>O pacote `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "02_intro-ggplot.html#instalação-do-pacote-ggplot2",
+    "href": "02_intro-ggplot.html#instalação-do-pacote-ggplot2",
+    "title": "2  O pacote ggplot2",
+    "section": "\n2.3 Instalação do pacote ggplot2\n",
+    "text": "2.3 Instalação do pacote ggplot2\n\nPara começar a construir os primeiros gráficos utilizando o pacote ggplot2, é necessário, primeiramente, instalar e carregar o pacote antes de rodar os gráficos\n\ninstall.packages(\"ggplot2\")\nlibrary(ggplot2)",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>O pacote `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html",
+    "href": "03_graphics.html",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "",
+    "text": "3.1 Carregando o Dataset\nRurl &lt;- \"https://raw.githubusercontent.com/raymz1990/CE307-Projeto-Extensao/refs/heads/main/data/serie_a_2010_2024.csv\"\ndados &lt;- read.csv(file = url,\n                  header = TRUE,     \n                  sep = \",\",          \n                  # quote = \"\",      \n                  stringsAsFactors = FALSE)",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html#histogramas",
+    "href": "03_graphics.html#histogramas",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "\n3.4 Histogramas",
+    "text": "3.4 Histogramas\nO Histograma exibe a frequência com que diferentes intervalos de valores (conhecidos como “bins”) ocorrem em um conjunto de dados. Cada barra do histograma representa a quantidade de dados que se enquadra em um determinado intervalo, com barras mais altas indicando maior ocorrência de valores naquela faixa.\n\n3.4.1 Utilidade:\n\n\nVerificação da qualidade dos dados: Histograma ajuda a identificar se há concentrações inesperadas ou valores atípicos (outliers) em certas faixas de dados.\n\nComparação de distribuições entre grupos: Comparar como diferentes grupos (por exemplo, times, rodadas) se distribuem em termos de variáveis como gols ou público.\n\n3.4.2 Exemplo de Aplicação:\nAo gerar um histograma para o número de gols marcados por rodada, você pode visualizar quantas vezes um time marcou dentro de um intervalo de valores, como entre 0 e 5 gols, permitindo identificar a frequência dos resultados mais comuns.\n\nAgora, vou criar um histograma para ilustrar esse conceito.\n\nR# Carregando biblioteca\nlibrary(ggplot2)\nlibrary(tidyverse)\n\n# dados do histograma\nhistograma &lt;- dados %&gt;%\n  filter(ano_campeonato == 2023) %&gt;%\n  group_by(rodada) %&gt;%\n  summarize(\n    gols_mandante = sum(gols_mandante, na.rm = TRUE)\n  )\n\n# Gerando o histograma\nggplot(histograma, aes(x = gols_mandante)) +\n  geom_histogram(binwidth = 1, fill = \"blue\", color = \"black\") +\n  labs(title = \"Distribuição dos Gols Mandantes no Campeonato de 2023\", \n       x = \"Gols Mandantes\", \n       y = \"Frequência\") +\n  theme_minimal()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html#boxplots",
+    "href": "03_graphics.html#boxplots",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "\n3.3 Boxplots",
+    "text": "3.3 Boxplots\nO Boxplot exibe a distribuição dos dados com base em um resumo de cinco números. Ele fornece uma visão visual da tendência central dos dados, sua variabilidade e possíveis outliers. Cada boxplot é construído a partir de cinco valores: mínimo, primeiro quartil (Q1), mediana (Q2), terceiro quartil (Q3), e máximo. As “wiskers” (ou extremidades do gráfico) mostram a extensão da variabilidade dos dados, sem incluir os outliers.\n\n3.3.1 Resumo de cinco números:\n\n\nMínimo: O menor valor dos dados (desconsiderando outliers).\n\nPrimeiro Quartil (Q1): O ponto abaixo do qual 25% dos dados estão localizados.\n\nMediana (Q2): O valor central dos dados (50% dos dados estão abaixo e 50% acima).\n\nTerceiro Quartil (Q3): O ponto abaixo do qual 75% dos dados estão localizados.\n\nMáximo: O maior valor dos dados (desconsiderando outliers).\n\nAs “wiskers” (linhas verticais) mostram o alcance dos dados, enquanto os pontos fora das wiskers são considerados outliers.\n\n3.3.2 Utilidade:\n\n\nIdentificação de outliers: Boxplots são ótimos para identificar valores que estão muito distantes da maioria dos dados.\n\nDistribuição de dados: É possível ver a dispersão dos dados e a presença de qualquer assimetria (skewness) no conjunto de dados.\n\n3.3.3 Exemplo de Aplicação:\nAo gerar um boxplot para o número de gols marcados pelos times, você pode identificar times que têm uma variação de desempenho alta ou jogos com números de gols fora do padrão.\n\n\nR# Carregando biblioteca\nlibrary(ggplot2)\nlibrary(tidyverse)\n\n# Criando o dataframe\nboxplot &lt;- dados %&gt;%\n  filter(time_mandante %in% c(\"Coritiba FC\", \"Athletico-PR\", \"Paraná\")) \n\n# Gerar o boxplot\nggplot(boxplot, aes(x = time_mandante, y = publico)) +\n  geom_boxplot() +\n  # geom_boxplot(fill = \"lightblue\", color = \"black\") +\n  labs(title = \"Boxplot do Público por Time\", x = \"Time Mandante\", y = \"Público\") +\n  theme_minimal()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html#gráfico-scatterplot",
+    "href": "03_graphics.html#gráfico-scatterplot",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "\n3.4 Gráfico Scatterplot",
+    "text": "3.4 Gráfico Scatterplot\n\nRlibrary(ggplot2)\nlibrary(tidyverse)\n\ndados_rodada &lt;- dados %&gt;% \n  group_by(rodada) %&gt;%\n  summarize(media=mean(gols_mandante, na.rm = TRUE))\n\ndados_time &lt;- dados %&gt;% \n  group_by(rodada, time_mandante) %&gt;%\n  summarize(media=mean(gols_mandante, na.rm = TRUE))\nFALSE `summarise()` has grouped output by 'rodada'. You can override using the\nFALSE `.groups` argument.\n\ndados_rodada %&gt;% \n  ggplot(aes(x=rodada,y=media))+\n  geom_point()\n\ndados_time %&gt;% \n  ggplot(aes(x=rodada,y=media))+\n  geom_point()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRdados_rodada %&gt;% \n  ggplot(aes(x=rodada,y=media))+\n  geom_point(col=\"red\")+\n  theme_bw()\n\ndados_time %&gt;% \n  ggplot(aes(x=rodada,y=media,col=time_mandante))+\n  geom_point()+\n  theme_bw()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html#passo-1-definir-a-pontuação-de-mandantes-e-visitantes",
+    "href": "03_graphics.html#passo-1-definir-a-pontuação-de-mandantes-e-visitantes",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "\n3.5 Passo 1: Definir a Pontuação de Mandantes e Visitantes",
+    "text": "3.5 Passo 1: Definir a Pontuação de Mandantes e Visitantes\nPrimeiro, calcularemos a pontuação para o time mandante e o time visitante de acordo com o resultado da partida.\n\n3.5.1 1.1 Adicionar Pontuação dos Mandantes e Visitantes\n\nR# Adicionar a pontuação para o time mandante e visitante\ndados_pontos &lt;- dados %&gt;%\n  mutate(\n    pontos_mandante = case_when(\n      gols_mandante &gt; gols_visitante ~ 3,  # Vitória do mandante\n      gols_mandante == gols_visitante ~ 1, # Empate\n      TRUE ~ 0                             # Derrota do mandante\n    ),\n    pontos_visitante = case_when(\n      gols_visitante &gt; gols_mandante ~ 3,  # Vitória do visitante\n      gols_visitante == gols_mandante ~ 1, # Empate\n      TRUE ~ 0                             # Derrota do visitante\n    )\n  )",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html#passo-2-criar-a-tabela-de-pontuação-dos-times",
+    "href": "03_graphics.html#passo-2-criar-a-tabela-de-pontuação-dos-times",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "\n3.6 Passo 2: Criar a Tabela de Pontuação dos Times",
+    "text": "3.6 Passo 2: Criar a Tabela de Pontuação dos Times\nAgora que temos a pontuação de cada partida, podemos calcular a pontuação total para cada time, considerando tanto as partidas como mandante quanto como visitante.\n\n3.6.1 2.1 Unir as Pontuações de Mandante e Visitante\nVamos criar uma tabela única que combine as pontuações de times mandantes e visitantes.\n\nR# Criar uma tabela com a pontuação dos times como mandante\npontos_mandante &lt;- dados_pontos %&gt;%\n  group_by(time_mandante) %&gt;%\n  summarise(\n    pontos_mandante = sum(pontos_mandante),\n    jogos_mandante = n()\n  ) %&gt;%\n  rename(time = time_mandante)\n\n# Criar uma tabela com a pontuação dos times como visitante\npontos_visitante &lt;- dados_pontos %&gt;%\n  group_by(time_visitante) %&gt;%\n  summarise(\n    pontos_visitante = sum(pontos_visitante),\n    jogos_visitante = n()\n  ) %&gt;%\n  rename(time = time_visitante)\n\n# Unir as tabelas de pontuação de mandante e visitante\npontuacao_total &lt;- pontos_mandante %&gt;%\n  full_join(pontos_visitante, by = \"time\") %&gt;%\n  mutate(\n    pontos_totais = pontos_mandante + pontos_visitante,\n    jogos_totais = jogos_mandante + jogos_visitante\n  ) %&gt;%\n  arrange(pontos_totais)\n\n# Visualizar a tabela de pontuação total\nprint(pontuacao_total)\nFALSE # A tibble: 41 × 7\nFALSE   time         pontos_mandante jogos_mandante pontos_visitante\nFALSE   &lt;chr&gt;                  &lt;dbl&gt;          &lt;int&gt;            &lt;dbl&gt;\nFALSE 1 Paraná                    19             19                4\nFALSE 2 Barueri                   20             19               11\nFALSE 3 Joinville-SC              25             19                6\nFALSE 4 Santa Cruz                23             19                8\nFALSE 5 CSA                       23             19                9\nFALSE 6 Guarani                   30             19                7\nFALSE # ℹ 35 more rows\nFALSE # ℹ 3 more variables: jogos_visitante &lt;int&gt;, pontos_totais &lt;dbl&gt;, …",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html#passo-3-exibir-o-gráfico-de-pontuação-dos-times",
+    "href": "03_graphics.html#passo-3-exibir-o-gráfico-de-pontuação-dos-times",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "\n3.7 Passo 3: Exibir o Gráfico de Pontuação dos Times",
+    "text": "3.7 Passo 3: Exibir o Gráfico de Pontuação dos Times\n\n3.7.1 Agora podemos criar um gráfico de barras mostrando a pontuação total de cada time.\n\nR# Criar gráfico de barras da pontuação total dos times\nggplot(pontuacao_total, aes(x = reorder(time, pontos_totais), y = pontos_totais)) +\n  geom_bar(stat = \"identity\", fill = \"blue\") +\n  coord_flip() +\n  labs(title = \"Pontuação Total dos Times\", x = \"Time\", y = \"Pontuação Total\") +\n  theme_minimal()\n\n\n\n\n\n\n\n\nR# Definir as cores para os times específicos\ncores_times &lt;- c(\"Paraná\" = \"#0033A0\",   \n                 \"Coritiba FC\" = \"#008000\",  \n                 \"Athletico-PR\" = \"#FF0000\")  \n\n# Criar gráfico de barras com cores personalizadas para Paraná, Coritiba e Athletico-PR\nggplot(pontuacao_total, aes(x = reorder(time, pontos_totais), y = pontos_totais, fill = time)) +\n  geom_bar(stat = \"identity\") +\n  scale_fill_manual(values = cores_times, na.value = \"grey\") +  # Coloca cinza para times não especificados\n  coord_flip() +\n  labs(title = \"Pontuação Total dos Times\", x = \"Time\", y = \"Pontuação Total\") +\n  theme_minimal()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html#gráfico-de-dispersão",
+    "href": "03_graphics.html#gráfico-de-dispersão",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "\n3.2 Gráfico de Dispersão",
+    "text": "3.2 Gráfico de Dispersão\nO Gráfico de Dispersão exibe a relação entre duas variáveis numéricas em um conjunto de dados. Cada ponto no gráfico representa uma observação, onde a posição no eixo X indica o valor de uma variável, e a posição no eixo Y indica o valor da outra variável. A disposição dos pontos pode revelar padrões, correlações ou até a ausência de uma relação clara entre as variáveis.\n\n3.2.1 Utilidade\n\n\nIdentificação de relações entre variáveis: O gráfico de dispersão é útil para observar se duas variáveis estão correlacionadas (positivamente ou negativamente) ou se não há relação aparente entre elas.\n\nDetecção de padrões e outliers: Ele também permite identificar padrões em conjuntos de dados, como tendências de aumento ou diminuição, além de destacar valores atípicos (outliers).\n\n3.2.2 Exemplo de Aplicação\nAo gerar um gráfico de dispersão para comparar o valor do time mandante de um jogo com a idade média time mandante, você pode verificar se há uma tendência de que jogos com maior valor do time mandante são afetados pela idade média do time, ou se essa relação é inexistente. Além disso, valores muito distantes dos outros pontos podem ser identificados como possíveis outliers, como jogos com valor do time mandante excepcionalmente alto ou baixo.\n\n3.2.3 Criando o gráfico\nO primeiro passo é carregar o conjunto de dados que vai ser usado no gráfico, seguido da informação ao ggplot() dos dados devem ser visualmente representadas. O argumento mapping da função ggplot() define como as variáveis do seu conjunto de dados são mapeadas para as propriedades visuais (estéticas) do gráfico. O mapeamento é sempre definido dentro da função aes(), e os argumentos x e y de aes() especificam quais variáveis serão mapeadas para os eixos X e Y. No seu caso, vamos mapear valor do time mandante para o eixo X e idade média time mandante para o eixo Y.\nAqui está o resultado de adicionar esses mapeamentos:\n\nRlibrary(ggplot2)\n\nggplot(\n  data = dados,\n  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)\n)\n\n\n\n\n\n\n\nO gráfico, embora vazio, apresenta uma estrutura — fica claro onde o valor do time mandante será exibido (no eixo X) e onde a idade média time mandante será exibida (no eixo Y). No entanto, os dados ainda não aparecem no gráfico, pois ainda não definimos como as observações serão representadas visualmente.\nPara isso, precisamos definir um geom: o objeto geométrico que um gráfico usa para representar os dados. Esses objetos geométricos são disponibilizados no ggplot2 por meio de funções que começam com geom_. Por exemplo, gráficos de barras usam barras geométricas (geom_bar()), gráficos de linhas usam linhas geométricas (geom_line()), boxplots usam geoms de boxplot (geom_boxplot()), e gráficos de dispersão usam pontos geométricos (geom_point()).\nA função geom_point() adiciona uma camada de pontos ao gráfico, criando um gráfico de dispersão. O ggplot2 possui várias funções geom_, cada uma adicionando um tipo diferente de camada ao gráfico.\nAqui está o código completo para criar o gráfico de dispersão de valor do time mandante versus idade média do mandante:\n\nRggplot(\n  data = dados,\n  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)\n) +\n  geom_point()\n\n\n\n\n\n\n\n\n3.2.3.1 Adicionando mais camadas e estética\nGráficos de dispersão são úteis para mostrar a relação entre duas variáveis numéricas, mas também é interessante adicionar mais informações visuais para enriquecer o gráfico. Por exemplo, podemos incluir a cor dos pontos para indicar qual time mandante jogou. Podemos fazer isso modificando o mapeamento estético dentro da função aes().\n\nRggplot(\n  data = dados,\n  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante, color = time_mandante)\n) +\n  geom_point()\n\n\n\n\n\n\n\nAgora, cada ponto está colorido de acordo com o time mandante. Isso nos ajuda a visualizar se diferentes times apresentam diferentes padrões na relação entre o valor do time mandante e sua idade média.\n\n3.2.3.2 Adicionando uma linha de tendência\nPodemos adicionar uma linha de tendência para observar a relação entre o valor do time mandante e a idade média ao longo dos jogos. Para isso, usamos a função geom_smooth(), que adiciona uma curva de ajuste aos dados. Especificando method = \"lm\", pedimos uma linha de regressão linear.\n\nRggplot(\n  data = dados,\n  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante, color = time_mandante)\n) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\nUma linha de tendência linear indica uma possível relação direta entre o valor da equipe e a idade média. Ou seja, pode-se interpretar se equipes mais caras tendem a ter jogadores mais experientes ou não.\n\n3.2.3.3 Redução de Dados para Melhoria da Visualização\nQuando trabalhamos com grandes conjuntos de dados, como informações detalhadas de várias equipes de futebol, pode ser difícil interpretar as relações entre variáveis devido à quantidade de informação. Para facilitar a análise e melhorar a visualização, é comum filtrar e reduzir os dados, focando em subsetores ou grupos de interesse.\nEssa redução de dados ajuda a destacar padrões específicos e a melhorar a interpretação das informações visuais, tornando mais fácil identificar tendências e correlações significativas entre as variáveis escolhidas.\nDesta forma, os dados serão reduzidos para uma amostra menor, filtrando 3 times específicos e removendo os valores NA, para que este valores não afetem na análise.\n\nRlibrary(tidyverse)\n\ndados_dispersao &lt;- dados %&gt;%\n  filter(time_mandante %in% c(\"Coritiba FC\", \"Athletico-PR\", \"Paraná\")) %&gt;%\n  drop_na(valor_equipe_titular_mandante, idade_media_titular_mandante)\n\nsummary(dados_dispersao)\n\n ano_campeonato     data               rodada        estadio         \n Min.   :2011   Length:298         Min.   : 1.00   Length:298        \n 1st Qu.:2015   Class :character   1st Qu.:10.00   Class :character  \n Median :2019   Mode  :character   Median :19.00   Mode  :character  \n Mean   :2018                      Mean   :19.33                     \n 3rd Qu.:2022                      3rd Qu.:29.00                     \n Max.   :2024                      Max.   :38.00                     \n                                                                     \n    publico      time_mandante      time_visitante     tecnico_mandante  \n Min.   :    0   Length:298         Length:298         Length:298        \n 1st Qu.: 7629   Class :character   Class :character   Class :character  \n Median :13666   Mode  :character   Mode  :character   Mode  :character  \n Mean   :13578                                                           \n 3rd Qu.:19726                                                           \n Max.   :38059                                                           \n                                                                         \n tecnico_visitante  colocacao_mandante colocacao_visitante\n Length:298         Min.   : 1.00      Min.   : 1.00      \n Class :character   1st Qu.: 8.00      1st Qu.: 5.00      \n Mode  :character   Median :13.00      Median :10.00      \n                    Mean   :12.57      Mean   :10.38      \n                    3rd Qu.:18.00      3rd Qu.:16.00      \n                    Max.   :20.00      Max.   :20.00      \n                                                          \n valor_equipe_titular_mandante valor_equipe_titular_visitante\n Min.   :    1085              Min.   :     853              \n 1st Qu.: 4850000              1st Qu.: 5920000              \n Median : 8125000              Median :12575000              \n Mean   :10204097              Mean   :17323914              \n 3rd Qu.:13850000              3rd Qu.:25000000              \n Max.   :41400000              Max.   :84500000              \n                                                             \n idade_media_titular_mandante idade_media_titular_visitante gols_mandante  \n Min.   :23.10                Min.   :20.50                 Min.   :0.000  \n 1st Qu.:26.32                1st Qu.:26.40                 1st Qu.:1.000  \n Median :27.10                Median :27.40                 Median :1.000  \n Mean   :27.02                Mean   :27.37                 Mean   :1.303  \n 3rd Qu.:27.77                3rd Qu.:28.50                 3rd Qu.:2.000  \n Max.   :30.60                Max.   :31.90                 Max.   :5.000  \n                                                            NA's   :1      \n gols_visitante   gols_1_tempo_mandante gols_1_tempo_visitante\n Min.   :0.0000   Min.   :0.0000        Min.   :0.0000        \n 1st Qu.:0.0000   1st Qu.:0.0000        1st Qu.:0.0000        \n Median :1.0000   Median :0.0000        Median :0.0000        \n Mean   :0.9428   Mean   :0.6342        Mean   :0.4228        \n 3rd Qu.:1.0000   3rd Qu.:1.0000        3rd Qu.:1.0000        \n Max.   :4.0000   Max.   :4.0000        Max.   :3.0000        \n NA's   :1                                                    \n\n\n\nRggplot(\n  data = dados_dispersao,\n  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante, color = time_mandante)\n) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\nQuando os mapeamentos estéticos são definidos dentro de ggplot(), no nível global, eles são passados para todas as camadas geométricas subsequentes do gráfico. No entanto, cada função geométrica no ggplot2 também pode aceitar um argumento mapping, o que permite mapeamentos estéticos locais que são adicionados aos mapeamentos herdados do nível global. Isso oferece uma flexibilidade adicional para controlar a aparência de diferentes partes do gráfico.\nPor exemplo, se quisermos que os pontos sejam coloridos com base em uma variável categórica, mas não desejamos que a linha de tendência também seja separada por essa mesma variável, podemos especificar color = species apenas para geom_point(), mantendo o mapeamento da linha de tendência sem essa separação.\nIsso permitirá que os pontos sejam coloridos de acordo com o time mandante, mas a linha de tendência será calculada com base nos dados completos, sem distinção de time.\n\nRggplot(\n  data = dados_dispersao,\n  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)\n) +\n  geom_point(mapping = aes(color = time_mandante)) +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\nGeralmente não é uma boa ideia representar informações usando apenas cores em um gráfico, pois as pessoas percebem as cores de maneira diferente devido ao daltonismo ou outras diferenças na visão das cores. Portanto, além da cor, também podemos mapear os times à estética da forma.\n\nRggplot(\n  data = dados_dispersao,\n  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)\n) +\n  geom_point(mapping = aes(color = time_mandante, shape = time_mandante)) +\n  geom_smooth(method = \"lm\")\n\n\n\n\n\n\n\n\n3.2.3.4 Melhorando as labels e cores\nPodemos refinar o gráfico melhorando as labels e utilizando uma paleta de cores mais adequada. Isso pode ser feito com a função labs() para ajustar os rótulos dos eixos e o título, e usando uma paleta de cores compatível com daltonismo para tornar o gráfico acessível.\n\nRlibrary(scales)\n\n# Definindo as cores dos times\ncores_times &lt;- c(\"Athletico-PR\" = \"#CC0000\",  \n                 \"Coritiba FC\" = \"#006633\",   \n                 \"Paraná\" = \"#0033A0\")       \nggplot(\n  data = dados_dispersao,\n  mapping = aes(x = valor_equipe_titular_mandante, y = idade_media_titular_mandante)\n) +\n  geom_point(mapping = aes(color = time_mandante, shape = time_mandante)) +\n  geom_smooth(method = \"lm\") +\n  labs(\n    title = \"Valor do time mandante vs. Idade Média Mandante\",\n    subtitle = \"Relação entre os times Athletico, Coritiba e Paraná\",\n    x = \"Valor do time mandante\", y = \"Idade Média\",\n    color = \"Time Mandante\", shape = \"Time Mandante\"\n  ) +\n  scale_color_manual(values = cores_times) +  \n  scale_x_continuous(labels = label_number(scale_cut = cut_short_scale())) +  \n  theme_minimal()\n\n\n\n\n\n\n\nCom isso, temos um gráfico completo que mostra a relação entre o valor do time mandante e a idade média time mandante, com uma linha de tendência, cores distintas para cada time, e rótulos claros para os eixos e a legenda.\n\nEsse exemplo mostra passo a passo como criar e refinar um gráfico de dispersão usando o ggplot2, aplicando ao seu caso específico de valor do time mandante e idade média time mandante.\n\n3.2.4 O que esse gráfico mostra:\n\nCada ponto no gráfico representa um jogo, com o valor do time mandante presente plotado no eixo X e a idade média time mandante no eixo Y.\nEsse tipo de gráfico permite verificar se há alguma relação entre a posição do time na tabela e o valor do time mandante presente nos jogos.\n\nAqui está um exemplo de como apresentar um gráfico de setores (pizza) seguindo o modelo que você utilizou para o gráfico de dispersão:",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "03_graphics.html#gráfico-de-setores-pizza",
+    "href": "03_graphics.html#gráfico-de-setores-pizza",
+    "title": "3  Criação de gráficos com o ggplot2",
+    "section": "\n3.3 Gráfico de Setores (Pizza)",
+    "text": "3.3 Gráfico de Setores (Pizza)\nO Gráfico de Setores é utilizado para representar a proporção ou percentual de diferentes categorias dentro de um conjunto de dados. Cada fatia do gráfico representa uma categoria, e o tamanho da fatia corresponde à proporção daquela categoria em relação ao total.\n\n3.3.1 Utilidade\n\n\nComparação de proporções: O gráfico de setores é útil para visualizar como diferentes categorias contribuem para um todo, facilitando a identificação das maiores e menores categorias.\n\nDistribuição visual: Ele também permite ver rapidamente qual categoria tem maior ou menor participação relativa dentro de um conjunto de dados.\n\n3.3.2 Exemplo de Aplicação\nAo gerar um gráfico de setores para representar a participação de público entre diferentes times mandantes, você pode visualizar qual time atraiu o maior número de espectadores ao longo de uma temporada ou campeonato. Isso permite identificar times com grande apelo de público em comparação com outros.\n\n3.3.3 Criando o Gráfico\nO primeiro passo é carregar o conjunto de dados que vai ser utilizado no gráfico e calcular as proporções de cada categoria (neste caso, os times mandantes). Para isso, utilizamos funções que somam os valores do público por time mandante e calculam a proporção em relação ao total. A função ggplot() será utilizada para gerar o gráfico, e a visualização será baseada na função geom_bar() com a transformação coord_polar() para criar o gráfico de pizza.\nAqui está o código para criar o gráfico de setores:\n\nRlibrary(ggplot2)\nlibrary(dplyr)\n\ndados_setores &lt;- dados %&gt;%\n  group_by(time_mandante) %&gt;%\n  summarize(publico_total = sum(publico, na.rm = TRUE)) %&gt;%\n  mutate(proporcao = publico_total / sum(publico_total))  \n\n# Criando o gráfico de setores\nggplot(dados_setores, aes(x = \"\", y = proporcao, fill = time_mandante)) +\n  geom_bar(stat = \"identity\", width = 1) +\n  coord_polar(theta = \"y\") +\n  labs(\n    title = \"Distribuição do Público por Time Mandante\",\n    subtitle = \"Participação relativa dos públicos dos times ao longo da temporada\",\n    fill = \"Time Mandante\"\n  ) +\n  theme_void()  \n\n\n\n\n\n\n\nO gráfico de setores gerado acima exibe a participação de cada time mandante no total de público ao longo do campeonato. A área de cada fatia representa a proporção de público atraída por aquele time. Quanto maior a fatia, maior a participação daquele time no total de público.\n\n3.3.3.1 Melhorando a Visualização com Labels\nPara melhorar a legibilidade do gráfico, podemos adicionar labels (rótulos) que mostrem a proporção exata de cada time diretamente nas fatias do gráfico.\n\nRggplot(dados_setores, aes(x = \"\", y = proporcao, fill = time_mandante)) +\n  geom_bar(stat = \"identity\", width = 1) +\n  coord_polar(theta = \"y\") +\n  geom_text(aes(label = scales::percent(proporcao)), position = position_stack(vjust = 0.5)) +\n  labs(\n    title = \"Distribuição do Público por Time Mandante\",\n    subtitle = \"Participação relativa dos públicos dos times ao longo da temporada\",\n    fill = \"Time Mandante\"\n  ) +\n  theme_void()\n\n\n\n\n\n\n\n\n3.3.4 Redução de Dados para Melhoria da Visualização\nQuando trabalhamos com muitos times ou categorias, um gráfico de setores pode se tornar confuso se houver muitas fatias pequenas. Para melhorar a legibilidade, é comum filtrar os dados para focar apenas nas principais categorias (como os 3 times com maior público) ou agrupar categorias menores em uma única fatia representando “Outros”.\n\nRdados_setores_reduzidos &lt;- dados_setores %&gt;%\n  arrange(desc(proporcao)) %&gt;%\n  mutate(time_mandante = ifelse(row_number() &gt; 3, \"Outros\", time_mandante)) %&gt;%\n  group_by(time_mandante) %&gt;%\n  summarize(publico_total = sum(publico_total), proporcao = sum(proporcao))\n\n# Criando o gráfico de setores reduzido\nggplot(dados_setores_reduzidos, aes(x = \"\", y = proporcao, fill = time_mandante)) +\n  geom_bar(stat = \"identity\", width = 1) +\n  coord_polar(theta = \"y\") +\n  geom_text(aes(label = scales::percent(proporcao, accuracy = 0.1)), position = position_stack(vjust = 0.5)) +\n  labs(\n    title = \"Distribuição do Público por Time Mandante\",\n    subtitle = \"Os 3 principais times em termos de público\",\n    fill = \"Time Mandante\"\n  ) +\n  scale_fill_brewer(palette = \"Dark2\") +\n  theme_void()\n\n\n\n\n\n\n\nO gráfico de setores é uma excelente ferramenta para visualizar a proporção de categorias dentro de um total. No contexto de público por time mandante, ele nos ajuda a identificar quais times atraíram a maior quantidade de público e qual é a participação relativa de cada um no total. Ao reduzir os dados e focar nas principais categorias, garantimos uma visualização mais limpa e eficiente.",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Criação de gráficos com o `ggplot2`</span>"
+    ]
+  },
+  {
+    "objectID": "05_quizz.html",
+    "href": "05_quizz.html",
+    "title": "5  Quizz",
+    "section": "",
+    "text": "library(tidyverse)\n#&gt; ── Attaching core tidyverse packages ───────────────────── tidyverse 2.0.0 ──\n#&gt; ✔ dplyr     1.1.3     ✔ readr     2.1.4\n#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1\n#&gt; ✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n#&gt; ✔ lubridate 1.9.3     ✔ tidyr     1.3.0\n#&gt; ✔ purrr     1.0.2     \n#&gt; ── Conflicts ─────────────────────────────────────── tidyverse_conflicts() ──\n#&gt; ✖ dplyr::filter() masks stats::filter()\n#&gt; ✖ dplyr::lag()    masks stats::lag()\n#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\ntop_destinations &lt;- tibble(\n  Cidade = rep(\"São Paulo - SP\", 10),\n  Nome_Pais = c(\"China\", \"Canadá\", \"Estados Unidos\", \"Itália\", \"Bélgica\", \n                \"Emirados Árabes Unidos\", \"Suíça\", \"Argentina\", \"Índia\", \"Argélia\"),\n  Lat_Municipio = rep(-23.6, 10),\n  Long_Municipio = rep(-46.6, 10),\n  Lat_PAIS = c(33.4, 59.1, 39.6, 42.7, 50.6, 23.5, 46.9, -35.4, 21.0, 28.2),\n  Long_PAIS = c(107.0, -109.0, -98.6, 12.8, 4.66, 54.2, 7.91, -65.2, 78.5, 2.63),\n  US_FOB = c(1e9, 3.46e8, 3.08e8, 2.26e8, 2.04e8, 1.63e8, 1.14e8, 1.08e8, 9.3e7, 8.12e7)\n)\n\nlibrary(highcharter)\n#&gt; Registered S3 method overwritten by 'quantmod':\n#&gt;   method            from\n#&gt;   as.zoo.data.frame zoo \n#&gt; Highcharts (www.highcharts.com) is a Highsoft software product which is\n#&gt; not free for commercial and Governmental use\nlibrary(geojsonio)\n#&gt; Registered S3 method overwritten by 'geojsonsf':\n#&gt;   method        from   \n#&gt;   print.geojson geojson\n#&gt; \n#&gt; Attaching package: 'geojsonio'\n#&gt; \n#&gt; The following object is masked from 'package:base':\n#&gt; \n#&gt;     pretty\nlibrary(dplyr)\nlibrary(sf)\n#&gt; Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE\n#&gt; Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.3.1; sf_use_s2() is TRUE\n\nworldgeojson &lt;-\n  giscoR::gisco_countries %&gt;%\n  geojsonio::geojson_json()\n\n# sf object with a source point\nsrc_point_sf &lt;- \n  top_destinations %&gt;%\n  summarise(\n    name = \"São Paulo\", \n    US_FOB = sum(US_FOB),\n    lat = first(Lat_Municipio),\n    lon = first(Long_Municipio)\n  ) |&gt; \n  st_as_sf(coords = c(\"lon\", \"lat\"), crs = \"WGS84\")\n\n# Prepare data for destination points\ndest_points_sf &lt;- \n  top_destinations %&gt;%\n  st_as_sf(coords = c(\"Long_PAIS\", \"Lat_PAIS\"), crs = \"WGS84\") %&gt;%\n  select(name = Nome_Pais, US_FOB)\n\n# sf object with connection lines (generate point pair, union, cast to line)\n  connections_sf &lt;-\n    lapply(st_geometry(dest_points_sf),\n           function(to)\n             st_union(c(st_geometry(src_point_sf)[[1]], to)) %&gt;% st_cast(\"LINESTRING\")) %&gt;%\n    st_as_sfc(crs = st_crs(dest_points_sf)) %&gt;%\n    st_sf(geometry = .) %&gt;%\n    st_segmentize(dfMaxLength = 1000 * 1000)\n\n# Create the map with Highcharts\nhighchart(type = \"map\") %&gt;%\n  # Add base map\n  hc_add_series(\n    mapData = worldgeojson, \n    showInLegend = FALSE,\n    nullColor = \"#E0E0E0\",\n    borderWidth = 0\n  ) %&gt;%\n  hc_mapNavigation(enabled = TRUE) %&gt;%\n  # Add São Paulo as the origin point\n  hc_add_series(\n    data = geojson_list(src_point_sf),\n    name = \"Origin\",\n    type = \"mappoint\",\n    marker = list(symbol = \"circle\", radius = 4),\n    color = \"#3d9970\" ,\n    tooltip = list(pointFormat = \"City: {point.properties.name}&lt;br&gt;Export Value: {point.properties.US_FOB}\")\n  ) %&gt;%\n  # Add destination points\n  hc_add_series(\n    data = geojson_list(dest_points_sf),\n    type = \"mappoint\",\n    name = \"Destinations\",\n    color = \"#d35400\",\n    marker = list(symbol = \"circle\", radius = 3),\n    tooltip = list(pointFormat = \"Country: {point.properties.name}&lt;br&gt;Export Value: {point.properties.US_FOB}\")\n  ) %&gt;%  \n  # Add connections between São Paulo and destinations\n  hc_add_series(\n    data = geojson_list(connections_sf),\n    type = \"mapline\",\n    lineWidth = 1.5,\n    opacity = 0.8,\n    showInLegend = FALSE,\n    enableMouseTracking = FALSE\n  ) %&gt;%\n  # Title and tooltip settings\n  hc_title(text = \"Main Export Destinations from São Paulo\") %&gt;%\n  hc_tooltip(useHTML = TRUE)",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quizz</span>"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html#gráfico-3d-utilizando-o-plotly",
+    "href": "01_visualizacao-dados.html#gráfico-3d-utilizando-o-plotly",
+    "title": "1  Motivação",
+    "section": "\n1.2 Gráfico 3D utilizando o plotly\n",
+    "text": "1.2 Gráfico 3D utilizando o plotly\n\n\n\n\n\n\n\n\nFigure 1.2: Gráfico básico 3D da superfície de um vulcão",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html#mapa-utilizando-o-leaflet",
+    "href": "01_visualizacao-dados.html#mapa-utilizando-o-leaflet",
+    "title": "1  Motivação",
+    "section": "\n1.3 Mapa utilizando o leaflet\n",
+    "text": "1.3 Mapa utilizando o leaflet\n\n\n\n\n\n\n\n\nFigure 1.3: Densidade populacional de Curitiba\n\n\n\n\n\n\n\n\n\n\nFigure 1.4: Localização do prédio de Estatística e Ciências de Dados na UFPR",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html#gráfico-de-linha-utilizando-o-ggplot",
+    "href": "01_visualizacao-dados.html#gráfico-de-linha-utilizando-o-ggplot",
+    "title": "1  Motivação",
+    "section": "\n1.4 Gráfico de linha utilizando o ggplot\n",
+    "text": "1.4 Gráfico de linha utilizando o ggplot\n\n\n\n\n\n\n\n\nFigure 1.5: Comparação entre altura dos personagens femininos e masculinos de Star Wars",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "01_visualizacao-dados.html#gráfico-de-dispersão-utilizando-o-ggplot",
+    "href": "01_visualizacao-dados.html#gráfico-de-dispersão-utilizando-o-ggplot",
+    "title": "1  Motivação",
+    "section": "\n1.5 Gráfico de dispersão utilizando o ggplot\n",
+    "text": "1.5 Gráfico de dispersão utilizando o ggplot\n\n\n\n\n\n\n\n\nFigure 1.6: Relação entre Valor e Idade Média dos times mandantes do Campeonato Brasileiro (2010-2024)",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Motivação</span>"
+    ]
+  },
+  {
+    "objectID": "00_presentation.html",
+    "href": "00_presentation.html",
+    "title": "Visualização de Dados",
+    "section": "",
+    "text": "Neste módulo, iremos introduzi-los à criação de gráficos simples no R, por meio de 4 etapas:\n\nIntrodução ao pacote ggplot para visualização de dados;\nCriação de gráficos de barras, histogramas, gráficos de setores e de dispersão;\nPersonalização básica de gráficos: títulos, eixos, cores;\nResolução de exercício e Quizz.",
+    "crumbs": [
+      "Visualização de Dados"
+    ]
+  },
+  {
+    "objectID": "02_intro-ggplot.html#gramática-dos-gráficos",
+    "href": "02_intro-ggplot.html#gramática-dos-gráficos",
+    "title": "2  O pacote ggplot2",
+    "section": "\n2.2 Gramática dos gráficos",
+    "text": "2.2 Gramática dos gráficos\n\n\n\n\n\n\n\nFigure 2.2: Camadas dos gráficos no ggplot\n\n\n\n\nO ggplot fornece uma estrutura unificadora (uma gramática) para descrever e especificar gráficos. Cria gráficos de dados de forma incremental a partir de pequenos pedaços de código.\n\nData = Dados\nAesthetics = Estética ⇒ Cores, titulo, legendas, etc\nGeometries = Geometria ⇒ Tipo de Gráfico\n\ngeom_bar()\ngeom_col()\ngeom_map()\ngeom_point()\n\n\nFacets = Facetas ⇒ Gráficos em grade para comparação\n\nfacet_grid()\nfacet_wrap()\n\n\nStatistics = Estatísticas ⇒ Estáticas como média, contagem, entre outros.\n\nstat_count()\nstat_sum()\nstat_density()\n\n\nCoordinates = Coordenadas ⇒ Como serão mostradas as coordenadas x e y\n\ncoord_flip()\ncoord_fixed()\ncoord_cartesian()\n\n\nThemes = Temas ⇒ Mais outra forma de personalização\n\ntheme_grey()\ntheme_gray()\ntheme_bw()\ntheme_linedraw()\ntheme_light()",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>O pacote `ggplot2`</span>"
     ]
   }
 ]
