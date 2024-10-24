@@ -215,7 +215,7 @@ leaflet() %>%
               options = popupOptions(closeButton = FALSE))
 ```
 
-## Gráfico de linha utilizando o `ggplot`
+## Gráfico de densidade utilizando o `ggplot`
 ```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
 #| label: fig-4
 #| echo: false

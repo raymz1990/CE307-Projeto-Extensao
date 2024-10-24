@@ -230,8 +230,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li>
 <a href="#histogramas" id="toc-histogramas" class="nav-link" data-scroll-target="#histogramas"><span class="header-section-number">3.4</span> Histogramas</a>
   <ul class="collapse">
-<li><a href="#utilidade-2" id="toc-utilidade-2" class="nav-link" data-scroll-target="#utilidade-2"><span class="header-section-number">3.4.1</span> Utilidade:</a></li>
-  <li><a href="#exemplo-de-aplica%C3%A7%C3%A3o-2" id="toc-exemplo-de-aplicação-2" class="nav-link" data-scroll-target="#exemplo-de-aplica%C3%A7%C3%A3o-2"><span class="header-section-number">3.4.2</span> Exemplo de Aplicação:</a></li>
+<li><a href="#utilidade-2" id="toc-utilidade-2" class="nav-link" data-scroll-target="#utilidade-2"><span class="header-section-number">3.4.1</span> Utilidade</a></li>
+  <li><a href="#exemplo-de-aplica%C3%A7%C3%A3o-2" id="toc-exemplo-de-aplicação-2" class="nav-link" data-scroll-target="#exemplo-de-aplica%C3%A7%C3%A3o-2"><span class="header-section-number">3.4.2</span> Exemplo de Aplicação</a></li>
+  <li><a href="#criando-o-gr%C3%A1fico-2" id="toc-criando-o-gráfico-2" class="nav-link" data-scroll-target="#criando-o-gr%C3%A1fico-2"><span class="header-section-number">3.4.3</span> Criando o gráfico</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#gr%C3%A1fico-de-barras" id="toc-gráfico-de-barras" class="nav-link" data-scroll-target="#gr%C3%A1fico-de-barras"><span class="header-section-number">3.5</span> Gráfico de Barras</a>
+  <ul class="collapse">
+<li><a href="#utilidade-3" id="toc-utilidade-3" class="nav-link" data-scroll-target="#utilidade-3"><span class="header-section-number">3.5.1</span> Utilidade</a></li>
+  <li><a href="#exemplo-de-aplica%C3%A7%C3%A3o-3" id="toc-exemplo-de-aplicação-3" class="nav-link" data-scroll-target="#exemplo-de-aplica%C3%A7%C3%A3o-3"><span class="header-section-number">3.5.2</span> Exemplo de Aplicação</a></li>
+  <li><a href="#criando-o-gr%C3%A1fico-3" id="toc-criando-o-gráfico-3" class="nav-link" data-scroll-target="#criando-o-gr%C3%A1fico-3"><span class="header-section-number">3.5.3</span> Criando o gráfico</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -261,8 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/raymz1990/CE307-Projeto-Extensao/refs/heads/main/data/serie_a_2010_2024.csv"</span></span>
 <span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="va">url</span>,</span>
 <span>                  header <span class="op">=</span> <span class="cn">TRUE</span>,     </span>
-<span>                  sep <span class="op">=</span> <span class="st">","</span>,          </span>
-<span>                  <span class="co"># quote = "",      </span></span>
+<span>                  sep <span class="op">=</span> <span class="st">","</span>,    </span>
 <span>                  stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -497,13 +505,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section><section id="o-que-esse-gráfico-mostra" class="level3" data-number="3.2.4"><h3 data-number="3.2.4" class="anchored" data-anchor-id="o-que-esse-gráfico-mostra">
 <span class="header-section-number">3.2.4</span> O que esse gráfico mostra:</h3>
 <ul>
-<li><p>Cada ponto no gráfico representa um jogo, com o <strong>valor do time mandante presente</strong> plotado no eixo X e a <strong>idade média time mandante</strong> no eixo Y.</p></li>
-<li><p>Esse tipo de gráfico permite verificar se há alguma relação entre a posição do time na tabela e o valor do time mandante presente nos jogos.</p></li>
+<li><p>Cada ponto no gráfico representa um jogo, com o <strong>valor do time mandante</strong> plotado no eixo X e a <strong>idade média time mandante</strong> no eixo Y.</p></li>
+<li><p>Esse tipo de gráfico permite identificar qual a tendência do valor do time em relação a idade média dos jogadores.</p></li>
 </ul>
-<p>Aqui está um exemplo de como apresentar um <strong>gráfico de setores (pizza)</strong> seguindo o modelo que você utilizou para o gráfico de dispersão:</p>
 <hr></section></section><section id="gráfico-de-setores-pizza" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="gráfico-de-setores-pizza">
 <span class="header-section-number">3.3</span> Gráfico de Setores (Pizza)</h2>
-<p>O <strong>Gráfico de Setores</strong> é utilizado para representar a proporção ou percentual de diferentes categorias dentro de um conjunto de dados. Cada fatia do gráfico representa uma categoria, e o tamanho da fatia corresponde à proporção daquela categoria em relação ao total.</p>
+<p>O <strong>Gráfico de Setores</strong> também conhecido como gráfico de pizza, representa com setores circulares a distribuição dos dados entre diferentes categorias. O tamanho da fatia é proporcional à porcentagem dos dados da categoria correspondente entre o total. Pode ser útil quando há poucas categorias e a diferença proporcional é significativa entre uma categoria e outra. Se torna difícil de interpretar quando há um grande número de categorias ou quando as diferenças entre categorias são pouco significativas.</p>
 <section id="utilidade-1" class="level3" data-number="3.3.1"><h3 data-number="3.3.1" class="anchored" data-anchor-id="utilidade-1">
 <span class="header-section-number">3.3.1</span> Utilidade</h3>
 <ul>
@@ -519,10 +526,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>O primeiro passo é carregar o conjunto de dados que vai ser utilizado no gráfico e calcular as proporções de cada categoria (neste caso, os times mandantes). Para isso, utilizamos funções que somam os valores do público por time mandante e calculam a proporção em relação ao total. A função <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> será utilizada para gerar o gráfico, e a visualização será baseada na função <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> com a transformação <code><a href="https://ggplot2.tidyverse.org/reference/coord_polar.html">coord_polar()</a></code> para criar o gráfico de pizza.</p>
 <p>Aqui está o código para criar o gráfico de setores:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dados_setores</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dados_setores</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">time_mandante</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>publico_total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">publico</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>proporcao <span class="op">=</span> <span class="va">publico_total</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">publico_total</span><span class="op">)</span><span class="op">)</span>  </span>
@@ -596,51 +600,256 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>O gráfico de setores é uma excelente ferramenta para visualizar a proporção de categorias dentro de um total. No contexto de público por time mandante, ele nos ajuda a identificar quais times atraíram a maior quantidade de público e qual é a participação relativa de cada um no total. Ao reduzir os dados e focar nas principais categorias, garantimos uma visualização mais limpa e eficiente.</p>
+<p>Contudo, é importante ressaltar que o gráfico de setores nem sempre é a melhor opção para a visualização de dados, especialmente quando há muitas categorias ou quando as diferenças entre elas são pequenas. O uso de muitas fatias em um gráfico de setores pode dificultar a interpretação, já que a percepção humana não é precisa ao comparar áreas ou ângulos, tornando difícil identificar pequenas variações entre categorias. Além disso, gráficos de setores não são eficazes para exibir relações ou padrões entre as variáveis, sendo mais úteis em casos onde há poucas categorias com diferenças bem definidas.</p>
+<p>Em cenários com muitas categorias ou quando os dados precisam de uma análise mais detalhada, outros tipos de gráficos, como gráficos de barras ou gráficos de linha, podem fornecer uma melhor representação visual, permitindo comparações mais claras e uma compreensão mais intuitiva dos dados.</p>
 </section></section><section id="histogramas" class="level2" data-number="3.4"><h2 data-number="3.4" class="anchored" data-anchor-id="histogramas">
 <span class="header-section-number">3.4</span> Histogramas</h2>
-<p>O <strong>Histograma</strong> exibe a frequência com que diferentes intervalos de valores (conhecidos como “bins”) ocorrem em um conjunto de dados. Cada barra do histograma representa a quantidade de dados que se enquadra em um determinado intervalo, com barras mais altas indicando maior ocorrência de valores naquela faixa.</p>
+<p>Uma variável é considerada numérica (ou quantitativa) se ela pode assumir uma ampla gama de valores numéricos, sendo possível realizar operações como adição, subtração ou cálculo de médias com esses valores. As variáveis numéricas podem ser contínuas ou discretas.</p>
+<p>Uma visualização comumente usada para distribuições de variáveis contínuas é o <strong>histograma</strong>. O histograma exibe a frequência com que diferentes intervalos de valores (conhecidos como <em>bins</em>) ocorrem em um conjunto de dados. Cada barra do histograma representa a quantidade de dados que se enquadra em um determinado intervalo, com barras mais altas indicando maior ocorrência de valores naquela faixa.</p>
 <section id="utilidade-2" class="level3" data-number="3.4.1"><h3 data-number="3.4.1" class="anchored" data-anchor-id="utilidade-2">
-<span class="header-section-number">3.4.1</span> Utilidade:</h3>
+<span class="header-section-number">3.4.1</span> Utilidade</h3>
 <ul>
 <li>
 <strong>Verificação da qualidade dos dados</strong>: Histograma ajuda a identificar se há concentrações inesperadas ou valores atípicos (outliers) em certas faixas de dados.</li>
 <li>
 <strong>Comparação de distribuições entre grupos</strong>: Comparar como diferentes grupos (por exemplo, times, rodadas) se distribuem em termos de variáveis como gols ou público.</li>
 </ul></section><section id="exemplo-de-aplicação-2" class="level3" data-number="3.4.2"><h3 data-number="3.4.2" class="anchored" data-anchor-id="exemplo-de-aplicação-2">
-<span class="header-section-number">3.4.2</span> Exemplo de Aplicação:</h3>
-<p>Ao gerar um histograma para o número de gols marcados por rodada, você pode visualizar quantas vezes um time marcou dentro de um intervalo de valores, como entre 0 e 5 gols, permitindo identificar a frequência dos resultados mais comuns.</p>
-<hr>
-<p>Agora, vou criar um histograma para ilustrar esse conceito.</p>
+<span class="header-section-number">3.4.2</span> Exemplo de Aplicação</h3>
+<p>Ao gerar um histograma para a <strong>idade média do time mandante</strong>, é possível visualizar a distribuição das faixas etárias, permitindo identificar a frequência dos resultados mais comuns e observar tendências, como se há mais jogadores jovens ou experientes.</p>
+</section><section id="criando-o-gráfico-2" class="level3" data-number="3.4.3"><h3 data-number="3.4.3" class="anchored" data-anchor-id="criando-o-gráfico-2">
+<span class="header-section-number">3.4.3</span> Criando o gráfico</h3>
+<p>A escolha do tamanho dos <em>bins</em> pode influenciar significativamente a interpretação do gráfico. Bins muito grandes podem esconder detalhes importantes da distribuição, enquanto <em>bins</em> muito pequenos podem criar um gráfico fragmentado e difícil de interpretar. Portanto, é essencial escolher adequadamente o tamanho dos bins para obter uma visualização precisa e útil.</p>
+<p>Desta forma, fazendo uma representação com <em>bins</em> de tamanho variados, temos o seguinte resultado:</p>
 <div class="cell" data-layout-align="center">
-<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Carregando biblioteca</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># dados do histograma</span></span>
-<span><span class="va">histograma</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ano_campeonato</span> <span class="op">==</span> <span class="fl">2023</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">rodada</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
-<span>    gols_mandante <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">gols_mandante</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Gerando o histograma</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">histograma</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gols_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribuição dos Gols Mandantes no Campeonato de 2023"</span>, </span>
-<span>       x <span class="op">=</span> <span class="st">"Gols Mandantes"</span>, </span>
-<span>       y <span class="op">=</span> <span class="st">"Frequência"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
 </figure>
 </div>
 </div>
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
 </div>
+</div>
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-14-3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-14-4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Ao testar diferentes intervalos, você pode interpretar qual o tamanho de <em>bin</em> mais adequado para sua análise e para uma representação gráfica clara e compreensível.</p>
+<section id="filtrando-os-dados-para-exibir-um-campeonato-específico" class="level4" data-number="3.4.3.1"><h4 data-number="3.4.3.1" class="anchored" data-anchor-id="filtrando-os-dados-para-exibir-um-campeonato-específico">
+<span class="header-section-number">3.4.3.1</span> Filtrando os dados para exibir um campeonato específico</h4>
+<p>Para esta análise, será tomado como base um ano específico, neste caso, focando o campeonato realizado no ano de <strong>2020</strong>:</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">histograma</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ano_campeonato</span> <span class="op">==</span> <span class="fl">2020</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">time_mandante</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span></span>
+<span>    idade_media_titular_mandante <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">idade_media_titular_mandante</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">histograma</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribuição das médias de idade dos titulares"</span>, </span>
+<span>       x <span class="op">=</span> <span class="st">"Média de idade dos titulares"</span>, </span>
+<span>       y <span class="op">=</span> <span class="st">"Frequência"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="comparando-a-distribuição-ao-longo-dos-anos" class="level4" data-number="3.4.3.2"><h4 data-number="3.4.3.2" class="anchored" data-anchor-id="comparando-a-distribuição-ao-longo-dos-anos">
+<span class="header-section-number">3.4.3.2</span> Comparando a distribuição ao longo dos anos</h4>
+<p>Alternativamente, em vez de visualizar para um ano específico, ou apenas o acumulado, podemos gerar em uma mesma visualização o histograma da média de idade para cada ano, utilizando um <em>facets</em>.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">idade_media_titular_mandante</span><span class="op">)</span>,binwidth <span class="op">=</span> <span class="fl">1</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">ano_campeonato</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribuição das médias de idade dos titulares"</span>, </span>
+<span>       x <span class="op">=</span> <span class="st">"Média de idade dos titulares"</span>, </span>
+<span>       y <span class="op">=</span> <span class="st">"Frequência"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Neste gráfico, cada faceta mostra a distribuição das idades médias dos jogadores mandantes por ano. Barras mais altas indicam maior frequência de jogadores dentro de determinadas faixas etárias. Esse tipo de análise pode ajudar a entender mudanças na composição dos times ao longo das temporadas, como uma tendência de escalar jogadores mais jovens ou mais experientes.</p>
+<hr></section></section></section><section id="gráfico-de-barras" class="level2" data-number="3.5"><h2 data-number="3.5" class="anchored" data-anchor-id="gráfico-de-barras">
+<span class="header-section-number">3.5</span> Gráfico de Barras</h2>
+<p>Uma variável é categórica se ela só pode assumir um de um pequeno conjunto de valores. Para examinar a distribuição de uma variável categórica, você pode usar um gráfico de barras. A altura das barras exibe quantas observações ocorreram em cada valor da variável categórica.</p>
+<p>O <strong>gráfico de barras</strong> é formado por barras retangulares, cada barra corresponde a uma categoria e tem comprimento proporcional ao valor que ela representa. As barras podem ser horizontais ou verticais. No caso de barras verticais, o gráfico também costuma ser chamado de <strong>gráfico de colunas</strong>.</p>
+<section id="utilidade-3" class="level3" data-number="3.5.1"><h3 data-number="3.5.1" class="anchored" data-anchor-id="utilidade-3">
+<span class="header-section-number">3.5.1</span> Utilidade</h3>
+<ul>
+<li>
+<strong>Comparação entre categorias</strong>: O gráfico de barras permite uma comparação direta e fácil de interpretar entre valores de diferentes categorias, permitindo identificar tendências gerais.</li>
+</ul></section><section id="exemplo-de-aplicação-3" class="level3" data-number="3.5.2"><h3 data-number="3.5.2" class="anchored" data-anchor-id="exemplo-de-aplicação-3">
+<span class="header-section-number">3.5.2</span> Exemplo de Aplicação</h3>
+<p>Vamos visualizar em um gráfico de barras o total de gols feitos em casa por cada time mandante. Isso nos permitirá identificar quais times tiveram o melhor desempenho jogando como mandante.</p>
+</section><section id="criando-o-gráfico-3" class="level3" data-number="3.5.3"><h3 data-number="3.5.3" class="anchored" data-anchor-id="criando-o-gráfico-3">
+<span class="header-section-number">3.5.3</span> Criando o gráfico</h3>
+<p>Primeiro, vamos agrupar os dados por time mandante e calcular a soma dos gols feitos em casa (gols do mandante). Além disso, renomearemos a coluna dos times para “Time” para facilitar o uso nos gráficos.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gols_barras</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">time_mandante</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>gols_mandante <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">gols_mandante</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Time <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">gols_mandante</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<section id="gráfico-de-barras-verticais-colunas" class="level4" data-number="3.5.3.1"><h4 data-number="3.5.3.1" class="anchored" data-anchor-id="gráfico-de-barras-verticais-colunas">
+<span class="header-section-number">3.5.3.1</span> Gráfico de barras verticais (colunas)</h4>
+<p>No <code>ggplot</code>, o gráfico de barras verticais é o padrão. Abaixo, criamos um gráfico de colunas simples para mostrar o total de gols feitos em casa por cada time:</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gols_barras</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Time</span>, y <span class="op">=</span> <span class="va">gols_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="gráfico-de-barras-horizontais" class="level4" data-number="3.5.3.2"><h4 data-number="3.5.3.2" class="anchored" data-anchor-id="gráfico-de-barras-horizontais">
+<span class="header-section-number">3.5.3.2</span> Gráfico de barras horizontais</h4>
+<p>Quando o conjunto de dados possuir muitas colunas, o <strong>gráfico de barras horizontais</strong> pode ser a melhor opção, pois facilita a leitura dos rótulos. Vamos inverter o gráfico com a função <code><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip()</a></code> e ordenar os times de acordo com o número de gols marcados:</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gols_barras</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">Time</span>, <span class="va">gols_mandante</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">gols_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Total de Gols em Casa por Time"</span>, </span>
+<span>       x <span class="op">=</span> <span class="st">"Time"</span>, </span>
+<span>       y <span class="op">=</span> <span class="st">"Total de Gols em Casa"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="adicionando-rótulo-de-dados" class="level5" data-number="3.5.3.2.1"><h5 data-number="3.5.3.2.1" class="anchored" data-anchor-id="adicionando-rótulo-de-dados">
+<span class="header-section-number">3.5.3.2.1</span> Adicionando rótulo de dados</h5>
+<p>Agora, vamos adicionar o rótulos de dados diretamente nas barras, o que permite visualizar o valor exato de gols para cada time sem precisar deduzir o valor aproximado observando a altura da barra.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gols_barras</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">Time</span>, <span class="va">gols_mandante</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">gols_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">gols_mandante</span><span class="op">)</span>, hjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Total de Gols em Casa por Time"</span>, </span>
+<span>       x <span class="op">=</span> <span class="st">"Time"</span>, </span>
+<span>       y <span class="op">=</span> <span class="st">"Total de Gols em Casa"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section></section><section id="gráfico-de-barras-empilhados" class="level4" data-number="3.5.3.3"><h4 data-number="3.5.3.3" class="anchored" data-anchor-id="gráfico-de-barras-empilhados">
+<span class="header-section-number">3.5.3.3</span> Gráfico de barras empilhados</h4>
+<p>Por fim, vamos criar um gráfico de barras empilhadas para visualizar os gols feitos em diferentes anos, empilhando os valores dos gols por ano dentro de cada barra de time.</p>
+<div class="cell">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gols_barras2</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
+<span>    <span class="va">time_mandante</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> </span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Athletico-PR"</span>, <span class="st">"Coritiba FC"</span>, <span class="st">"Paraná"</span>, <span class="st">"Corinthians"</span>, <span class="st">"Flamengo"</span>,</span>
+<span>        <span class="st">"Palmeiras"</span>, <span class="st">"Botafogo"</span>, <span class="st">"Internacional"</span>, <span class="st">"Grêmio"</span>, <span class="st">"Atlético-PR"</span><span class="op">)</span>,</span>
+<span>    <span class="va">ano_campeonato</span> <span class="op">&gt;</span> <span class="fl">2015</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">time_mandante</span>, <span class="va">ano_campeonato</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>gols_mandante <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">gols_mandante</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Time <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Reordenando corretamente com base no total acumulado de gols por time</span></span>
+<span><span class="va">total_gols_por_time</span> <span class="op">&lt;-</span> <span class="va">gols_barras2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_gols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">gols_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">total_gols</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">gols_barras2</span> <span class="op">&lt;-</span> <span class="va">gols_barras2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Time</span>, levels <span class="op">=</span> <span class="va">total_gols_por_time</span><span class="op">$</span><span class="va">Time</span><span class="op">)</span>,</span>
+<span>         ano_campeonato <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">ano_campeonato</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2016</span>, <span class="fl">2017</span>, <span class="fl">2018</span>, <span class="fl">2019</span>, <span class="fl">2020</span>, <span class="fl">2021</span>, <span class="fl">2022</span>, <span class="fl">2023</span>, <span class="fl">2024</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Definindo manualmente a ordem dos anos</span></span>
+<span></span>
+<span><span class="co"># gráfico barras verticais</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gols_barras2</span>,</span>
+<span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>         x <span class="op">=</span> <span class="va">Time</span>,</span>
+<span>         y <span class="op">=</span> <span class="va">gols_mandante</span>,</span>
+<span>         fill <span class="op">=</span> <span class="va">ano_campeonato</span>  <span class="co"># Colorir por ano do campeonato (agora ordenado)</span></span>
+<span>       <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_stack.html">position_stack</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Total de Gols em Casa por Time"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Time"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Total de Gols em Casa"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Ano do Campeonato"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># gráfico barras horizontais</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gols_barras2</span>,</span>
+<span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
+<span>         x <span class="op">=</span> <span class="va">Time</span>,</span>
+<span>         y <span class="op">=</span> <span class="va">gols_mandante</span>,</span>
+<span>         fill <span class="op">=</span> <span class="va">ano_campeonato</span>  <span class="co"># Colorir por ano do campeonato (agora ordenado)</span></span>
+<span>       <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_stack.html">position_stack</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Total de Gols em Casa por Time"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Time"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Total de Gols em Casa"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"Ano do Campeonato"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="exercício-gráfico-de-barras---gols-fora-de-casa" class="level4" data-number="3.5.3.4"><h4 data-number="3.5.3.4" class="anchored" data-anchor-id="exercício-gráfico-de-barras---gols-fora-de-casa">
+<span class="header-section-number">3.5.3.4</span> <strong>EXERCÍCIO</strong> Gráfico de Barras - Gols Fora de Casa</h4>
+<p>Agora podemos repetir o processo, mas desta vez para os gols feitos fora de casa por cada time visitante.</p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
