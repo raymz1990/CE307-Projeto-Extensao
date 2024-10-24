@@ -6,3 +6,13 @@
 source("_common.R")
 ```
 
+1. Tipo de Variavel/Gráfico adequado
+2. Interpretacao de Dados
+3. Oq esta impróprio no gráfico
+4. Oq mudar no grafico (oq fazer pra corrigir)
+5. Oq falta no código (cores)
+6. Oq falta no código (eixos/título)
+7. Interpretacao grafico (Gols 45+ e 90+) 
+8. Questao sobre idade média dos times (ficaram mais velhos, novos, iguais?)
+9. Uma variável representada por números é: sempre numérica?...
+10. 
