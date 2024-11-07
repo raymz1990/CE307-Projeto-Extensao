@@ -40,7 +40,9 @@ Dentre suas principais características, as vantagens de utilização este pacot
 
 Existem inúmeras possibilidades de construção de gráficos com o `ggplot2` para a visualização de dados utilizando o **R**. Ele permitem criar praticamente qualquer tipo de gráfico.
 
-```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+Algumas demonstrações exemplos podem ser verificados em [https://www.r-graph-gallery.com/portfolio/ggplot2-package/](https://r-graph-gallery.com/ggplot2-package.html)
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='left'}
 #| label: fig-ggplot2-example
 #| echo: false
 #| fig-cap: |
@@ -52,7 +54,7 @@ Existem inúmeras possibilidades de construção de gráficos com o `ggplot2` pa
 knitr::include_graphics("./img/img3-ggplot-example.png")
 ```
 
-Algumas demonstrações exemplos podem ser verificados em [https://www.r-graph-gallery.com/portfolio/ggplot2-package/](https://r-graph-gallery.com/ggplot2-package.html)
+
 
 ## Gramática dos gráficos
 ```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='left', out.width='100%'}

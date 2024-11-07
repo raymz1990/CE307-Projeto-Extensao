@@ -1,8 +1,8 @@
 {
-  "hash": "b7695a8d0881e1d6f2bf4ab83a23d89e",
+  "hash": "053d6ee9e1338a181ceb962b368f961e",
   "result": {
     "engine": "knitr",
-    "markdown": "# Quizz {#sec-quizz}\n\n\n::: {.cell}\n\n:::\n",
+    "markdown": "# Quizz {#sec-quizz}\n\n\n::: {.cell}\n\n:::\n\n\n1. Tipo de Variavel/Gráfico adequado\n2. Interpretacao de Dados\n3. Oq esta impróprio no gráfico\n4. Oq mudar no grafico (oq fazer pra corrigir)\n5. Oq falta no código (cores)\n6. Oq falta no código (eixos/título)\n7. Interpretacao grafico (Gols 45+ e 90+) \n8. Questao sobre idade média dos times (ficaram mais velhos, novos, iguais?)\n9. Uma variável representada por números é: sempre numérica?...\n10. Questão sobre distribuição do público do time mandante (Com base no gráfico (3.3.4), é correto afirmar:\n- A maior parte do público foram em jogos do Corinthians, São Paulo ou Flamengo\n- Dentre todos os times do campeonato, o São Paulo foi o time com o menor público\n- Todos os jogos tiveram torcida única\n- O Flamengo é o time com a maior fatia do público total)\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
