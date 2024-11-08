@@ -771,81 +771,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section></section><section id="gráfico-de-barras-empilhados" class="level4" data-number="3.5.3.3"><h4 data-number="3.5.3.3" class="anchored" data-anchor-id="gráfico-de-barras-empilhados">
-<span class="header-section-number">3.5.3.3</span> Gráfico de barras empilhados</h4>
-<p>Por fim, vamos criar um gráfico de barras empilhadas para visualizar os gols feitos em diferentes anos, empilhando os valores dos gols por ano dentro de cada barra de time.</p>
-<div class="cell">
-<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gols_barras2</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
-<span>    <span class="va">time_mandante</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> </span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Athletico-PR"</span>, <span class="st">"Coritiba FC"</span>, <span class="st">"Paraná"</span>, <span class="st">"Corinthians"</span>, <span class="st">"Flamengo"</span>,</span>
-<span>        <span class="st">"Palmeiras"</span>, <span class="st">"Botafogo"</span>, <span class="st">"Internacional"</span>, <span class="st">"Grêmio"</span>, <span class="st">"Atlético-PR"</span><span class="op">)</span>,</span>
-<span>    <span class="va">ano_campeonato</span> <span class="op">&gt;</span> <span class="fl">2015</span></span>
-<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">time_mandante</span>, <span class="va">ano_campeonato</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>gols_mandante <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">gols_mandante</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>Time <span class="op">=</span> <span class="va">time_mandante</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Reordenando corretamente com base no total acumulado de gols por time</span></span>
-<span><span class="va">total_gols_por_time</span> <span class="op">&lt;-</span> <span class="va">gols_barras2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Time</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_gols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">gols_mandante</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">total_gols</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">gols_barras2</span> <span class="op">&lt;-</span> <span class="va">gols_barras2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>Time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">Time</span>, levels <span class="op">=</span> <span class="va">total_gols_por_time</span><span class="op">$</span><span class="va">Time</span><span class="op">)</span>,</span>
-<span>         ano_campeonato <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">ano_campeonato</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2016</span>, <span class="fl">2017</span>, <span class="fl">2018</span>, <span class="fl">2019</span>, <span class="fl">2020</span>, <span class="fl">2021</span>, <span class="fl">2022</span>, <span class="fl">2023</span>, <span class="fl">2024</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Definindo manualmente a ordem dos anos</span></span>
-<span></span>
-<span><span class="co"># gráfico barras verticais</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gols_barras2</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
-<span>         x <span class="op">=</span> <span class="va">Time</span>,</span>
-<span>         y <span class="op">=</span> <span class="va">gols_mandante</span>,</span>
-<span>         fill <span class="op">=</span> <span class="va">ano_campeonato</span>  <span class="co"># Colorir por ano do campeonato (agora ordenado)</span></span>
-<span>       <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_stack.html">position_stack</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> <span class="op">+</span>  </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Total de Gols em Casa por Time"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Time"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Total de Gols em Casa"</span>,</span>
-<span>    fill <span class="op">=</span> <span class="st">"Ano do Campeonato"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># gráfico barras horizontais</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gols_barras2</span>,</span>
-<span>       mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span></span>
-<span>         x <span class="op">=</span> <span class="va">Time</span>,</span>
-<span>         y <span class="op">=</span> <span class="va">gols_mandante</span>,</span>
-<span>         fill <span class="op">=</span> <span class="va">ano_campeonato</span>  <span class="co"># Colorir por ano do campeonato (agora ordenado)</span></span>
-<span>       <span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span><span class="op">)</span>, position <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/position_stack.html">position_stack</a></span><span class="op">(</span>vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> <span class="op">+</span>  </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Total de Gols em Casa por Time"</span>,</span>
-<span>    x <span class="op">=</span> <span class="st">"Time"</span>,</span>
-<span>    y <span class="op">=</span> <span class="st">"Total de Gols em Casa"</span>,</span>
-<span>    fill <span class="op">=</span> <span class="st">"Ano do Campeonato"</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details><div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="03_graphics_files/figure-html/unnamed-chunk-21-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section><section id="exercício-gráfico-de-barras---gols-fora-de-casa" class="level4" data-number="3.5.3.4"><h4 data-number="3.5.3.4" class="anchored" data-anchor-id="exercício-gráfico-de-barras---gols-fora-de-casa">
-<span class="header-section-number">3.5.3.4</span> <strong>EXERCÍCIO</strong> Gráfico de Barras - Gols Fora de Casa</h4>
+</section></section><section id="exercício-gráfico-de-barras---gols-fora-de-casa" class="level4" data-number="3.5.3.3"><h4 data-number="3.5.3.3" class="anchored" data-anchor-id="exercício-gráfico-de-barras---gols-fora-de-casa">
+<span class="header-section-number">3.5.3.3</span> <strong>EXERCÍCIO</strong> Gráfico de Barras - Gols Fora de Casa</h4>
 <p>Agora podemos repetir o processo, mas desta vez para os gols feitos fora de casa por cada time visitante.</p>
 
 

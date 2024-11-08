@@ -410,69 +410,6 @@ ggplot(gols_barras, aes(x = reorder(Time, gols_mandante), y = gols_mandante)) +
   theme_classic()
 ```
 
-#### Gráfico de barras empilhados
-
-Por fim, vamos criar um gráfico de barras empilhadas para visualizar os gols feitos em diferentes anos, empilhando os valores dos gols por ano dentro de cada barra de time.
-```{r echo=TRUE, message=FALSE, warning=FALSE}
-gols_barras2 <- dados %>%
-  filter(
-    time_mandante %in% 
-      c("Athletico-PR", "Coritiba FC", "Paraná", "Corinthians", "Flamengo",
-        "Palmeiras", "Botafogo", "Internacional", "Grêmio", "Atlético-PR"),
-    ano_campeonato > 2015
-  ) %>%
-  group_by(time_mandante, ano_campeonato) %>%
-  summarise(gols_mandante = sum(gols_mandante, na.rm = TRUE)) %>%
-  rename(Time = time_mandante)
-
-# Reordenando corretamente com base no total acumulado de gols por time
-total_gols_por_time <- gols_barras2 %>%
-  group_by(Time) %>%
-  summarise(total_gols = sum(gols_mandante)) %>%
-  arrange(desc(total_gols))
-
-gols_barras2 <- gols_barras2 %>%
-  mutate(Time = factor(Time, levels = total_gols_por_time$Time),
-         ano_campeonato = factor(ano_campeonato, levels = c(2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024)))  # Definindo manualmente a ordem dos anos
-
-# gráfico barras verticais
-ggplot(gols_barras2,
-       mapping = aes(
-         x = Time,
-         y = gols_mandante,
-         fill = ano_campeonato  # Colorir por ano do campeonato (agora ordenado)
-       )) +
-  geom_bar(stat = "identity") +
-  geom_text(aes(label = after_stat(y)), position = position_stack(vjust = 0.5), color = "black") +
-  scale_fill_brewer(palette = "Set1") +  
-  labs(
-    title = "Total de Gols em Casa por Time",
-    x = "Time",
-    y = "Total de Gols em Casa",
-    fill = "Ano do Campeonato"
-  ) +
-  theme_classic()
-
-# gráfico barras horizontais
-ggplot(gols_barras2,
-       mapping = aes(
-         x = Time,
-         y = gols_mandante,
-         fill = ano_campeonato  # Colorir por ano do campeonato (agora ordenado)
-       )) +
-  geom_bar(stat = "identity") +
-  geom_text(aes(label = after_stat(y)), position = position_stack(vjust = 0.5), color = "black") +
-  coord_flip() +
-  scale_fill_brewer(palette = "Set1") +  
-  labs(
-    title = "Total de Gols em Casa por Time",
-    x = "Time",
-    y = "Total de Gols em Casa",
-    fill = "Ano do Campeonato"
-  ) +
-  theme_classic()
-```
-
 
 #### **EXERCÍCIO** Gráfico de Barras - Gols Fora de Casa
 

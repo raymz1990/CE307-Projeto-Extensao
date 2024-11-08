@@ -326,13 +326,13 @@ Para sabermos qual tipo de gráfico é ideal para um determinado conjunto de dad
 
 Uma variável é uma característica de interesse que geralmente varia entre elementos de uma população, podendo ser classificada da seguinte forma:
 
-1.    Variáveis Qualitativas (ou Categóricas): são características definidas por várias categorias. Podem ser nominais ou ordinais.
-    -   Nominais: características que não possuem ordenação entre suas categorias. Exemplos: sexo, raça.
-    -   Ordinais: características que possuem ordenação entre suas categorias. Exemplos: escolaridade, estágio de uma doença.
+1. Variáveis Qualitativas (ou Categóricas): são características definidas por várias categorias. Podem ser nominais ou ordinais.
+    -  Nominais: características que não possuem ordenação entre suas categorias. Exemplos: sexo, raça.
+    -  Ordinais: características que possuem ordenação entre suas categorias. Exemplos: escolaridade, estágio de uma doença.
   
-2.    Variáveis Quantitativas: são características que apresentam valores numéricos e podem ser medidas em uma escala quantitativa. Podem ser discretas ou contínuas.
-    -   Discretas: características que assumem apenas um número finito ou enumerável de valores, isto é, assumem valores inteiros. Geralmente são o resultado de contagens. Exemplo: número de filhos.
-    -   Contínuas: características que assumem valores no conjuntos dos reais, em uma escala contínua. Exemplo: peso.
+2. Variáveis Quantitativas: são características que apresentam valores numéricos e podem ser medidas em uma escala quantitativa. Podem ser discretas ou contínuas.
+    - Discretas: características que assumem apenas um número finito ou enumerável de valores, isto é, assumem valores inteiros. Geralmente são o resultado de contagens. Exemplo: número de filhos.
+    - Contínuas: características que assumem valores no conjuntos dos reais, em uma escala contínua. Exemplo: peso.
 
 Alguns pontos importantes a serem observados são:
 
