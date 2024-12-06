@@ -2,7 +2,7 @@
   "hash": "e3fd59b36872ae95294deb519b6c2eee",
   "result": {
     "engine": "knitr",
-    "markdown": "# Exercícios {#sec-exercises}\n\n\n::: {.cell}\n\n:::\n",
+    "markdown": "# Exercício Final {#sec-exercises}\n\n\n::: {.cell}\n\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
