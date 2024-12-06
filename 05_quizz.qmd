@@ -1,22 +1,3 @@
 # Quizz {#sec-quizz}
 
-```{r}
-#| echo: false
-
-source("_common.R")
-```
-
-1. Tipo de Variavel/Gráfico adequado
-2. Interpretacao de Dados
-3. Oq esta impróprio no gráfico
-4. Oq mudar no grafico (oq fazer pra corrigir)
-5. Oq falta no código (cores)
-6. Oq falta no código (eixos/título)
-7. Interpretacao grafico (Gols 45+ e 90+) 
-8. Questao sobre idade média dos times (ficaram mais velhos, novos, iguais?)
-9. Uma variável representada por números é: sempre numérica?...
-10. Questão sobre distribuição do público do time mandante (Com base no gráfico (3.3.4), é correto afirmar:
-- A maior parte do público foram em jogos do Corinthians, São Paulo ou Flamengo
-- Dentre todos os times do campeonato, o São Paulo foi o time com o menor público
-- Todos os jogos tiveram torcida única
-- O Flamengo é o time com a maior fatia do público total)
+[Acesse o Quizz aqui](http://joinmyquiz.com)

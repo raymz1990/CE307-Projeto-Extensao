@@ -5,7 +5,7 @@ project:
 book:
   title: "CE 307 - Projeto de Extensão"
   # author: "Raymundo"
-  favicon: https://ufpr.br/wp-content/uploads/2015/11/ufpr_25.jpg
+  # favicon: https://ufpr.br/wp-content/uploads/2015/11/ufpr_25.jpg
   # description: Material da disciplina CE307 - PROJETO DE ANÁLISE DE DADOS do curso de Estatística da Universidade Federal do Paraná (UFPR).
   keyword: statistics, R, quarto, data science, estatistica, ciencia de dados
   # url: https://github.com/raymz1990/CE307-Projeto-Extensao
@@ -18,7 +18,7 @@ book:
   search: true
   downloads: [pdf, docx]
   # page-navigation: true
-  image: https://ufpr.br/wp-content/uploads/2015/11/ufpr_25.jpg
+  # image: https://ufpr.br/wp-content/uploads/2015/11/ufpr_25.jpg
   
   sidebar: 
     background: "#F5F5F5"
@@ -50,8 +50,9 @@ format:
     theme:
       light: lumen
       dark: slate
-    toc: true # barra lateral esquerda com conteudo
-    toc-location: left
+    # toc: true # barra lateral esquerda com conteudo
+    toc-title: "Nesta página"
+    # toc-location: left
     code-fold: false
     code-summary: "R"
     code-overflow: wrap
