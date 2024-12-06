@@ -260,34 +260,34 @@
   {
     "objectID": "04_exercises.html",
     "href": "04_exercises.html",
-    "title": "4  Exercícios",
+    "title": "4  Exercício Final",
     "section": "",
-    "text": "4.1 Exercício 1\nTipo de Variavel/Gráfico adequado",
+    "text": "4.1 Exercício 1\nCom base nos dados abaixo, siga as instruções para criar e analisar um pequeno conjunto de informações fictícias sobre os gols de 3 times:\nCrie um dataframe contendo as seguintes colunas:\nR# Criando o dataframe usando data.frame\ndados &lt;- data.frame(\n  Time = c(\"Athletico-PR\", \"Coritiba\", \"Paraná\"),\n  Gols_Mandante = c(20, 21, 15),\n  Gols_Visitante = c(12, 8, 7)\n)\n\n# Adicionando a coluna de Gols Totais\ndados$Gols_Totais &lt;- dados$Gols_Mandante + dados$Gols_Visitante\n\n# Resultado esperado\n# print(dados)",
     "crumbs": [
       "Visualização de Dados",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exercícios</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exercício Final</span>"
     ]
   },
   {
     "objectID": "04_exercises.html#exercício-2",
     "href": "04_exercises.html#exercício-2",
-    "title": "4  Exercícios",
-    "section": "4.2 Exercício 2",
-    "text": "4.2 Exercício 2\nInterpretacao de Dados",
+    "title": "4  Exercício Final",
+    "section": "\n4.2 Exercício 2",
+    "text": "4.2 Exercício 2\nCrie um gráficos de barras através dos seguintes passos:\n\nCrie um gráfico de barras verticais para os gols totais de cada time. Ordene as barras de forma decrescente. Represente cada time com uma cor.\n\n\nRlibrary(ggplot2)\n\n# Gráfico de barras para os gols totais\ngráfico &lt;- ggplot(dados, aes(x = reorder(Time, Gols_Totais), y = Gols_Totais, fill=Time)) +\n  geom_bar(stat = \"identity\") + \n  geom_text(aes(label = Gols_Totais), vjust = -0.5, size = 5) + # rotulo de dados\n  labs(\n    title = \"Gols Totais por Time\",\n    x = \"Time\",\n    y = \"Gols Totais\"\n  ) +\n  scale_fill_manual(values = c(\"Athletico-PR\" = \"darkred\", \"Coritiba\" = \"darkgreen\", \"Paraná\" = \"darkblue\")) + \n  theme_minimal()\n\n\n\nEscolha uma equipe e crie um gráfico de barras com: Seus gols como mandante e como visitante, cada barra com uma cor\n\n\nRlibrary(tidyverse)\n\n# Filtrando apenas o time escolhido usando o operador pipe\ntime_escolhido &lt;- dados %&gt;%\n  filter(Time == \"Athletico-PR\")\n\n# Preparando os dados para o gráfico\ngols_time &lt;- data.frame(\n  Categoria = c(\"Mandante\", \"Visitante\"),\n  Gols = c(time_escolhido$Gols_Mandante, time_escolhido$Gols_Visitante)\n)\n\n# Gráfico de barras para mandante e visitante\ngrafico &lt;- ggplot(gols_time, aes(x = Categoria, y = Gols)) +\n  geom_bar(stat = \"identity\", fill = c(\"darkred\", \"black\")) +  # Cores diferentes para as barras\n  geom_text(aes(label = Gols), vjust = -0.5, size = 5) +  # rótulo de dados\n  labs(\n    title = \"Gols como Mandante e Visitante - Athletico-PR\",\n    x = \"Categoria\",\n    y = \"Gols\"\n  ) +\n  theme_light()\n\n\n\nDICA: Siga essa imagem pra escolher a cor",
     "crumbs": [
       "Visualização de Dados",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exercícios</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exercício Final</span>"
     ]
   },
   {
     "objectID": "04_exercises.html#exercício-3",
     "href": "04_exercises.html#exercício-3",
-    "title": "4  Exercícios",
-    "section": "4.3 Exercício 3",
-    "text": "4.3 Exercício 3\nOq esta impróprio no gráfico",
+    "title": "4  Exercício Final",
+    "section": "\n4.3 Exercício 3",
+    "text": "4.3 Exercício 3\n\n4.3.1 Análise\nApós observar os gráficos, você consegue tirar alguma conclusão sobre o desempenho do time escolhido? E entre todos os 3 times?",
     "crumbs": [
       "Visualização de Dados",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exercícios</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exercício Final</span>"
     ]
   },
   {
@@ -365,6 +365,17 @@
     "crumbs": [
       "Visualização de Dados",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exercícios</span>"
+    ]
+  },
+  {
+    "objectID": "04_exercises.html#exercício-1",
+    "href": "04_exercises.html#exercício-1",
+    "title": "4  Exercício Final",
+    "section": "",
+    "text": "Nome do time.\nGols totais.\nGols como mandante.\nGols como visitante.",
+    "crumbs": [
+      "Visualização de Dados",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Exercício Final</span>"
     ]
   }
 ]

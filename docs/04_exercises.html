@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.6.39">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>4&nbsp; Exercícios – CE 307 - Projeto de Extensão</title>
+<title>4&nbsp; Exercício Final – CE 307 - Projeto de Extensão</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,8 +17,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -42,8 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-828fc2ed22a689230e85dd81c19f2892.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-98638a7fa12a97f85df9ac084799ee28.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-dark-98638a7fa12a97f85df9ac084799ee28.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -69,45 +98,34 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
-<link rel="stylesheet" href="styles.css">
+}</script><link rel="stylesheet" href="styles.css">
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_presentation.html">Visualização de Dados</a></li><li class="breadcrumb-item"><a href="./04_exercises.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exercícios</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_presentation.html">Visualização de Dados</a></li><li class="breadcrumb-item"><a href="./04_exercises.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exercício Final</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
-      </a>
+      <img src="./logo.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">CE 307 - Projeto de Extensão</a> 
         <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
+<li>
             <a class="dropdown-item sidebar-tools-main-item" href="./CE-307---Projeto-de-Extensão.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
@@ -120,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
             </a>
           </li>
       </ul>
-    </div>
+</div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
   <div class="quarto-reader-toggle-btn">
@@ -137,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Apresentação</span></a>
@@ -151,8 +169,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_visualizacao-dados.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Motivação</span></span></a>
@@ -173,7 +191,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_exercises.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exercícios</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exercício Final</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -183,36 +201,28 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Nesta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Nesta página</h2>
    
   <ul>
-  <li><a href="#exercício-1" id="toc-exercício-1" class="nav-link active" data-scroll-target="#exercício-1"><span class="header-section-number">4.1</span> Exercício 1</a></li>
-  <li><a href="#exercício-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exercício-2"><span class="header-section-number">4.2</span> Exercício 2</a></li>
-  <li><a href="#exercício-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exercício-3"><span class="header-section-number">4.3</span> Exercício 3</a></li>
-  <li><a href="#exercício-4" id="toc-exercício-4" class="nav-link" data-scroll-target="#exercício-4"><span class="header-section-number">4.4</span> Exercício 4</a></li>
-  <li><a href="#exercício-5" id="toc-exercício-5" class="nav-link" data-scroll-target="#exercício-5"><span class="header-section-number">4.5</span> Exercício 5</a></li>
-  <li><a href="#exercício-6" id="toc-exercício-6" class="nav-link" data-scroll-target="#exercício-6"><span class="header-section-number">4.6</span> Exercício 6</a></li>
-  <li><a href="#exercício-7" id="toc-exercício-7" class="nav-link" data-scroll-target="#exercício-7"><span class="header-section-number">4.7</span> Exercício 7</a></li>
-  <li><a href="#exercício-8" id="toc-exercício-8" class="nav-link" data-scroll-target="#exercício-8"><span class="header-section-number">4.8</span> Exercício 8</a></li>
-  <li><a href="#exercício-9" id="toc-exercício-9" class="nav-link" data-scroll-target="#exercício-9"><span class="header-section-number">4.9</span> Exercício 9</a></li>
-  <li><a href="#exercício-10" id="toc-exercício-10" class="nav-link" data-scroll-target="#exercício-10"><span class="header-section-number">4.10</span> Exercício 10</a></li>
+<li><a href="#exerc%C3%ADcio-1" id="toc-exercício-1" class="nav-link active" data-scroll-target="#exerc%C3%ADcio-1"><span class="header-section-number">4.1</span> Exercício 1</a></li>
+  <li><a href="#exerc%C3%ADcio-2" id="toc-exercício-2" class="nav-link" data-scroll-target="#exerc%C3%ADcio-2"><span class="header-section-number">4.2</span> Exercício 2</a></li>
+  <li>
+<a href="#exerc%C3%ADcio-3" id="toc-exercício-3" class="nav-link" data-scroll-target="#exerc%C3%ADcio-3"><span class="header-section-number">4.3</span> Exercício 3</a>
+  <ul class="collapse">
+<li><a href="#an%C3%A1lise" id="toc-análise" class="nav-link" data-scroll-target="#an%C3%A1lise"><span class="header-section-number">4.3.1</span> Análise</a></li>
   </ul>
-</nav>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_presentation.html">Visualização de Dados</a></li><li class="breadcrumb-item"><a href="./04_exercises.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exercícios</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span id="sec-exercises" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exercícios</span></span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./00_presentation.html">Visualização de Dados</a></li><li class="breadcrumb-item"><a href="./04_exercises.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exercício Final</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title"><span id="sec-exercises" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exercício Final</span></span></h1>
 </div>
 
 
@@ -226,54 +236,124 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><p>Com base nos dados abaixo, siga as instruções para criar e analisar um pequeno conjunto de informações fictícias sobre os gols de 3 times:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Time</th>
+<th style="text-align: center;">Gols Mandante</th>
+<th style="text-align: center;">Gols Fora</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Athletico-PR</td>
+<td style="text-align: center;">20 gols</td>
+<td style="text-align: center;">12 gols</td>
+</tr>
+<tr class="even">
+<td>Coritiba</td>
+<td style="text-align: center;">21 gols</td>
+<td style="text-align: center;">08 gols</td>
+</tr>
+<tr class="odd">
+<td>Paraná</td>
+<td style="text-align: center;">15 gols</td>
+<td style="text-align: center;">07 gols</td>
+</tr>
+</tbody>
+</table>
+<section id="exercício-1" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="exercício-1">
+<span class="header-section-number">4.1</span> Exercício 1</h2>
+<p>Crie um dataframe contendo as seguintes colunas:</p>
+<ol type="a">
+<li>Nome do time.</li>
+<li>Gols totais.</li>
+<li>Gols como mandante.</li>
+<li>Gols como visitante.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Criando o dataframe usando data.frame</span></span>
+<span><span class="va">dados</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Athletico-PR"</span>, <span class="st">"Coritiba"</span>, <span class="st">"Paraná"</span><span class="op">)</span>,</span>
+<span>  Gols_Mandante <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">21</span>, <span class="fl">15</span><span class="op">)</span>,</span>
+<span>  Gols_Visitante <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">8</span>, <span class="fl">7</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Adicionando a coluna de Gols Totais</span></span>
+<span><span class="va">dados</span><span class="op">$</span><span class="va">Gols_Totais</span> <span class="op">&lt;-</span> <span class="va">dados</span><span class="op">$</span><span class="va">Gols_Mandante</span> <span class="op">+</span> <span class="va">dados</span><span class="op">$</span><span class="va">Gols_Visitante</span></span>
+<span></span>
+<span><span class="co"># Resultado esperado</span></span>
+<span><span class="co"># print(dados)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section><section id="exercício-2" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="exercício-2">
+<span class="header-section-number">4.2</span> Exercício 2</h2>
+<p>Crie um gráficos de barras através dos seguintes passos:</p>
+<ol type="a">
+<li>Crie um gráfico de barras verticais para os gols totais de cada time. Ordene as barras de forma decrescente. Represente cada time com uma cor.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Gráfico de barras para os gols totais</span></span>
+<span><span class="va">gráfico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">dados</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">Time</span>, <span class="va">Gols_Totais</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">Gols_Totais</span>, fill<span class="op">=</span><span class="va">Time</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">Gols_Totais</span><span class="op">)</span>, vjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span> <span class="co"># rotulo de dados</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Gols Totais por Time"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Time"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Gols Totais"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Athletico-PR"</span> <span class="op">=</span> <span class="st">"darkred"</span>, <span class="st">"Coritiba"</span> <span class="op">=</span> <span class="st">"darkgreen"</span>, <span class="st">"Paraná"</span> <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="2" type="a">
+<li>Escolha uma equipe e crie um gráfico de barras com: Seus gols como mandante e como visitante, cada barra com uma cor</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<details class="code-fold"><summary>R</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Filtrando apenas o time escolhido usando o operador pipe</span></span>
+<span><span class="va">time_escolhido</span> <span class="op">&lt;-</span> <span class="va">dados</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Time</span> <span class="op">==</span> <span class="st">"Athletico-PR"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Preparando os dados para o gráfico</span></span>
+<span><span class="va">gols_time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  Categoria <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mandante"</span>, <span class="st">"Visitante"</span><span class="op">)</span>,</span>
+<span>  Gols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">time_escolhido</span><span class="op">$</span><span class="va">Gols_Mandante</span>, <span class="va">time_escolhido</span><span class="op">$</span><span class="va">Gols_Visitante</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Gráfico de barras para mandante e visitante</span></span>
+<span><span class="va">grafico</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gols_time</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Categoria</span>, y <span class="op">=</span> <span class="va">Gols</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"darkred"</span>, <span class="st">"black"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Cores diferentes para as barras</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">Gols</span><span class="op">)</span>, vjust <span class="op">=</span> <span class="op">-</span><span class="fl">0.5</span>, size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># rótulo de dados</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Gols como Mandante e Visitante - Athletico-PR"</span>,</span>
+<span>    x <span class="op">=</span> <span class="st">"Categoria"</span>,</span>
+<span>    y <span class="op">=</span> <span class="st">"Gols"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_light</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ul>
+<li>DICA: Siga essa imagem pra escolher a cor</li>
+</ul>
+<div class="cell" data-layout-align="left">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure"><p><img src="./img/cores.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="exercício-3" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="exercício-3">
+<span class="header-section-number">4.3</span> Exercício 3</h2>
+<section id="análise" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="análise">
+<span class="header-section-number">4.3.1</span> Análise</h3>
+<p>Após observar os gráficos, você consegue tirar alguma conclusão sobre o desempenho do time escolhido? E entre todos os 3 times?</p>
 
 
-<section id="exercício-1" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="exercício-1"><span class="header-section-number">4.1</span> Exercício 1</h2>
-<p>Tipo de Variavel/Gráfico adequado</p>
-</section>
-<section id="exercício-2" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="exercício-2"><span class="header-section-number">4.2</span> Exercício 2</h2>
-<p>Interpretacao de Dados</p>
-</section>
-<section id="exercício-3" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="exercício-3"><span class="header-section-number">4.3</span> Exercício 3</h2>
-<p>Oq esta impróprio no gráfico</p>
-</section>
-<section id="exercício-4" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="exercício-4"><span class="header-section-number">4.4</span> Exercício 4</h2>
-<p>Oq mudar no grafico (oq fazer pra corrigir)</p>
-</section>
-<section id="exercício-5" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="exercício-5"><span class="header-section-number">4.5</span> Exercício 5</h2>
-<p>Oq falta no código (cores)</p>
-</section>
-<section id="exercício-6" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="exercício-6"><span class="header-section-number">4.6</span> Exercício 6</h2>
-<p>Oq falta no código (eixos/título)</p>
-</section>
-<section id="exercício-7" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="exercício-7"><span class="header-section-number">4.7</span> Exercício 7</h2>
-<p>Interpretacao grafico (Gols 45+ e 90+)</p>
-</section>
-<section id="exercício-8" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="exercício-8"><span class="header-section-number">4.8</span> Exercício 8</h2>
-<p>Questao sobre idade média dos times (ficaram mais velhos, novos, iguais?)</p>
-</section>
-<section id="exercício-9" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="exercício-9"><span class="header-section-number">4.9</span> Exercício 9</h2>
-<p>Uma variável representada por números é: sempre numérica?…</p>
-</section>
-<section id="exercício-10" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="exercício-10"><span class="header-section-number">4.10</span> Exercício 10</h2>
-<p>Questão sobre distribuição do público do time mandante (Com base no gráfico (3.3.4), é correto afirmar: - A maior parte do público foram em jogos do Corinthians, São Paulo ou Flamengo - Dentre todos os times do campeonato, o São Paulo foi o time com o menor público - Todos os jogos tiveram torcida única - O Flamengo é o time com a maior fatia do público total)</p>
-
-
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -833,9 +913,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./03_graphics.html" class="pagination-link" aria-label="Criação de gráficos com o `ggplot2`">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Criação de gráficos com o <code>ggplot2</code></span></span>
       </a>          
@@ -847,8 +925,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>Estatística UFPR 2024</p>
 </div>   
@@ -860,8 +937,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

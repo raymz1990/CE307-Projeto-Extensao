@@ -2,49 +2,106 @@
 code-fold: true
 ---
 
-# Exercícios {#sec-exercises}
+# Exercício Final {#sec-exercises}
+
+Com base nos dados abaixo, siga as instruções para criar e analisar um pequeno conjunto de informações fictícias sobre os gols de 3 times:
+
+| Time         | Gols Mandante | Gols Fora |
+|--------------|:-------------:|:---------:|
+| Athletico-PR | 20 gols       | 12 gols   |
+| Coritiba     | 21 gols       | 08 gols   |
+| Paraná       | 15 gols       | 07 gols   |
 
 ## Exercício 1
 
-Tipo de Variavel/Gráfico adequado
+Crie um dataframe contendo as seguintes colunas:
+
+a. Nome do time.
+b. Gols totais.
+c. Gols como mandante.
+d. Gols como visitante.
+
+```{r comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+# Criando o dataframe usando data.frame
+dados <- data.frame(
+  Time = c("Athletico-PR", "Coritiba", "Paraná"),
+  Gols_Mandante = c(20, 21, 15),
+  Gols_Visitante = c(12, 8, 7)
+)
+
+# Adicionando a coluna de Gols Totais
+dados$Gols_Totais <- dados$Gols_Mandante + dados$Gols_Visitante
+
+# Resultado esperado
+# print(dados)
+```
+
 
 ## Exercício 2
 
-Interpretacao de Dados
+Crie um gráficos de barras através dos seguintes passos:
+
+a. Crie um gráfico de barras verticais para os gols totais de cada time.
+   Ordene as barras de forma decrescente.
+   Represente cada time com uma cor.
+   
+```{r comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+library(ggplot2)
+
+# Gráfico de barras para os gols totais
+gráfico <- ggplot(dados, aes(x = reorder(Time, Gols_Totais), y = Gols_Totais, fill=Time)) +
+  geom_bar(stat = "identity") + 
+  geom_text(aes(label = Gols_Totais), vjust = -0.5, size = 5) + # rotulo de dados
+  labs(
+    title = "Gols Totais por Time",
+    x = "Time",
+    y = "Gols Totais"
+  ) +
+  scale_fill_manual(values = c("Athletico-PR" = "darkred", "Coritiba" = "darkgreen", "Paraná" = "darkblue")) + 
+  theme_minimal()
+```
+   
+b. Escolha uma equipe e crie um gráfico de barras com:
+   Seus gols como mandante e como visitante, cada barra com uma cor
+   
+```{r comment=FALSE,message=FALSE,warning=FALSE,fig.align='center'}
+library(tidyverse)
+
+# Filtrando apenas o time escolhido usando o operador pipe
+time_escolhido <- dados %>%
+  filter(Time == "Athletico-PR")
+
+# Preparando os dados para o gráfico
+gols_time <- data.frame(
+  Categoria = c("Mandante", "Visitante"),
+  Gols = c(time_escolhido$Gols_Mandante, time_escolhido$Gols_Visitante)
+)
+
+# Gráfico de barras para mandante e visitante
+grafico <- ggplot(gols_time, aes(x = Categoria, y = Gols)) +
+  geom_bar(stat = "identity", fill = c("darkred", "black")) +  # Cores diferentes para as barras
+  geom_text(aes(label = Gols), vjust = -0.5, size = 5) +  # rótulo de dados
+  labs(
+    title = "Gols como Mandante e Visitante - Athletico-PR",
+    x = "Categoria",
+    y = "Gols"
+  ) +
+  theme_light()
+```
+   
+* DICA: Siga essa imagem pra escolher a cor
+
+```{r echo=FALSE,comment=FALSE,message=FALSE,warning=FALSE,fig.align='left', out.width='100%'}
+knitr::include_graphics("./img/cores.jpg")
+```
+
+
+
+
 
 ## Exercício 3
 
-Oq esta impróprio no gráfico
+### Análise
 
-## Exercício 4
-
-Oq mudar no grafico (oq fazer pra corrigir)
-
-## Exercício 5
-
-Oq falta no código (cores)
-
-## Exercício 6
-
-Oq falta no código (eixos/título)
-
-## Exercício 7
-
-Interpretacao grafico (Gols 45+ e 90+) 
-
-## Exercício 8
-
-Questao sobre idade média dos times (ficaram mais velhos, novos, iguais?)
-
-## Exercício 9
-
-Uma variável representada por números é: sempre numérica?...
-
-## Exercício 10
-
-Questão sobre distribuição do público do time mandante (Com base no gráfico (3.3.4), é correto afirmar:
-- A maior parte do público foram em jogos do Corinthians, São Paulo ou Flamengo
-- Dentre todos os times do campeonato, o São Paulo foi o time com o menor público
-- Todos os jogos tiveram torcida única
-- O Flamengo é o time com a maior fatia do público total)
+Após observar os gráficos, você consegue tirar alguma conclusão sobre o desempenho do time escolhido? E entre todos os 3 times?
 
