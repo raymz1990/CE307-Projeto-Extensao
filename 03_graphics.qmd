@@ -171,11 +171,6 @@ ggplot(
 
 Com isso, temos um gráfico completo que mostra a relação entre o **valor do time mandante** e a **idade média time mandante**, com uma linha de tendência, cores distintas para cada time, e rótulos claros para os eixos e a legenda.
 
---- 
-
-Esse exemplo mostra passo a passo como criar e refinar um gráfico de dispersão usando o **ggplot2**, aplicando ao seu caso específico de **valor do time mandante** e **idade média time mandante**.
-
-
 ### O que esse gráfico mostra:
 
 - Cada ponto no gráfico representa um jogo, com o **valor do time mandante** plotado no eixo X e a **idade média time mandante** no eixo Y.
@@ -410,10 +405,6 @@ ggplot(gols_barras, aes(x = reorder(Time, gols_mandante), y = gols_mandante)) +
   theme_classic()
 ```
 
-
-#### **EXERCÍCIO** Gráfico de Barras - Gols Fora de Casa
-
-Agora podemos repetir o processo, mas desta vez para os gols feitos fora de casa por cada time visitante.
 
 
 
